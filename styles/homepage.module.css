@@ -1,0 +1,59 @@
+.home-page {
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  float: left;
+  margin: 10px;
+}
+
+.menu {
+  float: left;
+  margin: 10px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu li {
+  float: left;
+  margin-right: 10px;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.carousel-item {
+  height: 200px; 
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us {
+  padding: 20px;
+}
+
+.black-background {
+  background-color: black;
+}
+
+.yellow-box {
+  background-color: yellow;
+  padding: 20px;
+  margin: auto;
+  max-width: 600px; 
+}
+
+.our-services {
+  background-color: #ddd; 
+  padding: 20px;
+  text-align: center;
+}
+  
