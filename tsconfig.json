@@ -14,6 +14,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "paths": {
+      "@components/*": ["components/*", "components/*/index", "components/index"],
+      "@lib/*": ["lib/*"],
+      "@styles/*": ["styles/*"],
+      "@typograph/*": ["typograph/*"]
+    },
     "incremental": true
   },
   "exclude": ["node_modules"],
@@ -22,10 +28,12 @@
     "**/*.ts", 
     "**/*.tsx",
     "**/*.js",
-    "**/*.jsx"
+    "**/*.jsx",
+    "./src/@types"
   ],
   "typeRoots": [
-    "node_modules/@types"
+    "node_modules/@types",
+    "src/typograph/**/*.ts"
   ],
   "ts-node": {
     "compilerOptions": {
