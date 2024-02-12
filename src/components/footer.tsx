@@ -1,9 +1,56 @@
-import Container from "./container";
-import { EXAMPLE_PATH } from "@lib/constants";
+import Container from './container';
+import Newsletter from '@components/newsletter';
+import ThemeSwitch from '@components/theme-switch';
+import Menu from '@components/menu';
+import Icon from '@components/icon';
+import { EXAMPLE_PATH } from '@lib/constants';
 
-const Footer = () => {
+const Footer = ({ data = {} }) => {
+  const { blocks } = data;
+
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200">
+    <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">
+      <div className="footer--grid">
+        {blocks.map((block, key) => (
+          <div key={key} className="footer--block">
+            {block.title && <p className="is-h3">{block.title}</p>}
+
+            {block.menu?.items && (
+              <Menu items={block.menu.items} className="menu-footer" />
+            )}
+
+            {block.newsletter && <Newsletter data={block.newsletter} />}
+
+            {block.social && (
+              <div className="menu-social">
+                {block.social.map((link, key) => {
+                  return (
+                    <a
+                      key={key}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon name={link.icon} />
+                    </a>
+                  )
+                })}
+              </div>
+            )}
+
+            {/* Put our extras in the last block */}
+            {key === 3 && (
+              <div className="footer--extras">
+                <ThemeSwitch />
+
+                <div className="footer--disclaimer">
+                  <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
       <Container>
         <div className="py-28 flex flex-col lg:flex-row items-center">
           <h3 className="text-4xl lg:text-[2.5rem] font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
@@ -27,6 +74,6 @@ const Footer = () => {
       </Container>
     </footer>
   );
-};
+}
 
-export default Footer;
+export default Footer
