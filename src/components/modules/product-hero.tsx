@@ -70,7 +70,7 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default ProductHero
+export default ProductHero;

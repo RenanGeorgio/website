@@ -92,4 +92,4 @@ const GridBlock = ({ block }) => {
   }
 }
 
-export default Grid
+export default Grid;

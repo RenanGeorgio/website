@@ -298,4 +298,4 @@ const useFilterAndSort = (products, filters, sort) => {
   }
 }
 
-export default Collection
+export default Collection;

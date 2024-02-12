@@ -1,7 +1,5 @@
-import { ReactNode } from "react";
-
 type Props = {
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
 const PostTitle = ({ children }: Props) => {
@@ -10,6 +8,6 @@ const PostTitle = ({ children }: Props) => {
       {children}
     </h1>
   );
-};
+}
 
 export default PostTitle;

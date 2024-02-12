@@ -1,7 +1,7 @@
-import Link from "next/link";
-import Avatar from "./avatar";
-import DateFormatter from "./date-formatter";
-import CoverImage from "./cover-image";
+import Link from 'next/link';
+import Avatar from '../avatar';
+import DateFormatter from '../date-formatter';
+import CoverImage from '../cover-image';
 import { Author } from "@typograph/types";
 
 type Props = {
@@ -42,6 +42,6 @@ const PostPreview = ({
       <Avatar name={author.name} picture={author.picture} />
     </div>
   );
-};
+}
 
 export default PostPreview;

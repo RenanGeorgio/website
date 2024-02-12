@@ -62,7 +62,7 @@ const Marquee = ({ data = {} }) => {
         </div>
       </Marqy>
     </div>
-  )
+  );
 }
 
-export default Marquee
+export default Marquee;

@@ -50,7 +50,7 @@ const Hero = ({ data = {} }) => {
         </>
       )}
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

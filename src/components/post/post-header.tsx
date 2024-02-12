@@ -1,8 +1,8 @@
-import Avatar from "./avatar";
-import DateFormatter from "./date-formatter";
-import CoverImage from "./cover-image";
-import PostTitle from "./post-title";
-import { Author } from "@typograph/types";
+import Avatar from '../avatar';
+import DateFormatter from '../date-formatter';
+import CoverImage from '../cover-image';
+import PostTitle from './post-title';
+import { Author } from '@typograph/types';
 
 type Props = {
   title: string;
@@ -31,6 +31,6 @@ const PostHeader = ({ title, coverImage, date, author }: Props) => {
       </div>
     </>
   );
-};
+}
 
 export default PostHeader;
