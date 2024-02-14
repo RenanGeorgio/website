@@ -1,10 +1,12 @@
 import { useEffect, useMemo } from 'react';
+import { AppProps } from 'next/app';
 import Router from 'next/router';
 import { LazyMotion, domAnimation, AnimatePresence } from 'framer-motion';
 import { isBrowser, useScrollRestoration } from '@lib/helpers';
 import { pageTransitionSpeed } from '@lib/animate';
 import { useSiteContext, useTogglePageTransition } from '@lib/context';
-import Cart from '@components/cart'
+import Cart from '@components/cart';
+import { Obj } from '@typograph/types';
 
 
 if (isBrowser) {
@@ -24,21 +26,23 @@ if (isBrowser) {
 }
 
 
-const Site = ({ Component, pageProps, router }) => {
-  const togglePageTransition = useTogglePageTransition()
-  const { isPageTransition } = useSiteContext()
+const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) => {
+  const AnyComponent = Component as any;
 
-  const { data } = pageProps
+  const togglePageTransition = useTogglePageTransition();
+  const { isPageTransition } = useSiteContext();
+
+  const { data }: Obj = pageProps;
 
   // Handle scroll position on history change
-  useScrollRestoration(router, pageTransitionSpeed)
+  useScrollRestoration(router, pageTransitionSpeed);
 
   // Trigger our loading class
   useEffect(() => {
     if (isBrowser) {
       document.documentElement.classList.toggle('is-loading', isPageTransition)
     }
-  }, [isPageTransition])
+  }, [isPageTransition]);
 
   // Setup page transition loading states
   useEffect(() => {
@@ -57,7 +61,7 @@ const Site = ({ Component, pageProps, router }) => {
     Router.events.on('routeChangeError', () => {
       togglePageTransition(false)
     })
-  }, [])
+  }, []);
 
   // intelligently add focus states if keyboard is used
   const handleFirstTab = (event) => {
@@ -74,9 +78,9 @@ const Site = ({ Component, pageProps, router }) => {
     return () => {
       window.removeEventListener('keydown', handleFirstTab)
     }
-  }, [])
+  }, []);
 
-  const pageID = useMemo(() => data?.page?.id, [data])
+  const pageID = useMemo(() => data?.page?.id, [data]);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -86,7 +90,7 @@ const Site = ({ Component, pageProps, router }) => {
           document.body.classList.remove('overflow-hidden')
         }}
       >
-        <Component key={pageID} {...pageProps} />
+        <AnyComponent key={pageID} {...pageProps} />
       </AnimatePresence>
 
       <Cart data={{ ...data?.site }} />

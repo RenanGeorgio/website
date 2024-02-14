@@ -29,7 +29,8 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "./src/@types"
+    "./src/@types",
+    "global.d.ts"
   ],
   "typeRoots": [
     "node_modules/@types",

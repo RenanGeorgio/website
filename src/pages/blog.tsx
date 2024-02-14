@@ -12,7 +12,7 @@ type Props = {
   allPosts: PostType[];
 };
 
-export default function Index({ allPosts }: Props) {
+export default function Blog({ allPosts }: Props) {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
   return (

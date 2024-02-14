@@ -5,6 +5,14 @@ import DividerPhoto from './divider-photo';
 import ProductHero from './product-hero';
 import Collection from './collection-grid';
 
+interface Prop = {
+  index?: number | string;
+  data,
+  product,
+  activeVariant,
+  onVariantChange,
+}
+
 export const Module = ({
   index,
   data,

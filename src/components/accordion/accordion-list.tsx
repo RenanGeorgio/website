@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Accordion from './accordion';
-import BlockContent from '@components/block-content';
+import { BlockContent } from '@components/block';
 
 const AccordionList = ({ data }) => {
   const { items } = data;

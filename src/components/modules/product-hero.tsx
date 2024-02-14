@@ -1,4 +1,4 @@
-import BlockContent from '@components/block-content';
+import { BlockContent } from '@components/block';
 import {
   ProductGallery,
   ProductPrice,

@@ -1,4 +1,4 @@
-import BlockContent from '@components/block-content';
+import { BlockContent } from '@components/block';
 import VideoLoop from '@components/vimeo-loop';
 import Photo from '@components/photo';
 

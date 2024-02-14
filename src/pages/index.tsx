@@ -2,9 +2,18 @@ import Error from 'next/error';
 import { getStaticPage, queries } from '@data';
 import Layout from '@components/layout';
 import { Module } from '@components/modules';
+import Container from '@components/container';
+import Intro from '@components/intro';
+import { Obj } from '@typograph/types';
 
-const Home = ({ data }) => {
-  const { site, page } = data
+interface Props {
+  site?: Obj;
+  page?: Obj;
+  children?: React.ReactNode;
+}
+
+const Home = ({ data }: Props) => {
+  const { site, page } = data;
 
   if (!page) {
     return (
@@ -17,9 +26,12 @@ const Home = ({ data }) => {
 
   return (
     <Layout site={site} page={page}>
-      {page.modules?.map((module, key) => (
-        <Module key={key} index={key} data={module} />
-      ))}
+      <Container>
+        <Intro />
+        {page.modules?.map((module, key) => (
+          <Module key={key} index={key} data={module} />
+        ))}
+      </Container>
     </Layout>
   )
 }
