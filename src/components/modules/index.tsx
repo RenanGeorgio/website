@@ -4,13 +4,14 @@ import Marquee from './marquee';
 import DividerPhoto from './divider-photo';
 import ProductHero from './product-hero';
 import Collection from './collection-grid';
+import { Obj } from '@typograph/types';
 
-interface Prop = {
-  index?: number | string;
-  data,
-  product,
-  activeVariant,
-  onVariantChange,
+interface Props = {
+  index: number | string;
+  data: Obj;
+  product?: Obj;
+  activeVariant?: Obj;
+  onVariantChange: () => void;
 }
 
 export const Module = ({
@@ -18,8 +19,8 @@ export const Module = ({
   data,
   product,
   activeVariant,
-  onVariantChange,
-}) => {
+  onVariantChange
+}: Props) => {
   const ModuleType = {
     grid: Grid,
     hero: Hero,

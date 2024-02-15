@@ -16,7 +16,7 @@ interface Props {
   page: Obj;
   schema?: any;
   preview?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const pageTransitionAnim = {
@@ -39,13 +39,13 @@ const pageTransitionAnim = {
   },
 }
 
-const Layout = ({ site = {}, page = {}, schema, preview, children }: Props) => {
+const Layout = ({ site, page, schema, preview, children }: Props) => {
   const { height: windowHeight } = useWindowSize();
-  const [lockHeight, setLockHeight] = useState(false);
+  const [lockHeight, setLockHeight] = useState<boolean>(false);
   const hasChin = isMobileSafari();
 
   // set header height
-  const [headerHeight, setHeaderHeight] = useState(null);
+  const [headerHeight, setHeaderHeight] = useState<number | string | null>(null);
 
   useEffect(() => {
     if ((isBrowser && !lockHeight) || !hasChin) {

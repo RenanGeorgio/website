@@ -1,9 +1,10 @@
 import cx from 'classnames';
 import ProductCard from '@components/product-card';
 import Freeform from '@components/freeform';
-import AccordionList from '@components/accordion-list';
+import { AccordionList } from '@components/accordion';
+import { Obj } from '@typograph/types';
 
-const Grid = ({ data = {} }) => {
+const Grid = (data: Obj) => {
   const { size, columns } = data
 
   const getGridSize = (

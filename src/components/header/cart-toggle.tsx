@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { useToggleCart, useCartCount } from '@lib/context';
 
-export const CartToggle = () => {
+export const CartToggle = (): FSX.Element => {
   const toggleCart = useToggleCart();
   const cartCount = useCartCount();
 

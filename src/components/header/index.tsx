@@ -12,13 +12,19 @@ import { useSiteContext, useToggleMegaNav } from '@lib/context';
 
 import PromoBar from '@components/promo-bar';
 import Menu from '@components/menu';
-import MegaNavigation from '@components/menu-mega-nav';
+import { MegaNavigation } from '@components/menu';
 import Icon from '@components/icon';
 
-import { HeaderBackdrop } from './backdrop';
 import { CartToggle } from './cart-toggle';
+import { Obj } from '@typograph/types';
 
-const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
+interface Props {
+  data: Obj;
+  isTransparent: boolean;
+  onSetup: ({ height }: string | number) => {} as void;
+}
+
+const Header = ({ data , isTransparent, onSetup }: Props) => {
   // expand our header data
   const {
     promo,
@@ -26,15 +32,17 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
     menuDesktopRight,
     menuMobilePrimary,
     menuMobileSecondary,
-  } = data
+  } = data;
 
   // setup states
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false)
-  const [headerHeight, setHeaderHeight] = useState(null)
-  const { observe, inView: observerIsVisible } = useInView()
-  const headerRef = useRef()
-  const headerRect = useRect(headerRef)
-  const router = useRouter()
+  const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
+  const [headerHeight, setHeaderHeight] = useState<string | number | null>(null);
+
+  const { observe, inView: observerIsVisible } = useInView();
+
+  const headerRef = useRef();
+  const headerRect = useRect(headerRef);
+  const router = useRouter();
 
   // setup menu toggle event
   const toggleMobileNav = (state) => {
@@ -46,18 +54,18 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   }
 
   // context helpers
-  const { meganav } = useSiteContext()
-  const toggleMegaNav = useToggleMegaNav()
+  const { meganav } = useSiteContext();
+  const toggleMegaNav = useToggleMegaNav();
 
   useEffect(() => {
     if (headerRect) {
       setHeaderHeight(headerRect.height)
     }
-  }, [headerRect])
+  }, [headerRect]);
 
   useEffect(() => {
     onSetup({ height: headerHeight })
-  }, [headerHeight])
+  }, [headerHeight]);
 
   return (
     <>

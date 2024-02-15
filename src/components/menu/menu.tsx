@@ -3,8 +3,17 @@ import { getStaticRoute, getActive } from '@lib/routes';
 import { MegaDropdownButton } from './mega-nav';
 import Dropdown from './dropdown';
 import CustomLink from '@components/link';
+import { Obj } from '@typograph/types';
 
-const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
+interface Props {
+  items: Obj[];
+  useMegaNav: boolean;
+  hasFocus: boolean;
+  onClick: (event: MouseEvent) => void;
+  children?: React.ReactNode;
+}
+
+const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }: Props) => {
   const router = useRouter();
 
   if (!items) return null

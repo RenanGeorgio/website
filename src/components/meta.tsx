@@ -7,10 +7,10 @@ interface Props {
   site: Obj;
   page: Obj;
   schema?: any;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
-const Meta = ({ site = {}, page = {}, schema }: Props) => {
+const Meta = ({ site, page, schema }: Props) => {
   const siteTitle = site.title;
 
   const siteFavicon = site.seo?.favicon || '/favicon/safari-pinned-tab.svg';

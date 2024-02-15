@@ -3,6 +3,16 @@ import FocusTrap from 'focus-trap-react';
 import { useHasMounted } from '@lib/helpers';
 import CustomLink from '@components/link';
 import { useAcceptCookies } from '@hooks';
+import type { UrlObject } from 'url';
+import { Obj } from '@typograph/types';
+
+type Url = UrlObject | string;
+
+interface Props extends Obj {
+  enabled: boolean;
+  message: string;
+  link: Url;
+}
 
 const barAnim = {
   show: {
@@ -22,7 +32,7 @@ const barAnim = {
   },
 }
 
-const CookieBar = React.memo(({ data = {} }) => {
+const CookieBar = React.memo(({ data = {} }: Props) => {
   const { enabled, message, link } = data;
 
   if (!enabled) return null

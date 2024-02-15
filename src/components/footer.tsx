@@ -4,9 +4,10 @@ import ThemeSwitch from '@components/theme-switch';
 import Menu from '@components/menu';
 import Icon from '@components/icon';
 import { EXAMPLE_PATH } from '@lib/constants';
+import { Obj } from '@typograph/types';
 
-const Footer = ({ data = {} }) => {
-  const { blocks } = data;
+const Footer = (data: Obj): FSX.Element => {
+  const { blocks }: Obj = data;
 
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">

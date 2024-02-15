@@ -8,11 +8,17 @@ import { isBrowser } from '@lib/helpers';
 import { swipeAnim } from '@lib/animate';
 
 import { useSiteContext, useToggleMegaNav } from '@lib/context';
+import { Obj } from '@typograph/types';
 
 import Menu from './menu';
 import FeaturedProducts from '@components/menu-featured-products';
 
-const MegaNavigation = ({ items = [], headerHeight }) => {
+interface Props {
+  items: Obj[] | [];
+  headerHeight?: number;
+}
+
+const MegaNavigation = ({ items, headerHeight }: Props) => {
   const dropdowns = items.filter((item) => {
     return 'dropdownItems' in item
   })

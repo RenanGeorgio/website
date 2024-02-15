@@ -7,3 +7,34 @@ export interface LayoutProps {
     children: React.ReactNode;
     loadTwitterWidget?: boolean;
 }
+
+export interface CustomTransitionOptions {
+    shallow?: boolean;
+    locale?: string | false;
+    scroll?: boolean;
+    unstable_skipClientCache?: boolean;
+}
+
+export interface CustomFetchDataOutput {
+    dataHref: string;
+    json: Record<string, any> | null;
+    response: Response;
+    text: string;
+    cacheKey: string;
+}
+  
+export interface CustomFetchNextDataParams {
+    dataHref: string;
+    isServerRender: boolean;
+    parseJSON: boolean | undefined;
+    hasMiddleware?: boolean;
+    inflightCache: CustomNextDataCache;
+    persistCache: boolean;
+    isPrefetch: boolean;
+    isBackground?: boolean;
+    unstable_skipClientCache?: boolean;
+}
+
+export interface CustomNextDataCache {
+    [asPath: string]: Promise<CustomFetchDataOutput>;
+}
