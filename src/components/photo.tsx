@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useInView } from 'react-cool-inview';
 import cx from 'classnames';
 import { buildSrcSet, buildSrc } from '@lib/helpers';
+import { PhotoType } from '@typograph/types';
 
 const Photo = ({
   photo,
@@ -15,14 +16,15 @@ const Photo = ({
   forceLoad,
   onLoad,
   className,
-}) => {
+}: PhotoType) => {
   if (!photo?.asset) return null
 
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const { observe, inView } = useInView({
     unobserveOnEnter: true,
     threshold: 0.1,
-  })
+  });
 
   // define our aspect ratio if not a background fill
   const aspect =
@@ -30,8 +32,7 @@ const Photo = ({
       ? (height / width) * 100
       : 100 / (photo.customRatio || photo.aspectRatio)
 
-  const aspectCustom =
-    layout === 'intrinsic' ? { paddingTop: `${aspect}%` } : null
+  const aspectCustom = layout === 'intrinsic' ? { paddingTop: `${aspect}%` } : null
 
   // define our src and srcset
   const src = buildSrc(photo, {
@@ -49,14 +50,14 @@ const Photo = ({
   // handle our image onLoad
   function handleLoad() {
     requestAnimationFrame(() => {
-      setIsLoaded(true)
+      setIsLoaded(true);
     })
   }
 
   // trigger any onLoad callbacks
   useEffect(() => {
     if (isLoaded) onLoad?.()
-  }, [isLoaded])
+  }, [isLoaded]);
 
   return (
     <figure className={className ? className : null}>

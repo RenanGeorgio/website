@@ -1,4 +1,21 @@
-import { DictionaryPhrases, ComponentPropsCollection, LayoutServiceData, SiteInfo } from '@sitecore-jss/sitecore-jss-nextjs';
+import { 
+  DictionaryPhrases, 
+  ComponentPropsCollection, 
+  LayoutServiceData, 
+  SiteInfo 
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import type { UrlObject } from 'url';
+import { ImageElementProps, ImgProps, ImageProps } from './image.d';
+import { PhotoProps } from '../interfaces';
+
+export * from './image.d';
+export * from './alternative-urls-types';
+
+export type LayoutHtmlProp = 'intrinsic' | 'fixed' | 'responsive' | 'fill' | 'original';
+
+export type LinkAppearances = 'primary' | 'secondary' | 'default';
+
+export type Url = UrlObject | string;
 
 export type SitecorePageProps = {
   site: SiteInfo;
@@ -9,30 +26,29 @@ export type SitecorePageProps = {
   layoutData: LayoutServiceData;
 };
 
-
 export type Author = {
-    name: string;
-    picture: string;
+  name: string;
+  picture: string;
 };
 
 export type PostType = {
-    slug: string;
-    title: string;
-    date: string;
-    coverImage: string;
-    author: Author;
-    excerpt: string;
-    ogImage: {
-      url: string;
-    };
-    content: string;
+  slug: string;
+  title: string;
+  date: string;
+  coverImage: string;
+  author: Author;
+  excerpt: string;
+  ogImage: {
+    url: Url;
+  };
+  content: string;
 };
 
 export type Obj = {
   [key: string]: any;
-} 
+};
 
-export type LinkAppearances = "primary" | "secondary" | "default";
+export type LinkProps = React.DetailedHTMLProps<React.LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>
 
 export type LinkType = (options?: {
   appearances?: LinkAppearances[] | false;
@@ -47,7 +63,7 @@ export type LinkGroupType = (options?: {
 
 export type CMSLinkType = {
   type?: "custom" | "reference";
-  url?: string;
+  url?: Url;
   newTab?: boolean;
   reference?: {
     value: string | Page;
@@ -65,20 +81,18 @@ export type ScriptEmbed = {
   width?: string | number | null;
   children?: React.ReactElement | React.ReactElement[];
   dataNtpc?: string;
-}
+};
 
-export type LayoutHtmlProp = 'intrinsic' | 'fixed' | 'responsive' | 'fill' | 'original';
-
-export type Photo = {
-  photo,
+export type PhotoType = {
+  photo: ImageElementProps & PhotoProps;
   width?: string | number | null;
   height?: string | number | null;
-  srcSizes: number[];
-  sizes: string;
-  layout: LayoutHtmlProp;
-  quality: number;
-  hasPlaceholder: boolean;
-  forceLoad,
-  onLoad,
-  className: string;
+  srcSizes?: number[];
+  sizes?: string;
+  layout?: LayoutHtmlProp;
+  quality?: number;
+  hasPlaceholder?: boolean;
+  forceLoad?: boolean;
+  onLoad?: (e: any) => (any | Promise<any>);
+  className?: string;
 }

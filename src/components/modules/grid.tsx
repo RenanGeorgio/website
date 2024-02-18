@@ -2,10 +2,16 @@ import cx from 'classnames';
 import ProductCard from '@components/product-card';
 import Freeform from '@components/freeform';
 import { AccordionList } from '@components/accordion';
-import { Obj } from '@typograph/types';
+import { GridColumn, Obj } from '@typograph/types';
 
-const Grid = (data: Obj) => {
-  const { size, columns } = data
+interface Props {
+  size?: string | number[];
+  columns?: GridColumn[];
+  children?: React.ReactNode;
+}
+
+const Grid = ({ data }: Props) => {
+  const { size, columns } = data;
 
   const getGridSize = (
     breakpoint,
@@ -70,7 +76,7 @@ const Grid = (data: Obj) => {
   )
 }
 
-const GridBlock = ({ block }) => {
+const GridBlock = ({ block }: Obj) => {
   const type = block._type
 
   switch (type) {

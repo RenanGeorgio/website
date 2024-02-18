@@ -420,11 +420,11 @@ type LangCode =
   // lang codes.
   | `${Lowercase<string>}-${string}`
 
-type UnmatchedLang = 'x-default'
+export type UnmatchedLang = 'x-default'
 
-type HrefLang = LangCode | UnmatchedLang
+export type HrefLang = LangCode | UnmatchedLang
 
-type Languages<T> = {
+export type Languages<T> = {
   [s in HrefLang]?: T
 }
 

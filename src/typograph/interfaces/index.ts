@@ -1,3 +1,5 @@
+export * from './image.d';
+
 export interface LayoutProps {
     title?: string;
     description?: string;
@@ -6,14 +8,14 @@ export interface LayoutProps {
     image?: string;
     children: React.ReactNode;
     loadTwitterWidget?: boolean;
-}
+};
 
 export interface CustomTransitionOptions {
     shallow?: boolean;
     locale?: string | false;
     scroll?: boolean;
     unstable_skipClientCache?: boolean;
-}
+};
 
 export interface CustomFetchDataOutput {
     dataHref: string;
@@ -21,7 +23,7 @@ export interface CustomFetchDataOutput {
     response: Response;
     text: string;
     cacheKey: string;
-}
+};
   
 export interface CustomFetchNextDataParams {
     dataHref: string;
@@ -33,8 +35,39 @@ export interface CustomFetchNextDataParams {
     isPrefetch: boolean;
     isBackground?: boolean;
     unstable_skipClientCache?: boolean;
-}
+};
 
 export interface CustomNextDataCache {
     [asPath: string]: Promise<CustomFetchDataOutput>;
-}
+};
+
+
+export interface ImageParamsResult {
+    href: string
+    isAbsolute: boolean
+    isStatic: boolean
+    width: number
+    quality: number
+    mimeType: string
+    sizes: number[]
+    minimumCacheTTL: number
+  }
+  
+  interface ImageUpstream {
+    buffer: Buffer
+    contentType: string | null | undefined
+    cacheControl: string | null | undefined
+  }
+  
+  
+  interface Options {
+    base?: string | URL
+    headers?: OutgoingHttpHeaders
+    forceLocale?: boolean
+    nextConfig?: {
+      basePath?: string
+      i18n?: I18NConfig | null
+      trailingSlash?: boolean
+    }
+    i18nProvider?: I18NProvider
+  }

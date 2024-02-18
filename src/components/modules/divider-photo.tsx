@@ -1,7 +1,8 @@
 import Photo from '@components/photo';
+import { PhotoType } from '@typograph/types';
 
-const DividerPhoto = ({ data = {} }) => {
-  const { photo } = data
+const DividerPhoto = ({ data }: PhotoType) => {
+  const { photo } = data;
 
   if (!photo) return null
 
