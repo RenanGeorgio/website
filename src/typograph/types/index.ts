@@ -15,7 +15,7 @@ export type LayoutHtmlProp = 'intrinsic' | 'fixed' | 'responsive' | 'fill' | 'or
 
 export type LinkAppearances = 'primary' | 'secondary' | 'default';
 
-export type Url = UrlObject | string;
+export type Url = (URL & UrlObject) | string;
 
 export type SitecorePageProps = {
   site: SiteInfo;

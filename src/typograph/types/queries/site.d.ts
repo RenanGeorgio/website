@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
+import { SiteInfo } from '@sitecore-jss/sitecore-jss-nextjs';
 import {  VALID_DISPLAY_VALUES } from '@assets/constants';
-import { Obj, Url } from '../';
+import { Obj, Url, SitecorePageProps } from '../';
 import { SeoProps, Link } from './queries.d';
 import { ProductProp } from './product.d';
 
-type SiteParams = {
+export interface SiteParams extends SiteInfo {
   title?: string;
   rootDomain?: any;
   shop?: {
-    storeURL?: Url;
+    storeURL?: Url | string;
     cartMessage?: string;
   };
   productCounts?: {
@@ -60,9 +61,9 @@ type SiteParams = {
   }
   seo?: SeoProps & Metadata;
   gtmID?: GTMParams;
-}
+};
 
-export interface SiteProps {
+export type SiteProps = Omit<SitecorePageProps, 'site'> & {
   site: SiteParams;
   children?: React.ReactNode;
-};
+}

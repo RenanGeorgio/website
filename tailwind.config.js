@@ -3,7 +3,10 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  content: ["./src/components/**/*.{js,ts,jsx,tsx}", "./src/pages/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/components/**/*.{js,ts,jsx,tsx}", 
+    "./src/components/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}"],
   safelist: [
     {
       pattern: /grid-cols-/,

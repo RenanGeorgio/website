@@ -1,8 +1,14 @@
+// @ts-nocheck
 import cx from 'classnames';
 import BlockContent from '@sanity/block-content-to-react';
 import { blockSerializers } from './block-serializers';
 
-const Content = ({ blocks, className }) => {
+interface Props {
+  blocks?: ptContent[] | any;
+  className?: any;
+}
+
+const Content = ({ blocks, className }: Props) => {
   if (!blocks) return null
 
   return (

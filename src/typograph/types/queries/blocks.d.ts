@@ -1,4 +1,5 @@
 import { ProductProp } from './product.d';
+import { ptContent } from './queries.d';
 
 interface BlockParams {
   _type: 'freeform' | 'accordions' | 'productCard' | undefined;

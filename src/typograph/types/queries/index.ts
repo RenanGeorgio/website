@@ -1,7 +1,7 @@
 import { ImageMetaProps, Link, ptContent, SeoProps } from './queries.d';
 import { FreeFormProps, AccordionsProps, ProductBlockParams, BlocksProps } from './blocks.d';
-import { ProductProp } from './product.d';
-import { SiteProps } from './site.d';
+import { ProductProp, listingPhoto, VariantsParams } from './product.d';
+import { SiteProps, SiteParams } from './site.d';
 import { HeroProps, MarqueeProps, DividerPhotoProps, ProductHeroProps, CollectionGridProps, GridProps, ModulesProps } from './modules.d';
 
 export {
@@ -14,7 +14,10 @@ export {
   ProductBlockParams, 
   BlocksProps,
   ProductProp,
+  listingPhoto,
+  VariantsParams,
   SiteProps,
+  SiteParams,
   HeroProps, 
   MarqueeProps, 
   DividerPhotoProps, 

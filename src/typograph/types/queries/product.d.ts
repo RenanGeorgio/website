@@ -1,12 +1,33 @@
 import type { Metadata } from 'next';
 import { SeoProps } from './queries.d';
+import { Obj } from '../';
+
+type VariantBase = Array<[string, string][]>;
+
+export interface VariantsParams extends VariantBase {
+  variant: {
+    id: number | string;
+    title?: string;
+    price?: number | string;
+    comparePrice?: number | string;
+    inStock?: boolean;
+    lowStock?: boolean;
+    options?: {
+        name?: string;
+        position?: any;
+        value?: any;
+    }[];
+    seo?: SeoProps & Metadata;
+    [key: string]?: Obj[];
+  }
+};
 
 type galleryPhotos = {
   forOption: string;
   photos: (ImageMetaProps & PhotoType)[]
 }
 
-type listingPhoto = ImageMetaProps & PhotoType
+export type listingPhoto = ImageMetaProps & PhotoType
 
 type listingPhotoHover = ImageMetaProps
 
@@ -41,20 +62,7 @@ export type ProductProp = {
     forOption: string;
     color: any;
   }[];
-  variants?: Array<[string, string][]> & {
-    id?: number | string;
-    title?: string;
-    price?: number | string;
-    comparePrice?: number | string;
-    inStock?: boolean;
-    lowStock?: boolean;
-    options?: {
-        name?: string;
-        position?: any;
-        value?: any;
-    }[];
-    seo?: SeoProps & Metadata;
-  },
+  variants?: VariantsParams[];
   klaviyoAccountID?: any | undefined;
   filters?: {
     slug: string;

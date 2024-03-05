@@ -1,5 +1,7 @@
 import {  VALID_DISPLAY_VALUES } from '@assets/constants';
 import { Obj } from '../';
+import { ptContent } from './queries.d';
+import { ProductProp, listingPhoto } from './product.d';
 
 type ModuleParams = {
   _type: 'grid' | 'hero' | 'marquee' | 'dividerPhoto' | 'productHero' | 'collectionGrid' | undefined;
@@ -32,7 +34,7 @@ type MarqueeSimpleType = {
 type MarqueeProductType = {
   _type: 'simple' | 'photo' | 'product' | undefined;
   _id: number | string;
-  product?: product
+  product?: ProductProp;
 }
 
 export interface MarqueeProps extends ModuleParams {

@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import Accordion from './accordion';
 import { BlockContent } from '@components/block';
+import { AccordionsProps } from '@typograph/types/queries';
 
-const AccordionList = ({ data }) => {
+const AccordionList = (data: AccordionsProps) => {
   const { items } = data;
 
-  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [activeAccordion, setActiveAccordion] = useState<number | undefined>(undefined);
 
-  const onToggle = (id, status) => {
-    setActiveAccordion(status ? id : null)
+  const onToggle = (id?: number | string, status?: boolean) => {
+    // @ts-ignore
+    setActiveAccordion(status ? id : null);
   }
 
   return (
@@ -20,9 +22,9 @@ const AccordionList = ({ data }) => {
             id={accordion.id}
             isOpen={accordion.id === activeAccordion}
             onToggle={onToggle}
-            title={accordion.title}
+            title={accordion?.title}
           >
-            <BlockContent blocks={accordion.content} />
+            <BlockContent blocks={accordion?.content} />
           </Accordion>
         )
       })}

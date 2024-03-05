@@ -3,6 +3,8 @@ import FocusTrap from 'focus-trap-react';
 import { m } from 'framer-motion';
 import cx from 'classnames';
 import { centsToPrice } from '@lib/helpers';
+import { Url, Obj } from '@typograph/types';
+import { SiteParams, ProductProp, VariantsParams } from '@typograph/types/queries';
 
 import {
   useSiteContext,
@@ -16,58 +18,58 @@ import {
 import CartItem from './item';
 import EmptyCart  from './empty';
 
-const CartItems = ({ items }) => {
+const CartItems = (items: Obj[]) => {
     return (
       <div className="cart--items">
-        {items.map((item) => {
+        {items.map((item: Obj) => {
           return <CartItem key={item.id} item={item} />
         })}
       </div>
     );
 }
 
-const Cart = ({ data }) => {
-  const { shop } = data
+const Cart = (data: SiteParams) => {
+  const { shop } = data;
 
   if (!shop) return null
 
-  const { isCartOpen, isUpdating } = useSiteContext()
-  const { subTotal } = useCartTotals()
-  const cartCount = useCartCount()
-  const lineItems = useCartItems()
-  const checkoutURL = useCheckout()
-  const toggleCart = useToggleCart()
+  const { isCartOpen, isUpdating } = useSiteContext();
 
-  const [hasFocus, setHasFocus] = useState(false)
-  const [checkoutLink, setCheckoutLink] = useState(checkoutURL)
+  const { subTotal } = useCartTotals();
+  const cartCount: number = useCartCount();
+  const lineItems = useCartItems();
+  const checkoutURL: Url | string = useCheckout();
 
-  const handleKeyDown = (e) => {
-    if (e.which === 27) {
-      toggleCart(false)
+  const toggleCart = useToggleCart();
+
+  const [hasFocus, setHasFocus] = useState<boolean>(false);
+  const [checkoutLink, setCheckoutLink] = useState<Url | string>(checkoutURL);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): any => {
+    if (e?.which === 27) {
+      toggleCart(false);
     }
   }
 
-  const goToCheckout = (e) => {
-    e.preventDefault()
-    toggleCart(false)
+  const goToCheckout = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+
+    toggleCart(false);
 
     setTimeout(() => {
-      window.open(checkoutLink, '_self')
-    }, 200)
+      window.open(checkoutLink, '_self');
+    }, 200);
   }
 
   // update our checkout URL to use our custom domain name
   useEffect(() => {
     if (checkoutURL) {
-      const buildCheckoutLink = shop.storeURL
-        ? checkoutURL.replace(
-            /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g,
-            shop.storeURL
-          )
-        : checkoutURL
-      setCheckoutLink(buildCheckoutLink)
+      // @ts-ignore
+      const buildCheckoutLink = shop?.storeURL ? checkoutURL.replace(/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g, shop?.storeURL) : checkoutURL
+      
+      setCheckoutLink(buildCheckoutLink);
     }
-  }, [checkoutURL])
+  }, [checkoutURL]);
 
   return (
     <>
@@ -87,7 +89,7 @@ const Cart = ({ data }) => {
             },
           }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          onKeyDown={(e) => handleKeyDown(e)}
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => handleKeyDown(e)}
           onAnimationComplete={(v) => setHasFocus(v === 'show')}
           className={cx('cart is-inverted', {
             'is-active': isCartOpen,
@@ -106,6 +108,7 @@ const Cart = ({ data }) => {
 
             <div className="cart--content">
               {lineItems?.length ? (
+                // @ts-ignore
                 <CartItems items={lineItems} />
               ) : (
                 <EmptyCart />
@@ -120,8 +123,8 @@ const Cart = ({ data }) => {
                 </div>
 
                 <a
-                  href={checkoutLink}
-                  onClick={(e) => goToCheckout(e)}
+                  href={checkoutLink as string}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => goToCheckout(e)}
                   className="btn is-primary is-inverted is-large is-block"
                 >
                   {isUpdating ? 'Updating...' : 'Checkout'}

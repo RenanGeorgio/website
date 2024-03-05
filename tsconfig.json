@@ -1,34 +1,54 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "target": "es6",
+    "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "paths": {
-      "@components/*": ["components/*", "components/*/index", "components/index"],
-      "@lib/*": ["lib/*"],
-      "@styles/*": ["styles/*"],
-      "@typograph/*": ["typograph/*"]
+      "@components/*": [
+        "components/*",
+        "components/*/index",
+        "components/index"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@typograph/*": [
+        "typograph/*"
+      ]
     },
-    "incremental": true
+    "incremental": true,
+    "isolatedModules": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
-    "next-env.d.ts", 
-    "**/*.ts", 
+    "next-env.d.ts",
+    "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.js",
+    "./src/**/*.jsx",
     "./src/@types",
     "global.d.ts"
   ],

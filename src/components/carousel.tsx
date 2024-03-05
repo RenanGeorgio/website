@@ -1,9 +1,19 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, Children } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import cx from 'classnames';
 import { flipAnim } from '@lib/animate';
 import Icon from '@components/icon';
+
+interface Props {
+  id: number | string;
+  hasArrows?: boolean;
+  hasDots?: boolean;
+  hasCounter?: boolean;
+  hasDrag?: boolean;
+  className?: any;
+  children?: React.ReactNode;
+};
 
 const Carousel = ({
   id,
@@ -13,36 +23,38 @@ const Carousel = ({
   hasDrag = true,
   className,
   children,
-}) => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState([])
+}: Props) => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [scrollSnaps, setScrollSnaps] = useState<any[]>([]);
 
-  const [sliderRef, slider] = useEmblaCarousel({
-    loop: true,
-    draggable: hasDrag,
-  })
+  const [sliderRef, slider] = useEmblaCarousel(
+    // @ts-ignore
+    { loop: true, draggable: hasDrag }
+  );
 
-  const scrollPrev = useCallback(() => slider?.scrollPrev(), [slider])
-  const scrollNext = useCallback(() => slider?.scrollNext(), [slider])
-  const scrollTo = useCallback((index) => slider?.scrollTo(index), [slider])
+  const scrollPrev = useCallback(() => slider?.scrollPrev(), [slider]);
+  const scrollNext = useCallback(() => slider?.scrollNext(), [slider]);
+  const scrollTo = useCallback((index: number) => slider?.scrollTo(index), [slider]);
 
   const onSelect = useCallback(() => {
-    setCurrentSlide(slider.selectedScrollSnap())
-  }, [slider])
+    if (slider != undefined) {
+      setCurrentSlide(slider?.selectedScrollSnap());
+    }
+  }, [slider]);
 
   useEffect(() => {
     if (slider) {
-      setScrollSnaps(slider.scrollSnapList())
-      slider.on('select', onSelect)
-      onSelect()
+      setScrollSnaps(slider?.scrollSnapList());
+      slider?.on('select', onSelect);
+      onSelect();
     }
-  }, [slider])
+  }, [slider]);
 
   return (
     <div className={cx('carousel', { 'has-drag': hasDrag }, className)}>
       <div ref={sliderRef} className="carousel--container">
         <div className="carousel--slides">
-          {React.Children.map(children, (child, index) => (
+          {Children.map(children, (child, index) => (
             <div className="carousel--slide" key={index}>
               {child}
             </div>

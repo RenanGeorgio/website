@@ -3,6 +3,16 @@ import { m } from 'framer-motion';
 import cx from 'classnames';
 import Icon from '@components/icon';
 
+interface Props {
+  id: number | string;
+  title: string | undefined;
+  isOpen: boolean;
+  isControlled?: boolean;
+  onToggle: (id?: number | string, status?: boolean) => void;
+  className?: any;
+  children?: React.ReactNode;
+}
+
 const accordionAnim = {
   open: {
     opacity: 1,
@@ -19,10 +29,10 @@ const Accordion = ({
   title,
   isOpen = false,
   isControlled = false,
-  onToggle = () => {},
+  onToggle,
   className,
   children,
-}) => {
+}: Props) => {
   const [hasFocus, setHasFocus] = useState(isOpen);
 
   return (

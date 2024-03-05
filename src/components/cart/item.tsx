@@ -3,8 +3,9 @@ import { hasObject } from '@lib/helpers';
 import { useUpdateItem, useRemoveItem, useToggleCart } from '@lib/context';
 import Photo from '@components/photo';
 import { ProductCounter, ProductPrice } from '@components/product';
+import { ProductProp } from '@typograph/types/queries';
 
-function CartItem({ item }) {
+function CartItem(item: ProductProp) {
   const removeItem = useRemoveItem();
   const updateItem = useUpdateItem();
   const toggleCart = useToggleCart();
