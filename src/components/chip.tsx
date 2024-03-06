@@ -1,6 +1,16 @@
 import cx from 'classnames';
 
-const Chip = ({
+interface Props {
+  avatar?: any;
+  label: string;
+  icon: any;
+  title: string;
+  onClick: () => void;
+  className?: string;
+  children?: React.ReactNode;
+};
+
+const Chip = ({ 
   avatar,
   label,
   icon,
@@ -8,7 +18,7 @@ const Chip = ({
   onClick = () => {},
   className,
   children,
-}) => {
+}: Props) => {
   if (!children) return null
 
   const handleClick = () => {

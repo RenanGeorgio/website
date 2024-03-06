@@ -11,28 +11,58 @@ import { isBrowser } from '@lib/helpers';
 import { useSiteContext, useToggleMegaNav } from '@lib/context';
 
 import PromoBar from '@components/promo-bar';
-import Menu from '@components/menu';
+import { Menu } from '@components/menu';
 import { MegaNavigation } from '@components/menu';
 import Icon from '@components/icon';
 
 import { CartToggle } from './cart-toggle';
 import { Obj } from '@typograph/types';
+import { SiteParams } from '@typograph/types/queries';
+
+/*const dataObj: SiteParams["header"] = {
+  promo: {
+    enabled: true,
+    display: {} as any,
+    text: "",
+    link: {} as any,
+  },
+  menuDesktopLeft: {
+    items: {
+      link: {} as any,
+      dropdownItems: [] as any[],
+      featured: [] as any[],
+    }[],
+  },
+  menuDesktopRight: {
+    items: {
+      link: {} as any,
+      dropdownItems: [] as any[],
+      featured: [] as any[],
+    }[],
+  },
+  menuMobilePrimary: {
+    items: {
+      link: {} as any,
+      dropdownItems: [] as any[],
+    }[],
+  },
+  menuMobileSecondary: {
+    items: {
+      link: {} as any,
+      dropdownItems: [] as any[],
+    }[],
+  }
+}*/
 
 interface Props {
-  data: Obj;
-  isTransparent: boolean;
-  onSetup: ({ height }: string | number) => {} as void;
+  data?: SiteParams["header"];
+  isTransparent?: boolean;
+  onSetup?: (height?: any) => void;
 }
 
 const Header = ({ data , isTransparent, onSetup }: Props) => {
-  // expand our header data
-  const {
-    promo,
-    menuDesktopLeft,
-    menuDesktopRight,
-    menuMobilePrimary,
-    menuMobileSecondary,
-  } = data;
+  // @ts-ignore
+  const { promo, menuDesktopLeft, menuDesktopRight, menuMobilePrimary, menuMobileSecondary } = data;
 
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
@@ -40,16 +70,16 @@ const Header = ({ data , isTransparent, onSetup }: Props) => {
 
   const { observe, inView: observerIsVisible } = useInView();
 
-  const headerRef = useRef();
-  const headerRect = useRect(headerRef);
+  const headerRef: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement | undefined>(undefined);
+  const headerRect: any = useRect(headerRef);
   const router = useRouter();
 
   // setup menu toggle event
-  const toggleMobileNav = (state) => {
-    setMobileNavOpen(state)
+  const toggleMobileNav = (state: boolean) => {
+    setMobileNavOpen(state);
 
     if (isBrowser) {
-      document.body.classList.toggle('overflow-hidden', state)
+      document.body.classList.toggle('overflow-hidden', state);
     }
   }
 
@@ -59,12 +89,14 @@ const Header = ({ data , isTransparent, onSetup }: Props) => {
 
   useEffect(() => {
     if (headerRect) {
-      setHeaderHeight(headerRect.height)
+      setHeaderHeight(headerRect?.height);
     }
   }, [headerRect]);
 
   useEffect(() => {
-    onSetup({ height: headerHeight })
+    if (onSetup != undefined) {
+      onSetup({ height: headerHeight });
+    }
   }, [headerHeight]);
 
   return (
@@ -72,7 +104,7 @@ const Header = ({ data , isTransparent, onSetup }: Props) => {
       <a href="#content" className="skip-link">
         Skip to Content
       </a>
-
+      {/*@ts-ignore*/}
       <PromoBar data={promo} />
 
       <header
@@ -82,7 +114,7 @@ const Header = ({ data , isTransparent, onSetup }: Props) => {
           'has-bg': !observerIsVisible,
         })}
       >
-        <div ref={headerRef} className="header--outer">
+        <div ref={headerRef as React.MutableRefObject<HTMLDivElement>} className="header--outer">
           <div className="header--inner">
             <div className="header--content">
               <div className="logo">

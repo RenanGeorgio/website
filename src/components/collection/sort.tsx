@@ -1,6 +1,13 @@
 import Listbox from '@components/listbox';
+import { Obj } from '@typograph/types';
 
-const CollectionSort = ({ sortOptions, activeSort, onChange }) => {
+interface Props {
+  sortOptions: Obj; 
+  activeSort: string; 
+  onChange: (values?: Obj[]) => void;
+};
+
+const CollectionSort = ({ sortOptions, activeSort, onChange }: Props) => {
   return (
     <div className="collection-sort is-right">
       <Listbox

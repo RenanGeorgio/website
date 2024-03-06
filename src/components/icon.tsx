@@ -1,3 +1,11 @@
+interface Props { 
+  id?: string | number; 
+  name: string;
+  color?: any; 
+  viewBox?: string;
+  className?: string;
+};
+
 const getIcon = (name: string, color: any) => {
   switch (name) {
     case 'Logo':
@@ -127,8 +135,7 @@ const getIcon = (name: string, color: any) => {
   }
 }
 
-const Icon = (props) => {
-  const { id = '', name, color, viewBox = '0 0 100 100', className } = props;
+const Icon = ({ id='', name, color, viewBox='0 0 100 100', className }: Props) => {
 
   return (
     <svg

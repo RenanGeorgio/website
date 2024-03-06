@@ -4,35 +4,43 @@ import FocusTrap from 'focus-trap-react';
 import cx from 'classnames';
 import { InPortal } from '../lib/helpers';
 
+interface Props {
+  direction: string;
+  isOpen: boolean;
+  onClose: (isOpen?: boolean) => void;
+  className: string;
+  children?: React.ReactNode;
+};
+
 const Drawer = ({
   direction = 'right',
   isOpen = false,
   onClose = () => {},
   className,
   children,
-}) => {
-  const drawerRef = useRef()
-  const [isActive, setIsActive] = useState(isOpen)
+}: Props) => {
+  const drawerRef = useRef<HTMLElement | null>(null);
+  const [isActive, setIsActive] = useState<boolean>(isOpen);
 
   useEffect(() => {
-    setIsActive(isOpen)
-  }, [isOpen])
+    setIsActive(isOpen);
+  }, [isOpen]);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent ) => {
     if (e.which === 27) {
-      onClose(false)
+      onClose(false);
     }
   }
 
   useEffect(() => {
     if (isActive) {
-      document.addEventListener('keydown', handleKeyDown)
+      document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isActive])
+  }, [isActive]);
 
   return (
     <InPortal id="drawer">
@@ -40,7 +48,8 @@ const Drawer = ({
         <FocusTrap
           active={isActive}
           focusTrapOptions={{
-            fallbackFocus: () => drawerRef.current,
+            // @ts-ignore
+            fallbackFocus: () => drawerRef?.current,
             allowOutsideClick: true,
           }}
         >

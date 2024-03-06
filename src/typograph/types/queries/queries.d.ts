@@ -16,10 +16,8 @@ export type ImageMetaProps = {
 export interface Link {
   url: Url;
   isButton?: boolean;
-  "styles": @.styles{style, isLarge, isBlock},
-  "page":@.page->{
-      ${page}
-  }
+  styles?: any;
+  page?: any;
 };
 
 export type ptContent = {

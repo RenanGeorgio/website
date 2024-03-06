@@ -18,11 +18,12 @@ import {
 import CartItem from './item';
 import EmptyCart  from './empty';
 
-const CartItems = (items: Obj[]) => {
+const CartItems = (variants: VariantsParams[]) => { 
     return (
       <div className="cart--items">
-        {items.map((item: Obj) => {
-          return <CartItem key={item.id} item={item} />
+        {variants.map(({ variant }: VariantsParams) => {
+          // @ts-ignore
+          return <CartItem key={variant?.id} item={variant} />
         })}
       </div>
     );

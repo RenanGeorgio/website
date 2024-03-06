@@ -1,18 +1,11 @@
+import { memo, Fragment } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import FocusTrap from 'focus-trap-react';
 import { useHasMounted } from '@lib/helpers';
 import CustomLink from '@components/link';
-import { useAcceptCookies } from '@hooks';
-import type { UrlObject } from 'url';
+import { useAcceptCookies } from '@hooks/useAcceptCookies';
 import { Obj } from '@typograph/types';
-
-type Url = UrlObject | string;
-
-interface Props extends Obj {
-  enabled: boolean;
-  message: string;
-  link: Url;
-}
+import { CookieConsent } from '@typograph/types/queries';
 
 const barAnim = {
   show: {
@@ -32,7 +25,7 @@ const barAnim = {
   },
 }
 
-const CookieBar = React.memo(({ data = {} }: Props) => {
+const CookieBar = memo((data: CookieConsent) => {
   const { enabled, message, link } = data;
 
   if (!enabled) return null
@@ -58,13 +51,13 @@ const CookieBar = React.memo(({ data = {} }: Props) => {
             <div className="cookie-bar--content is-inverted">
               <div className="cookie-bar--message">
                 <p>
-                  {message.split('\n').map((text, i) => {
+                  {message.split('\n').map((text: string, i: number) => {
                     // using React.fragment to parse line breaks
                     return (
-                      <React.Fragment key={i}>
+                      <Fragment key={i}>
                         {text}
                         {message.split('\n')[i + 1] && <br />}
-                      </React.Fragment>
+                      </Fragment>
                     )
                   })}
                 </p>
@@ -72,6 +65,7 @@ const CookieBar = React.memo(({ data = {} }: Props) => {
 
               <div className="cookie-bar--actions">
                 {link && (
+                  // @ts-ignore
                   <CustomLink
                     className="btn is-text"
                     link={{ ...{ page: link }, ...{ title: 'Learn More' } }}

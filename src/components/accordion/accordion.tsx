@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from 'react';
 import { m } from 'framer-motion';
 import cx from 'classnames';
@@ -5,10 +6,10 @@ import Icon from '@components/icon';
 
 interface Props {
   id: number | string;
-  title: string | undefined;
+  title?: string | undefined;
   isOpen: boolean;
   isControlled?: boolean;
-  onToggle: (id?: number | string, status?: boolean) => void;
+  onToggle?: (id?: number | string, status?: boolean) => void;
   className?: any;
   children?: React.ReactNode;
 }

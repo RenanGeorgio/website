@@ -1,3 +1,4 @@
+// @ts-nocheck
 import NextLink from 'next/link';
 import cx from 'classnames';
 import { getStaticRoute, getDynamicRoute } from '@lib/routes';

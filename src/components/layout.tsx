@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { m } from 'framer-motion';
 import { isBrowser, isMobileSafari, useWindowSize } from '@lib/helpers';
 import { pageTransitionSpeed } from '@lib/animate';
+import { SiteParams, CookieConsent } from '@typograph/types/queries';
 import { Obj } from '@typograph/types';
 
 import CookieBar from './cookie-bar'
@@ -12,7 +13,7 @@ import Footer from './footer';
 import Meta from "./meta";
 
 interface Props {
-  site: Obj;
+  site: SiteParams;
   page: Obj;
   schema?: any;
   preview?: boolean;
@@ -42,15 +43,18 @@ const pageTransitionAnim = {
 const Layout = ({ site, page, schema, preview, children }: Props) => {
   const { height: windowHeight } = useWindowSize();
   const [lockHeight, setLockHeight] = useState<boolean>(false);
-  const hasChin = isMobileSafari();
+  const hasChin: boolean | undefined = isMobileSafari();
 
   // set header height
   const [headerHeight, setHeaderHeight] = useState<number | string | null>(null);
 
   useEffect(() => {
     if ((isBrowser && !lockHeight) || !hasChin) {
-      document.body.style.setProperty('--vh', `${windowHeight * 0.01}px`)
-      setLockHeight(hasChin);
+      document.body.style.setProperty('--vh', `${windowHeight * 0.01}px`);
+
+      if (hasChin != undefined) {
+        setLockHeight(hasChin);
+      }
     }
   }, [windowHeight, hasChin]);
 
@@ -76,18 +80,20 @@ const Layout = ({ site, page, schema, preview, children }: Props) => {
         animate="show"
         exit="hide"
         variants={pageTransitionAnim}
+        // @ts-ignore
         style={headerHeight ? { '--headerHeight': `${headerHeight}px` } : null}
       >
         <Alert preview={preview} />
-        <CookieBar data={site.cookieConsent} />
+        {/*@ts-ignore*/}
+        <CookieBar data={site?.cookieConsent as CookieConsent} />
         <Header
-          data={site.header}
+          data={site?.header}
           isTransparent={page.hasTransparentHeader}
           onSetup={({ height }) => setHeaderHeight(height)}
         />
         <main id="content">{children}</main>
       </m.div>
-      <Footer data={site.footer} />
+      <Footer data={site?.footer} />
     </>
   );
 };

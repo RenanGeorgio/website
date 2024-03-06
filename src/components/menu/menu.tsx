@@ -7,9 +7,10 @@ import { Obj } from '@typograph/types';
 
 interface Props {
   items: Obj[];
-  useMegaNav: boolean;
-  hasFocus: boolean;
-  onClick: (event: MouseEvent) => void;
+  useMegaNav?: boolean;
+  hasFocus?: boolean;
+  className?: string;
+  onClick?: (event: MouseEvent) => void;
   children?: React.ReactNode;
 }
 

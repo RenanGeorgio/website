@@ -2,22 +2,30 @@ import cx from 'classnames';
 import { ConditionalWrapper } from '@lib/helpers';
 import Swatch from '@components/swatch';
 import Icon from '@components/icon';
+import { Obj } from '@typograph/types';
+
+interface Props {
+  option: Obj;
+  activeOptions: Obj;
+  onChange: (value?: Obj) => void;
+};
 
 // Construindo opções de filtro
-export const FilterOption = ({ option, activeOptions, onChange }) => {
+export const FilterOption = ({ option, activeOptions, onChange }: Props) => {
   const { type, title, slug, color } = option
 
   const { name: filterGroup, values } = activeOptions
 
   const isChecked = values?.includes(slug)
 
-  function handleFilterChange(ev) {
-    const { value } = ev.target
+  function handleFilterChange(ev: Obj) {
+    // @ts-ignore
+    const { value }: number | string = ev.target;
 
-    const hasValue = values.includes(value)
+    const hasValue: boolean = values.includes(value);
 
     const newValues = hasValue
-      ? values.filter((v) => v !== value).join()
+      ? values.filter((v: string | number) => v !== value).join()
       : [...values, value].join()
 
     onChange([
@@ -51,7 +59,7 @@ export const FilterOption = ({ option, activeOptions, onChange }) => {
           <div className="filter-option--icon">
             <ConditionalWrapper
               condition={type === 'swatch'}
-              wrapper={(children) => (
+              wrapper={(children: React.ReactNode) => (
                 <Swatch label={title} color={color}>
                   {children}
                 </Swatch>

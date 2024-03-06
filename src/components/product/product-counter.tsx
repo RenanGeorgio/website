@@ -15,37 +15,37 @@ const ProductCounter = React.memo(
     const [isAnimating, setIsAnimating] = useState(false)
 
     const animateQuantity = useCallback((amount, direction) => {
-      const count = max ? clampRange(amount, 1, max) : amount
+      const count: number = max ? clampRange(amount, 1, max) : amount
 
       // Bail if at edges
       if (count < 1 || count > max) return
 
-      setIsAnimating(true)
-      setDirection(direction)
-      setMotionKey(count + (direction > 0 ? '-up' : '-down'))
-      setLineQuantity(count)
+      setIsAnimating(true);
+      setDirection(direction);
+      setMotionKey(count + (direction > 0 ? '-up' : '-down'));
+      setLineQuantity(count);
 
       if (onUpdate) {
-        onUpdate(count)
+        onUpdate(count);
       }
-    }, [])
+    }, []);
 
     const updateQuantity = useCallback((amount) => {
       const count = max ? clampRange(amount, 1, max) : amount
 
       if (count < 1) return
 
-      setIsAnimating(false)
-      setLineQuantity(count)
+      setIsAnimating(false);
+      setLineQuantity(count);
 
       if (onUpdate) {
-        onUpdate(count)
+        onUpdate(count);
       }
-    }, [])
+    }, []);
 
     useEffect(() => {
-      setLineQuantity(defaultCount)
-    }, [defaultCount])
+      setLineQuantity(defaultCount);
+    }, [defaultCount]);
 
     return (
       <div className={cx('counter', className)}>

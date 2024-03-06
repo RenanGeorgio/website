@@ -5,7 +5,13 @@ import { Obj, Url, SitecorePageProps } from '../';
 import { SeoProps, Link } from './queries.d';
 import { ProductProp } from './product.d';
 
-export interface SiteParams extends SiteInfo {
+export type CookieConsent = {
+  enabled?: boolean;
+  message?: string;
+  link?: Link | string;
+}
+
+export interface SiteParams extends SiteInfo { 
   title?: string;
   rootDomain?: any;
   shop?: {
@@ -16,11 +22,7 @@ export interface SiteParams extends SiteInfo {
     slug?: string;
     count?: number;
   };
-  cookieConsent?: {
-    enabled?: boolean;
-    message?: string;
-    link?: Link | string;
-  };
+  cookieConsent?: CookieConsent;
   header?: {
     promo?: {
       enabled?: boolean;
@@ -57,7 +59,7 @@ export interface SiteParams extends SiteInfo {
     [key: string]: Obj[];
   };
   footer?: {
-    blocks?: Obj[];
+    blocks: Obj[];
   }
   seo?: SeoProps & Metadata;
   gtmID?: GTMParams;

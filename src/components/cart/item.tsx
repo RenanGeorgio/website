@@ -1,21 +1,23 @@
+// @ts-nocheck
 import Link from 'next/link';
 import { hasObject } from '@lib/helpers';
 import { useUpdateItem, useRemoveItem, useToggleCart } from '@lib/context';
 import Photo from '@components/photo';
 import { ProductCounter, ProductPrice } from '@components/product';
 import { ProductProp } from '@typograph/types/queries';
+import { Obj } from '@typograph/types';
 
-function CartItem(item: ProductProp) {
+function CartItem(item: ProductProp | Obj) {
   const removeItem = useRemoveItem();
   const updateItem = useUpdateItem();
   const toggleCart = useToggleCart();
 
-  const changeQuantity = (quantity) => {
-    updateItem(item.lineID, quantity)
+  const changeQuantity = (quantity: number) => {
+    updateItem(item?.lineID, quantity)
   }
 
-  const defaultPhoto = item.photos.cart?.find((set) => !set.forOption)
-  const variantPhoto = item.photos.cart?.find((set) => {
+  const defaultPhoto = item?.photos.cart?.find((set: Obj) => !set.forOption) 
+  const variantPhoto = item?.photos.cart?.find((set: any) => {
     const option = set.forOption
       ? {
           name: set.forOption.split(':')[0],
@@ -42,10 +44,7 @@ function CartItem(item: ProductProp) {
           <div className="cart-item--title">
             <div className="cart-item--variant">{item.title}</div>
             <h2 className="cart-item--name">
-              <Link
-                href={`/products/${item.product.slug}?variant=${item.id}`}
-                scroll={false}
-              >
+              <Link href={`/products/${item.product.slug}?variant=${item.id}`} scroll={false}>
                 <a
                   onClick={() => toggleCart(false)}
                   className="cart-item--link"
@@ -61,7 +60,7 @@ function CartItem(item: ProductProp) {
           <div className="cart-item--quantity">
             <ProductCounter
               key={item.id}
-              id={item.id}
+              id={item.id} 
               defaultCount={item.quantity}
               onUpdate={changeQuantity}
               className="is-small is-inverted"

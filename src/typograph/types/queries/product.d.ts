@@ -3,7 +3,7 @@ import { SeoProps } from './queries.d';
 import { Obj } from '../';
 
 type VariantBase = Array<[string, string][]>;
-
+ 
 export interface VariantsParams extends VariantBase {
   variant: {
     id: number | string;

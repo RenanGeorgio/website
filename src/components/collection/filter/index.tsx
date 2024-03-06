@@ -1,7 +1,17 @@
+// @ts-nocheck
 import { useState } from 'react';
 import cx from 'classnames';
 import Drawer from '@components/drawer';
 import { FilterGroup } from './group';
+import { Obj } from '@typograph/types';
+
+interface Props {
+  filterGroups: Obj[]
+  activeFilters: Obj[];
+  filtersTotal: number;
+  itemTotal: number;
+  onChange: (value?: Obj) => void;
+};
 
 const CollectionFilter = ({
   filterGroups,
@@ -9,8 +19,8 @@ const CollectionFilter = ({
   filtersTotal,
   itemTotal,
   onChange = () => {},
-}) => {
-  const [filtersOpen, setFiltersOpen] = useState(false)
+}: Props) => {
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const handleClearFilters = () => {
     const clearedFilters = activeFilters.map((filter) => ({

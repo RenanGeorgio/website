@@ -31,6 +31,9 @@
       ],
       "@typograph/*": [
         "typograph/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
       ]
     },
     "incremental": true,

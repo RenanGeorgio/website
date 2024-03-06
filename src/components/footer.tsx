@@ -1,13 +1,18 @@
 import Container from './container';
 import Newsletter from '@components/newsletter';
 import ThemeSwitch from '@components/theme-switch';
-import Menu from '@components/menu';
+import { Menu } from '@components/menu';
 import Icon from '@components/icon';
 import { EXAMPLE_PATH } from '@lib/constants';
+import { SiteParams } from '@typograph/types/queries';
 import { Obj } from '@typograph/types';
 
-const Footer = (data: Obj): FSX.Element => {
-  const { blocks }: Obj = data;
+const footerObj: SiteParams["footer"] = {
+  blocks: [] as Obj[]
+}
+
+const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
+  const { blocks } = data; 
 
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">
@@ -24,15 +29,15 @@ const Footer = (data: Obj): FSX.Element => {
 
             {block.social && (
               <div className="menu-social">
-                {block.social.map((link, key) => {
+                {block.social.map((link: Obj, key: string | number) => {
                   return (
                     <a
                       key={key}
-                      href={link.url}
+                      href={link?.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Icon name={link.icon} />
+                      <Icon name={link?.icon} />
                     </a>
                   )
                 })}

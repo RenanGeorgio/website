@@ -1,7 +1,17 @@
 import { useMemo } from 'react';
-import Accordion from '@components/accordion';
+import { Accordion } from '@components/accordion';
 import Chip from '@components/chip';
 import Icon from '@components/icon';
+import { Obj } from '@typograph/types';
+
+interface Props {
+  id: number | string;
+  filterGroups: Obj[];
+  activeFilters: Obj[];
+  filtersTotal: number;
+  onClick: (e?: any) => void;
+  children?: React.ReactNode;
+};
 
 const CollectionFilterChips = ({
   id,
@@ -9,10 +19,10 @@ const CollectionFilterChips = ({
   activeFilters,
   filtersTotal,
   onClick = () => {},
-}) => {
+}: Props) => {
   const activeFilterValues =
     activeFilters.flatMap((f) =>
-      f.values.map((v) => ({
+      f.values.map((v: string | number) => ({
         name: f.name,
         value: v,
       }))
@@ -33,12 +43,13 @@ const CollectionFilterChips = ({
                 activeFilters.find((f) => f.name === filter.name)?.values || []
 
               const newValues = currentValues
-                .filter((v) => v !== filter.value)
+                .filter((v: number | string) => v !== filter.value)
                 .join()
 
+              // @ts-ignore
               const option = filterGroups
                 .find((f) => f.slug === filter.name)
-                .options.find((o) => o.slug === filter.value)
+                .options.find((o: Obj) => o.slug === filter.value)
 
               return (
                 <Chip

@@ -1,18 +1,28 @@
+// @ts-nocheck
 import { useState } from 'react';
 import cx from 'classnames';
-import Accordion from '@components/accordion';
+import { Accordion } from '@components/accordion';
 import { FilterOption } from './option';
+import { CollectionGridProps } from '@typograph/types/queries';
+import { Obj } from '@typograph/types';
+
+interface Props {
+  group: CollectionGridProps["filter"];
+  activeOptions: Obj;
+  onChange: (value?: any) => void;
+};
 
 // Construindo o filtro seletor de grupo
-export const FilterGroup = ({ group, activeOptions, onChange }) => {
-  const [isOpen, setIsOpen] = useState(true)
+export const FilterGroup = ({ group, activeOptions, onChange }: Props) => {
+  const [isOpen, setIsOpen] = useState(true);
 
-  const { id, title, display, options } = group
+  // @ts-ignore
+  const { id, title, display, options } = group;
 
-  const groupTotal = activeOptions.values.length
+  const groupTotal = activeOptions.values.length;
 
-  const toggleGroup = (_, state) => {
-    setIsOpen(state)
+  const toggleGroup = (_: any, state: boolean) => {
+    setIsOpen(state);
   }
 
   return (
@@ -39,7 +49,7 @@ export const FilterGroup = ({ group, activeOptions, onChange }) => {
         className={cx('filter-group--options', {
           'is-grid': display === 'grid',
         })}
-      >
+      > 
         {options?.map((option, key) => (
           <FilterOption
             key={key}
