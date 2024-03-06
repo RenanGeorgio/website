@@ -2,7 +2,7 @@ import Listbox from '@components/listbox';
 import { Obj } from '@typograph/types';
 
 interface Props {
-  sortOptions: Obj; 
+  sortOptions: Obj[] | Obj; 
   activeSort: string; 
   onChange: (values?: Obj[]) => void;
 };

@@ -12,7 +12,7 @@ interface Props {
   label?: string;
   before?: any;
   after?: any;
-  options: Obj;
+  options: Obj[] | Obj;
   activeOption: string;
   onChange: (values?: Obj[]) => void;
 };
@@ -27,24 +27,27 @@ const Listbox = ({
   activeOption,
   onChange = () => {},
 }: Props) => {
-  const groupRef = useRef();
-  const [isOpen, setIsOpen] = useState(false);
+  const groupRef = useRef<HTMLDivElement>();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  // @ts-ignore
+  const { 0: defaultOption } = options;
+  const currentOption = options.find((option: Obj) => option?.slug === activeOption) || defaultOption
 
-  const { 0: defaultOption } = options
-  const currentOption =
-    options.find((option) => option.slug === activeOption) || defaultOption
-
-  const handleOnChange = (value) => {
-    onChange([{ name, value }])
-    setIsOpen(false)
+  const handleOnChange = (value?: any) => {
+    onChange([{ name, value }]);
+    setIsOpen(false);
   }
 
-  const onOutsideClick = (e) => {
-    if (groupRef.current.contains(e.target)) return
-    setIsOpen(false)
+  const onOutsideClick = (e: Obj) => {
+    // @ts-ignore
+    if (groupRef?.current?.contains(e?.target)) {
+      return;
+    }
+
+    setIsOpen(false);
   }
 
-  function handleKeyDown(e) {
+  function handleKeyDown(e: React.KeyboardEvent) {
     let flag = false
 
     switch (e.code) {
@@ -65,25 +68,28 @@ const Listbox = ({
   }
 
   useEffect(() => {
-    document.addEventListener('mousedown', onOutsideClick)
+    document.addEventListener('mousedown', onOutsideClick);
 
     return () => {
-      document.removeEventListener('mousedown', onOutsideClick)
+      document.removeEventListener('mousedown', onOutsideClick);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown)
+      // @ts-ignore
+      document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
+      // @ts-ignore
+      document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
-    <div ref={groupRef} className="listbox">
+    // @ts-ignore 
+    <div ref={groupRef as React.MutableRefObject<HTMLDivElement>} className="listbox">
       <span id={`${id}-label`} className="sr-only">
         {label}
       </span>
@@ -125,24 +131,24 @@ const Listbox = ({
               >
                 <RadioGroup
                   value={currentOption.slug}
-                  onChange={(value) => handleOnChange(value)}
+                  onChange={(value?: any) => handleOnChange(value)}
                   role="listbox"
                   className="listbox--options is-inverted"
                 >
-                  {options.map((option, key) => {
+                  {options.map((option: Obj, key: string | number) => {
                     return (
                       <RadioItem
                         key={key}
-                        value={option.slug}
+                        value={option?.slug}
                         role="option"
                         aria-selected={
-                          option.slug === currentOption.slug ? 'true' : 'false'
+                          option?.slug === currentOption?.slug ? 'true' : 'false'
                         }
                         className={cx('listbox--item', {
                           'is-active': option.slug === currentOption.slug,
                         })}
                       >
-                        {option.title}
+                        {option?.title}
                       </RadioItem>
                     )
                   })}
