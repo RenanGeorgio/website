@@ -4,8 +4,16 @@ import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { getStaticRoute, getActive } from '@lib/routes';
 import CustomLink from '@components/link';
+import { Obj } from '@typograph/types';
 
-const Dropdown = ({ id, title, items, onClick }) => {
+interface Props {
+  title: string;
+  id: string | number;
+  items: Obj[]
+  onClick?: (event?: MouseEvent | void) => void;
+};
+
+const Dropdown = ({ id, title, items, onClick }: Props) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
