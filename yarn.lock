@@ -2161,6 +2161,11 @@ make-error@^1.1.1:
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
   integrity sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==
 
+marqy@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/marqy/-/marqy-0.0.9.tgz#598793103ee6a3d218addcd102374b3688176bf0"
+  integrity sha512-T50kOiviIOOaGMrI3dYMfk5lvYWOff+GtH9n8TjKzMA2WsO6yL7xeQgYy08434CqZ52ZDVZ22ilbjTwJ00D46Q==
+
 mdast-util-definitions@^5.0.0:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/mdast-util-definitions/-/mdast-util-definitions-5.1.2.tgz#9910abb60ac5d7115d6819b57ae0bcef07a3f7a7"
