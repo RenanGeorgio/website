@@ -91,7 +91,7 @@ type GridSizeProps = {
   start?: boolean;
 }
 
-type GridColumn = {
+export type GridColumn = {
   sizes?: GridSizeProps[];
   blocks?: Obj[];
 }

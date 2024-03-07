@@ -3,7 +3,7 @@ import Accordion from './accordion';
 import { BlockContent } from '@components/block';
 import { AccordionsProps } from '@typograph/types/queries';
 
-const AccordionList = (data: AccordionsProps) => {
+const AccordionList: React.FC<any> = (data: AccordionsProps) => {
   const { items } = data;
 
   const [activeAccordion, setActiveAccordion] = useState<number | undefined>(undefined);

@@ -3,18 +3,24 @@ import NextLink from 'next/link';
 import cx from 'classnames';
 import { getStaticRoute, getDynamicRoute } from '@lib/routes';
 import { useProductCount } from '@lib/context';
+import { Link } from '@typograph/types/queries';
 
-const CustomLink = ({ link, children, ...rest }) => {
-  const isLink = !!link.url
+interface Props {
+  tabIndex?: number;
+  link?: Link;
+  onClick?: (event?: MouseEvent | void) => void;
+  children?: React.ReactNode;
+};
+
+const CustomLink: React.FC<any> = ({ link, children, ...rest }: Props) => {
+  const isLink = !!link.url;
   const isStatic = getStaticRoute(link.page?.type);
 
   // if a collection, get product count
   const isCollection = ['collection'].includes(link.page?.type);
   const productCounts = useProductCount();
 
-  const collectionCount = productCounts(
-    (isCollection && link.page?.slug) || 'all'
-  )
+  const collectionCount = productCounts((isCollection && link.page?.slug) || 'all');
 
   // External Link
   if (isLink) {

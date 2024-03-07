@@ -1,7 +1,15 @@
 import ProductCard from '@components/product-card';
+import { ProductProp } from '@typograph/types/queries';
 
-const FeaturedProducts = ({ products, onClick }) => {
-  if (!products) return null
+interface Props {
+  products: ProductProp[];
+  onClick: (value?: boolean | void) => void;
+};
+
+const FeaturedProducts = ({ products, onClick }: Props) => {
+  if (!products) {
+    return null;
+  }
 
   return (
     <>

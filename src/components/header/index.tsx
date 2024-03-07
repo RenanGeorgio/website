@@ -19,54 +19,19 @@ import { CartToggle } from './cart-toggle';
 import { Obj } from '@typograph/types';
 import { SiteParams } from '@typograph/types/queries';
 
-/*const dataObj: SiteParams["header"] = {
-  promo: {
-    enabled: true,
-    display: {} as any,
-    text: "",
-    link: {} as any,
-  },
-  menuDesktopLeft: {
-    items: {
-      link: {} as any,
-      dropdownItems: [] as any[],
-      featured: [] as any[],
-    }[],
-  },
-  menuDesktopRight: {
-    items: {
-      link: {} as any,
-      dropdownItems: [] as any[],
-      featured: [] as any[],
-    }[],
-  },
-  menuMobilePrimary: {
-    items: {
-      link: {} as any,
-      dropdownItems: [] as any[],
-    }[],
-  },
-  menuMobileSecondary: {
-    items: {
-      link: {} as any,
-      dropdownItems: [] as any[],
-    }[],
-  }
-}*/
-
 interface Props {
   data?: SiteParams["header"];
   isTransparent?: boolean;
   onSetup?: (height?: any) => void;
-}
+};
 
-const Header = ({ data , isTransparent, onSetup }: Props) => {
+const Header: React.FC<any> = ({ data , isTransparent, onSetup }: Props) => {
   // @ts-ignore
   const { promo, menuDesktopLeft, menuDesktopRight, menuMobilePrimary, menuMobileSecondary } = data;
 
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
-  const [headerHeight, setHeaderHeight] = useState<string | number | null>(null);
+  const [headerHeight, setHeaderHeight] = useState<string | number | undefined>(undefined);
 
   const { observe, inView: observerIsVisible } = useInView();
 
@@ -239,9 +204,8 @@ const Header = ({ data , isTransparent, onSetup }: Props) => {
               ...(menuDesktopLeft?.items || []),
               ...(menuDesktopRight?.items || []),
             ]}
-            headerHeight={
-              isTransparent && observerIsVisible ? headerHeight : false
-            }
+            // @ts-ignore
+            headerHeight={isTransparent && observerIsVisible ? headerHeight : undefined}
           />
         </div>
       </header>

@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import { getStaticRoute, getActive } from '@lib/routes';
-import { MegaDropdownButton } from './mega-nav';
+import MegaDropdownButton from './mega-dropdown-button';
 import Dropdown from './dropdown';
 import CustomLink from '@components/link';
 import { Obj } from '@typograph/types';
+import { Link } from '@typograph/types/queries';
 
 interface Props {
   items: Obj[];
@@ -22,20 +23,20 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }: Props) =
   return (
     <ul {...rest}>
       {items.map((item, key) => {
-        const isDropdown = !!item.dropdownItems
-        const isStatic = getStaticRoute(item.page?.type)
-        const isActive = getActive(isStatic, item.page?.slug, router)
+        const isDropdown = !!item.dropdownItems;
+        const isStatic = getStaticRoute(item.page?.type);
+        const isActive = getActive(isStatic, item.page?.slug, router);
 
-        // Dropdown List
         if (isDropdown) {
-          const { dropdownItems } = item
-          const activeDropdown =
-            dropdownItems.filter((item) => {
+          // @ts-ignore
+          const { dropdownItems }: Link[] = item;
+          const activeDropdown = dropdownItems.filter((item: Link) => {
               const isStatic = getStaticRoute(item.page?.type)
               return getActive(isStatic, item.page?.slug, router)
             }).length > 0
 
           return (
+            // @ts-ignore
             <li key={key} className={activeDropdown ? 'is-active' : null}>
               {useMegaNav ? (
                 <MegaDropdownButton title={item.title} id={item._key} />
@@ -44,15 +45,15 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }: Props) =
                   title={item.title}
                   id={item._key}
                   items={item.dropdownItems}
+                  // @ts-ignore
                   onClick={onClick}
                 />
               )}
             </li>
           )
-
-          // single link
         } else {
           return (
+            // @ts-ignore
             <li key={key} className={isActive ? 'is-active' : null}>
               <CustomLink
                 tabIndex={!hasFocus ? -1 : null}

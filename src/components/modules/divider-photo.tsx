@@ -1,10 +1,12 @@
 import Photo from '@components/photo';
 import { PhotoType } from '@typograph/types';
 
-const DividerPhoto = ({ data }: PhotoType) => {
+const DividerPhoto: React.FC<any> = (data: PhotoType) => {
   const { photo } = data;
 
-  if (!photo) return null
+  if (!photo) {
+    return null;
+  }
 
   return (
     <div className="divider">

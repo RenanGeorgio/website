@@ -2,25 +2,26 @@ import cx from 'classnames';
 import ProductCard from '@components/product-card';
 import Freeform from '@components/freeform';
 import { AccordionList } from '@components/accordion';
-import { GridColumn, Obj } from '@typograph/types';
+import { GridColumn, BlocksProps } from '@typograph/types/queries';
+import { Obj } from '@typograph/types';
 
 interface Props {
   size?: string | number[];
   columns?: GridColumn[];
   children?: React.ReactNode;
-}
+};
 
-const Grid = ({ data }: Props) => {
+const Grid: React.FC<any> = (data: Props): JSX.Element => {
   const { size, columns } = data;
 
   const getGridSize = (
-    breakpoint,
-    size,
-    justify = false,
-    align = false,
-    start = false
+    breakpoint: any,
+    size: number,
+    justify: boolean = false,
+    align: boolean = false,
+    start: boolean = false
   ) => {
-    const hasBreakpoint = breakpoint && breakpoint.trim()
+    const hasBreakpoint = breakpoint && breakpoint.trim();
     const colSpan = hasBreakpoint
       ? `${breakpoint}:col-span-${size}`
       : `col-span-${size}`
@@ -43,28 +44,16 @@ const Grid = ({ data }: Props) => {
   return (
     <section className="section">
       <div className="section--content">
-        <div
-          className={`grid grid-cols-${size} gap-x-16 gap-y-16 sm:gap-x-32 lg:gap-x-48`}
-        >
-          {columns.map((col, key) => {
-            const { sizes, blocks } = col
+        <div className={`grid grid-cols-${size} gap-x-16 gap-y-16 sm:gap-x-32 lg:gap-x-48`}>
+          {/* @ts-ignore */}
+          {columns.map((col: GridColumn, key: number | string) => {
+            const { sizes, blocks }: GridColumn = col;
 
             return (
-              <div
-                key={key}
-                className={cx(
-                  sizes.map((size) =>
-                    getGridSize(
-                      size.breakpoint,
-                      size.width,
-                      size.justify,
-                      size.align,
-                      size.start
-                    )
-                  )
-                )}
-              >
-                {blocks.map((block, key) => (
+              // @ts-ignore
+              <div key={key} className={cx(sizes.map((size) => getGridSize(size.breakpoint, size.width, size.justify, size.align, size.start)))}>
+                {/* @ts-ignore */}
+                {blocks.map((block: Obj, key: number | string) => (
                   <GridBlock key={key} block={block} />
                 ))}
               </div>
@@ -76,8 +65,9 @@ const Grid = ({ data }: Props) => {
   )
 }
 
-const GridBlock = ({ block }: Obj) => {
-  const type = block._type
+const GridBlock: React.FC<any> = (block: BlocksProps) => {
+  // @ts-ignore
+  const type = block._type;
 
   switch (type) {
     case 'freeform':
@@ -88,7 +78,8 @@ const GridBlock = ({ block }: Obj) => {
       return (
         <ProductCard
           className="is-inline"
-          product={block.product}
+          // @ts-ignore
+          product={block?.product}
           hasVisuals
           showThumbs
           showPrice

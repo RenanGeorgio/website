@@ -1,40 +1,33 @@
 import { useState, useRef, useMemo, useCallback, useEffect } from 'react';
 import cx from 'classnames';
-
-import {
-  useParams,
-  usePrevious,
-  cartesian,
-  sortAsc,
-  sortDesc,
-  clampRange,
-} from '@lib/helpers';
-
+import { useParams, usePrevious, cartesian, sortAsc, sortDesc, clampRange } from '@lib/helpers';
 import { useSiteContext } from '@lib/context';
-import CollectionFilter from '@components/collection-filter';
-import CollectionFilterChips from '@components/collection-filter-chips';
-import CollectionSort from '@components/collection-sort';
+import { CollectionFilter, CollectionFilterChips, CollectionSort } from '@components/collection';
 import ProductCard from '@components/product-card';
 import { BlockContent } from '@components/block';
+import { CollectionGridProps, ProductProp } from '@typograph/types/queries';
+import { Obj } from '@typograph/types';
 
-const Collection = ({ data = {} }) => {
-  const { title, products, filter, sort, paginationLimit, noFilterResults } =
-    data
+interface Props extends CollectionGridProps {
+  title: string;
+  products: ProductProp[];
+};
 
-  if (!products || products.length === 0) return null
+const Collection = (data: Props) => {
+  const { title, products, filter, sort, paginationLimit, noFilterResults } = data;
 
-  const { isPageTransition } = useSiteContext()
+  if (!products || products.length === 0) {
+    return null;
+  }
 
-  const collectionItems = useRef([])
+  const { isPageTransition } = useSiteContext();
 
-  const [hasPagination, setHasPagination] = useState(
-    paginationLimit > 0 && products.length > paginationLimit
-  )
-  const [currentCount, setCurrentCount] = useState(
-    hasPagination ? paginationLimit : products.length
-  )
+  const collectionItems = useRef([]);
 
-  const filterGroups = filter.groups ?? []
+  const [hasPagination, setHasPagination] = useState<boolean>(paginationLimit > 0 && products.length > paginationLimit);
+  const [currentCount, setCurrentCount] = useState<number>(hasPagination ? paginationLimit : products.length);
+  // @ts-ignore
+  const filterGroups: CollectionGridProps["filter"]["groups"] = filter.groups ?? [];
 
   const [currentParams, setCurrentParams] = useParams([
     {
@@ -45,112 +38,87 @@ const Collection = ({ data = {} }) => {
       name: 'sort',
       value: sort?.options?.[0]?.slug,
     },
-    ...filterGroups.map((g) => ({
-      name: g.slug,
+    ...filterGroups.map((g: any) => ({
+      name: g?.slug,
       value: null,
     })),
-  ])
-  const previousParams = usePrevious(currentParams)
+  ]);
+
+  const previousParams = usePrevious(currentParams);
 
   // determine which params set to use
-  const activeParams =
-    isPageTransition && previousParams ? previousParams : currentParams
+  const activeParams = isPageTransition && previousParams ? previousParams : currentParams;
 
   // calculate our sort
-  const activeSort = activeParams.find((filter) => filter.name === 'sort').value
+  const activeSort = activeParams.find((filter: Obj) => filter?.name === 'sort').value;
 
   // calculate our filters
-  const currentFilters = activeParams.filter(
-    (f) => !['page', 'sort'].includes(f.name)
-  )
-  const activeFilters = currentFilters.map((filter) => {
-    const validOptions = filterGroups
-      .find((g) => g.slug === filter.name)
-      ?.options.map((o) => o.slug)
+  const currentFilters: CollectionGridProps["filter"] = activeParams.filter((f: Obj) => !['page', 'sort'].includes(f?.name));
 
-    const currentOptions = Array.isArray(filter.value)
-      ? filter.value
-      : filter.value?.split(',') || []
+  // @ts-ignore
+  const activeFilters = currentFilters.map((filter: Obj) => {
+    let validOptions: Obj[] = [];
+
+    if (filterGroups != undefined) {
+      validOptions = filterGroups.find((g: Obj) => g?.slug === filter?.name)?.options.map((o: any) => o?.slug);
+    }
+
+    const currentOptions = Array.isArray(filter.value) ? filter.value : filter.value?.split(',') || []
 
     return {
-      name: filter.name,
+      name: filter?.name,
       values: [
-        ...new Set(
-          currentOptions
-            .filter(Boolean)
-            .filter((f) => validOptions?.includes(f))
-        ),
-      ],
+        ...new Set(currentOptions.filter(Boolean).filter((f: any) => validOptions?.includes(f)))
+      ]
     }
-  })
+  });
 
   // calculate total active filters
-  const filtersTotal = activeFilters.reduce((acc, cur) => {
+  const filtersTotal = activeFilters.reduce((acc: number, cur: Obj) => {
     return Number(acc + cur.values.length)
-  }, 0)
+  }, 0);
 
   // calculate our product order and pagination
-  const orderedProducts = useFilterAndSort(products, activeFilters, activeSort)
-  const paginatedProducts = [...orderedProducts.slice(0, currentCount)]
+  const orderedProducts: ProductProp[] = useFilterAndSort(products, activeFilters, activeSort);
+  const paginatedProducts: ProductProp[] = [...orderedProducts.slice(0, currentCount)];
 
   // handle filter + sort updates
-  const updateParams = useCallback(
-    (params) => {
-      const newFilters = activeParams.map((filter) => {
-        const matchedParam = params?.find((p) => p.name === filter.name)
+  const updateParams = useCallback((params: Obj[]) => {
+    const newFilters = activeParams.map((filter: any) => {
+      const matchedParam = params?.find((p: Obj) => p?.name === filter?.name);
 
-        return matchedParam ? { ...filter, value: matchedParam?.value } : filter
-      })
+      return matchedParam ? { ...filter, value: matchedParam?.value } : filter
+    });
 
-      setCurrentParams(newFilters)
-    },
-    [activeParams]
-  )
+      setCurrentParams(newFilters);
+    }, [activeParams]);
 
   // handle load more
   const loadMore = useCallback(() => {
-    const newCount = clampRange(
-      currentCount + paginationLimit,
-      1,
-      orderedProducts.length
-    )
-
-    const newPage = Math.ceil(newCount / paginationLimit)
-
-    setCurrentCount(newCount)
-    updateParams([{ name: 'page', value: newPage > 1 ? `${newPage}` : null }])
-  }, [currentCount, orderedProducts, paginationLimit])
+    const newCount: number = clampRange(currentCount + paginationLimit, 1, orderedProducts.length);
+    const newPage: number = Math.ceil(newCount / paginationLimit);
+    setCurrentCount(newCount);
+    updateParams([{ name: 'page', value: newPage > 1 ? `${newPage}` : null }]);
+  }, [currentCount, orderedProducts, paginationLimit]);
 
   // update pagination when the count or products change
   useEffect(() => {
-    const desiredPage = activeParams.find((p) => p.name === 'page').value
-    const maxPage = Math.ceil(orderedProducts.length / paginationLimit)
+    const desiredPage: any = activeParams.find((p: Obj) => p.name === 'page').value;
 
-    const newCount =
-      desiredPage > 1 && desiredPage <= maxPage
-        ? clampRange(paginationLimit * desiredPage, 1, orderedProducts.length)
-        : null
+    const maxPage: number = Math.ceil(orderedProducts?.length / paginationLimit);
 
-    const pageProductIndex =
-      newCount < orderedProducts?.length
-        ? newCount - paginationLimit
-        : orderedProducts.length - 1
+    const newCount: number = desiredPage > 1 && desiredPage <= maxPage ? clampRange(paginationLimit * desiredPage, 1, orderedProducts.length) : null
+
+    const pageProductIndex: number = newCount < orderedProducts?.length ? newCount - paginationLimit : orderedProducts.length - 1;
 
     if (newCount) {
-      setCurrentCount(newCount)
-      collectionItems.current[pageProductIndex]?.querySelector('[href]').focus({
-        preventScroll: true,
-      })
+      setCurrentCount(newCount);
+      // @ts-ignore
+      collectionItems.current[pageProductIndex]?.querySelector('[href]').focus({preventScroll: true});
     }
 
-    setHasPagination(currentCount < orderedProducts.length)
-  }, [
-    currentCount,
-    orderedProducts,
-    activeParams,
-    paginationLimit,
-    collectionItems,
-  ])
+    setHasPagination(currentCount < orderedProducts.length);
+  }, [currentCount, orderedProducts, activeParams, paginationLimit, collectionItems]);
 
   return (
     <section className="collection">
@@ -160,17 +128,15 @@ const Collection = ({ data = {} }) => {
             filterGroups={filterGroups}
             activeFilters={activeFilters}
             filtersTotal={filtersTotal}
-            itemTotal={orderedProducts.length}
+            itemTotal={orderedProducts?.length}
+            // @ts-ignore
             onChange={updateParams}
           />
         )}
 
         {sort?.isActive && (
-          <CollectionSort
-            sortOptions={sort.options}
-            activeSort={activeSort}
-            onChange={updateParams}
-          />
+          // @ts-ignore
+          <CollectionSort sortOptions={sort?.options} activeSort={activeSort} onChange={updateParams} />
         )}
       </div>
 
@@ -190,25 +156,24 @@ const Collection = ({ data = {} }) => {
             'is-empty': !orderedProducts.length,
           })}
         >
-          {paginatedProducts.map((product, key) => (
+          {paginatedProducts.map((product: ProductProp, key: number | string) => (
             <ProductCard
-              ref={(node) => (collectionItems.current[key] = node)}
+              // @ts-ignore
+              ref={(node: any) => (collectionItems?.current[key] = node)}
               key={
                 product.id +
                 activeParams
-                  .filter((f) => f.name !== 'page')
-                  .map((f) => f.value)
+                  .filter((f: any) => f?.name !== 'page')
+                  .map((f: any) => f?.value)
                   .filter(Boolean)
                   .join('-')
               }
               product={product}
               activeFilters={activeFilters}
-              hasVisuals={product.photos.main || product.photos.listing}
-              showGallery={product.photos.main && product.useGallery === 'true'}
-              showThumbs={
-                product.photos.listing && product.useGallery === 'false'
-              }
-              showOption={product.surfaceOption}
+              hasVisuals={product?.photos?.main || product?.photos?.listing}
+              showGallery={product?.photos?.main && (product?.useGallery == true)}
+              showThumbs={product?.photos?.listing && (product?.useGallery == false)}
+              showOption={product?.surfaceOption}
               showPrice
               showQuickAdd
             />
@@ -221,8 +186,8 @@ const Collection = ({ data = {} }) => {
                 className="filters-reset btn is-large"
                 onClick={() =>
                   updateParams(
-                    activeFilters.map((filter) => ({
-                      name: filter.name,
+                    activeFilters.map((filter: Obj) => ({
+                      name: filter?.name,
                       value: null,
                     }))
                   )
@@ -249,7 +214,7 @@ const Collection = ({ data = {} }) => {
         {orderedProducts?.length > 0 && (
           <div className="collection--count">
             <p aria-live="polite" role="status" aria-atomic="true">
-              Showing {paginatedProducts.length} of {orderedProducts.length}{' '}
+              Showing {paginatedProducts?.length} of {orderedProducts?.length}{' '}
               products
             </p>
           </div>
@@ -259,27 +224,20 @@ const Collection = ({ data = {} }) => {
   )
 }
 
-const useFilterAndSort = (products, filters, sort) => {
-  const filterCombos = useMemo(
-    () =>
-      cartesian(...filters.filter((f) => f.values.length).map((f) => f.values)),
-    [filters]
-  )
+const useFilterAndSort = (products: ProductProp[], filters: Array<CollectionGridProps["filter"]>, sort: CollectionGridProps["sort"] | string) => {
+  // @ts-ignore
+  const filterCombos = useMemo(() => cartesian(...filters.filter((f: CollectionGridProps["filter"]) => f?.values?.length).map((f: Obj) => f?.values)), [filters]);
 
-  const filteredProducts = useMemo(
-    () =>
-      products.filter((product) => {
-        return filterCombos.some((combo) => {
-          const productFilters = product.filters?.map((f) => f.slug)
-          const hasCombo = combo.every((x) => productFilters?.includes(x))
+  const filteredProducts = useMemo(() => products?.filter((product: ProductProp) => {
+    return filterCombos.some((combo: any) => {
+      const productFilters = product.filters?.map((f: any) => f.slug)
+      const hasCombo = combo.every((x: any) => productFilters?.includes(x));
 
-          return hasCombo
-        })
-      }),
-    [filters]
-  )
+      return hasCombo;
+    })
+  }),[filters]);
 
-  switch (sort) {
+  switch (sort as string) {
     case 'priceAsc':
       return sortAsc(filteredProducts, 'price')
     case 'priceDesc':

@@ -10,6 +10,16 @@ interface Props {
   children?: React.ReactNode;
 };
 
+function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
+  let newString = value;
+
+  templateTags.map((v) => {
+    newString = newString.replace(new RegExp(v.tag, 'g'), v.value)
+  });
+
+  return newString;
+}
+
 const Meta = ({ site, page, schema }: Props) => {
   const siteTitle = site.title;
 
@@ -54,13 +64,17 @@ const Meta = ({ site, page, schema }: Props) => {
       <link rel="manifest" href="/manifest.json" />
 
       <link rel="icon" href={siteFaviconLegacy} sizes="any" />
+      {/* @ts-ignore */}
       <link preload="true" rel="icon" type="image/svg+xml" href={siteFavicon} />
+      {/* @ts-ignore */}
       <link preload="true" rel="mask-icon" href={siteFavicon} color="#000000" />
+      {/* @ts-ignore */}
       <link preload="true" rel="shortcut icon" href={siteFaviconLegacy} />
       {siteTouchIcon && (
         <link
           rel="apple-touch-icon"
           sizes="180x180"
+          // @ts-ignore
           href={imageBuilder.image(siteTouchIcon).width(192).height(192).url()}
         />
       )}
@@ -98,8 +112,8 @@ const Meta = ({ site, page, schema }: Props) => {
         <>
           <meta
             property="og:image"
+            // @ts-ignore
             content={imageBuilder
-              content={HOME_OG_IMAGE_URL}
               .image(shareGraphic)
               .width(1200)
               .height(630)
@@ -107,6 +121,7 @@ const Meta = ({ site, page, schema }: Props) => {
           />
           <meta
             name="twitter:image"
+            // @ts-ignore
             content={imageBuilder
               .image(shareGraphic)
               .width(1200)

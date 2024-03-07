@@ -9,7 +9,7 @@ import { Obj } from '@typograph/types';
 interface Props {
   title: string;
   id: string | number;
-  items: Obj[]
+  items: Obj[];
   onClick?: (event?: MouseEvent | void) => void;
 };
 
@@ -53,6 +53,7 @@ const Dropdown = ({ id, title, items, onClick }: Props) => {
             const isActive = getActive(isStatic, item.page?.slug, router)
 
             return (
+              // @ts-ignore
               <li key={key} className={isActive ? 'is-active' : null}>
                 <CustomLink
                   tabIndex={!isOpen ? -1 : null}

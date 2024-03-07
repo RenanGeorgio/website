@@ -89,7 +89,7 @@ const Layout = ({ site, page, schema, preview, children }: Props) => {
         <Header
           data={site?.header}
           isTransparent={page.hasTransparentHeader}
-          onSetup={({ height }) => setHeaderHeight(height)}
+          onSetup={(height: number | string) => setHeaderHeight(height)}
         />
         <main id="content">{children}</main>
       </m.div>

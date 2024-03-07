@@ -1,9 +1,10 @@
 import { BlockContent } from '@components/block';
 import VideoLoop from '@components/vimeo-loop';
 import Photo from '@components/photo';
+import { HeroProps } from '@typograph/types/queries';
 
-const Hero = ({ data = {} }) => {
-  const { content, bgType, photos, video } = data
+const Hero: React.FC<any> = (data: HeroProps) => {
+  const { content, bgType, photos, video } = data;
 
   return (
     <section className="hero">
@@ -18,10 +19,12 @@ const Hero = ({ data = {} }) => {
       {bgType === 'video' && (
         <>
           <div className="hero--bg is-desktop">
-            <VideoLoop title={video.title} id={video.id} />
+            {/* @ts-ignore */}
+            <VideoLoop title={video?.title} id={video?.id} />
           </div>
           <div className="hero--bg is-mobile">
-            <VideoLoop title={video.title} id={video.id} />
+            {/* @ts-ignore */}
+            <VideoLoop title={video?.title} id={video?.id} />
           </div>
         </>
       )}
