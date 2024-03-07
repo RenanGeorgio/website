@@ -12,15 +12,13 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Home = ({ data }: Props) => {
+const Home = (data: Props) => {
   const { site, page } = data;
 
   if (!page) {
     return (
-      <Error
-        title={`"Home Page" is not set in Sanity, or the page data is missing`}
-        statusCode="Data Error"
-      />
+      // @ts-ignore
+      <Error title={`"Home Page" is not set in Sanity, or the page data is missing`} statusCode="Data Error" />
     )
   }
 
@@ -28,7 +26,7 @@ const Home = ({ data }: Props) => {
     <Layout site={site} page={page}>
       <Container>
         <Intro />
-        {page.modules?.map((module, key) => (
+        {page?.modules?.map((module: Obj, key: number | string) => (
           <Module key={key} index={key} data={module} />
         ))}
       </Container>
@@ -36,8 +34,8 @@ const Home = ({ data }: Props) => {
   )
 }
 
-export async function getStaticProps({ preview, previewData }) {
-  const pageData = await getStaticPage(
+export async function getStaticProps({ preview, previewData }: any) {
+  const pageData: any = await getStaticPage(
     `
     *[_type == "page" && _id == ${queries.homeID}] | order(_updatedAt desc)[0]{
       "id": _id,

@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import {
-  ProductCounter,
-  ProductAdd,
-  ProductWaitlist,
-} from '@components/product';
+import { ProductCounter, ProductAdd, ProductWaitlist } from '@components/product';
+import { ProductProp, VariantsParams } from '@typograph/types/queries';
 
-const ProductActions = ({ activeVariant, klaviyoAccountID }) => {
+interface Props {
+  activeVariant: VariantsParams["variant"];
+  klaviyoAccountID: ProductProp["klaviyoAccountID"];
+};
+
+const ProductActions: React.FC<any> = ({ activeVariant, klaviyoAccountID }: Props) => {
   // set default quantity
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="product--actions">
@@ -16,7 +18,7 @@ const ProductActions = ({ activeVariant, klaviyoAccountID }) => {
           <ProductCounter
             id={activeVariant.id}
             max={10}
-            onUpdate={setQuantity}
+            onUpdate={setQuantity as any}
           />
           <ProductAdd
             productID={activeVariant.id}

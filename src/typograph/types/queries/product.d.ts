@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { SeoProps } from './queries.d';
+import { SeoProps, ImageMetaProps } from './queries.d';
 import { Obj } from '../';
 
 type VariantBase = Array<[string, string][]>;
- 
+
 export interface VariantsParams extends VariantBase {
   variant: {
     id: number | string;
@@ -15,14 +15,13 @@ export interface VariantsParams extends VariantBase {
     options?: {
         name?: string;
         position?: any;
-        value?: any;
+        value?: any; 
     }[];
     seo?: SeoProps & Metadata;
-    [key: string]?: Obj[];
   }
 };
 
-type galleryPhotos = {
+export type galleryPhotos = {
   forOption: string;
   photos: (ImageMetaProps & PhotoType)[]
 }

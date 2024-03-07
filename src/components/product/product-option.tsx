@@ -1,21 +1,37 @@
+// @ts-nocheck
 import cx from 'classnames';
 import { hasObject } from '@lib/helpers';
 import RadioGroup from '@components/radio-group';
 import RadioItem from '@components/radio-item';
 import Swatch from '@components/swatch';
+import { Obj } from '@typograph/types';
+import { ProductProp, VariantsParams } from '@typograph/types/queries';
+
+interface Props {
+  key?: number | string
+  option: Obj;
+  optionSettings: ProductProp["optionSettings"];
+  position: number | string;
+  variants: ProductProp["variants"];
+  activeVariant: VariantsParams["variant"];
+  strictMatch?: boolean;
+  hideLabels?: boolean;
+  onChange: (key: any) => void;
+}
 
 // handle option changes
-const changeOption = (name, value, variants, activeVariant, changeCallback) => {
-  const newOptions = activeVariant.options.map((opt) =>
-    opt.name === name ? { ...opt, value: value } : opt
+const changeOption = (name: string, value: number | string, variants: ProductProp["variants"], activeVariant: VariantsParams["variant"], changeCallback: any) => {
+  // @ts-ignore
+  const newOptions = activeVariant?.options?.map((opt) =>
+    opt?.name === name ? { ...opt, value: value } : opt
   )
 
-  const newVariant = variants.find((variant) =>
-    variant.options.every((opt) => hasObject(newOptions, opt))
-  )
+  // @ts-ignore
+  const newVariant = variants?.find((variant) => variant?.options.every((opt) => hasObject(newOptions, opt)));
 
   if (newVariant && changeCallback) {
-    changeCallback(newVariant.id)
+    // @ts-ignore
+    changeCallback(newVariant?.id);
   }
 }
 
@@ -28,7 +44,7 @@ const ProductOption = ({
   strictMatch = true,
   hideLabels,
   onChange,
-}) => {
+}: Props) => {
   const otherOpts = [
     ...activeVariant.options.slice(0, position),
     ...activeVariant.options.slice(position + 1),

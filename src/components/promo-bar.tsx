@@ -1,16 +1,11 @@
+import { memo } from 'react';
 import { useRouter } from 'next/router';
 import { ConditionalWrapper } from '@lib/helpers';
 import CustomLink from '@components/link';
 import { SiteParams } from '@typograph/types/queries';
 
-const promoProps: SiteParams["header"]["promo"] = {
-  enabled: undefined,
-  display: undefined,
-  text: undefined,
-  link: undefined,
-};
-
-const PromoBar = React.memo(data: typeof promoProps) => {
+// @ts-ignore
+const PromoBar: any = memo(function PromoBar(data: SiteParams["header"]["promo"]) {
   const { enabled, display, text, link } = data;
   const router = useRouter();
 
@@ -29,7 +24,7 @@ const PromoBar = React.memo(data: typeof promoProps) => {
       <div className="promo-bar--content">
         <ConditionalWrapper
           condition={link}
-          wrapper={(children) => (
+          wrapper={(children: any) => (
             <CustomLink
               className="promo-bar--link"
               link={{ ...{ page: link } }}
@@ -43,6 +38,8 @@ const PromoBar = React.memo(data: typeof promoProps) => {
       </div>
     </div>
   )
-})
+});
 
-export default PromoBar
+PromoBar.displayName = 'PromoBar';
+
+export default PromoBar;

@@ -9,17 +9,17 @@ import '@styles/index.css';
 import '@styles/tailwind.css';
 import '@styles/app.css';
 
-
-const App: React.FC<AppProps> = ({ Component, router, pageProps }: AppProps) => {
-  const { data }: AppProps<Obj extends AppInitialProps> = pageProps as Obj;
+const App: React.FC<AppProps> = ({ Component, router, pageProps }: AppProps): any => {
+  // @ts-ignore
+  const { data }: AppProps<AppInitialProps> = pageProps as any;
 
   return (
     <ThemeProvider enableSystem={false} disableTransitionOnChange>
       <SiteContextProvider data={{ ...data?.site }}>
-        <Site Component={Component} router={router} pageProps={...pageProps} />
+        <Site Component={Component} router={router} pageProps={pageProps} />
       </SiteContextProvider>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App

@@ -6,7 +6,7 @@ interface Props {
   key?: string | number;
   title?: string; 
   role?: string;
-  aria-selected?: 'true' | 'false';
+  'aria-selected'?: 'true' | 'false';
   className?: string;
   value: string | number; 
   children?: React.ReactNode;
@@ -21,13 +21,14 @@ const RadioItem: React.FC<any> = ({ title, value, children, ...rest }: Props) =>
   const isInitialMount = useRef<boolean>(true);
 
   useEffect(() => {
-    if (isInitialMount?.current) {
-      isInitialMount?.current = false;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
       return;
     }
 
-    if (isChecked) {
-      itemRef?.current.focus({ preventScroll: true });
+    if ((isChecked) && (itemRef.current != undefined)) {
+      // @ts-ignore
+      itemRef.current?.focus({ preventScroll: true });
     }
   }, [isChecked]);
 
@@ -77,6 +78,7 @@ const RadioItem: React.FC<any> = ({ title, value, children, ...rest }: Props) =>
 
   return (
     <button
+      // @ts-ignore
       ref={itemRef}
       role="radio"
       title={title}

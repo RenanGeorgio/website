@@ -5,6 +5,7 @@
     "module": "esnext",
     "jsx": "preserve",
     "strict": true,
+    "alwaysStrict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -34,6 +35,12 @@
       ],
       "@hooks/*": [
         "hooks/*"
+      ],
+      "@views/*": [
+        "views/*"
+      ],
+      "@data": [
+        "data/index"
       ]
     },
     "incremental": true,

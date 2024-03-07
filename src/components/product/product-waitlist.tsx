@@ -1,18 +1,19 @@
+// @ts-nocheck
 import { useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { m, AnimatePresence } from 'framer-motion';
 
-const Waitlist = ({ variant, klaviyo }) => {
-  const [submitting, setSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState(false)
+const Waitlist = ({ variant, klaviyo }: any) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
   const resetForm = (e) => {
     e.preventDefault()

@@ -1,12 +1,14 @@
 import { BlockContent } from '@components/block';
-import {
-  ProductGallery,
-  ProductPrice,
-  ProductForm,
-  ProductActions,
-} from '@components/product';
+import { ProductGallery, ProductPrice, ProductForm, ProductActions } from '@components/product';
+import { ProductProp, VariantsParams } from '@typograph/types/queries';
 
-const ProductHero = ({ product, activeVariant, onVariantChange }) => {
+interface Props {
+  product: ProductProp;
+  activeVariant: VariantsParams["variant"];
+  onVariantChange: any
+};
+
+const ProductHero = ({ product, activeVariant, onVariantChange }: Props) => {
   return (
     <section className="product">
       <div className="product--content">
@@ -40,13 +42,8 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
                 )}
                 <h1 className="product--name">{product.title}</h1>
               </div>
-
-              <ProductPrice
-                price={activeVariant?.price || product.price}
-                comparePrice={
-                  activeVariant?.comparePrice || product.comparePrice
-                }
-              />
+              {/* @ts-ignore */}
+              <ProductPrice price={activeVariant?.price || product.price} comparePrice={activeVariant?.comparePrice || product.comparePrice}/>
             </div>
 
             {product.description && (

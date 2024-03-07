@@ -1,8 +1,4 @@
-import {
-  ImageField,
-  Field,
-  LinkField
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { ImageField, Field, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
 
 export interface ImageType {
   width?: number;

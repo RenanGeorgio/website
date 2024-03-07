@@ -381,7 +381,7 @@ function useToggleCart() {
     setContext,
   } = useContext(SiteContext);
 
-  async function toggleCart(state?: boolean) {
+  async function toggleCart(state) {
     setContext((prevState) => {
       if (state != undefined) {
         return { ...prevState, isCartOpen: state }

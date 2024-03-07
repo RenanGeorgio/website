@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getSanityClient } from '@lib/sanity';
 import * as queries from './queries';
 

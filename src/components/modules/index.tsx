@@ -9,10 +9,11 @@ import { Obj } from '@typograph/types';
 
 interface Props {
   index: number | string;
+  key?: number | string;
   data: Obj;
   product?: Obj;
   activeVariant?: Obj;
-  onVariantChange: () => void;
+  onVariantChange?: () => void;
 };
 
 export const Module = ({

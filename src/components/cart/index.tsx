@@ -5,7 +5,6 @@ import cx from 'classnames';
 import { centsToPrice } from '@lib/helpers';
 import { Url, Obj } from '@typograph/types';
 import { SiteParams, ProductProp, VariantsParams } from '@typograph/types/queries';
-
 import {
   useSiteContext,
   useCartTotals,
@@ -14,7 +13,6 @@ import {
   useCheckout,
   useToggleCart,
 } from '@lib/context';
-
 import CartItem from './item';
 import EmptyCart  from './empty';
 
@@ -29,10 +27,12 @@ const CartItems = (variants: VariantsParams[]) => {
     );
 }
 
-const Cart = (data: SiteParams) => {
+const Cart: React.FC<any> = (data: SiteParams) => {
   const { shop } = data;
 
-  if (!shop) return null
+  if (!shop) {
+    return null;
+  }
 
   const { isCartOpen, isUpdating } = useSiteContext();
 

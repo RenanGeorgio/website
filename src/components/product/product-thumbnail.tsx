@@ -1,6 +1,12 @@
 import { AnimatePresence, m } from 'framer-motion';
 import { hasObject } from '@lib/helpers';
 import Photo from '@components/photo';
+import { ProductProp, VariantsParams } from '@typograph/types/queries';
+
+interface Props {
+  thumbnails: ProductProp["photos"]["listing"];
+  activeVariant: VariantsParams["variant"];
+};
 
 const thumbAnim = {
   show: {
@@ -21,7 +27,7 @@ const thumbAnim = {
   },
 }
 
-const ProductThumbnail = ({ thumbnails = [], activeVariant }) => {
+const ProductThumbnail = ({ thumbnails = [], activeVariant }: Props) => {
   const { options } = activeVariant
 
   const defaultThumbnails = thumbnails.find((set) => !set.forOption)

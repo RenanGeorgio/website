@@ -3,6 +3,16 @@ import { hasObject } from '@lib/helpers';
 import { fadeAnim } from '@lib/animate';
 import Carousel from '@components/carousel';
 import Photo from '@components/photo';
+import { galleryPhotos, VariantsParams } from '@typograph/types/queries';
+
+interface Props {
+  photosets: galleryPhotos[];
+  activeVariant: VariantsParams["variant"];
+  hasArrows: boolean;
+  hasDots?: boolean;
+  hasDrag?: boolean;
+  hasCounter: boolean;
+};
 
 const ProductGallery = ({
   photosets,
@@ -11,7 +21,7 @@ const ProductGallery = ({
   hasDots,
   hasDrag,
   hasCounter,
-}) => {
+}: Props) => {
   if (!photosets || !activeVariant) return null
 
   // 1. extract the active variant's options
@@ -66,6 +76,7 @@ const ProductGallery = ({
             variants={fadeAnim}
           >
             <Carousel
+              // @ts-ignore
               id={id}
               hasArrows={hasArrows}
               hasDots={hasDots}

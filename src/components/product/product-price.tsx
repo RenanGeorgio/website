@@ -1,6 +1,11 @@
 import { centsToPrice } from '@lib/helpers';
 
-const ProductPrice = ({ price, comparePrice }) => {
+interface Props {
+  price: number;
+  comparePrice?: number;
+}
+
+const ProductPrice = ({ price, comparePrice }: Props) => {
   return (
     <div className="price">
       <span className="price--current">${centsToPrice(price)}</span>

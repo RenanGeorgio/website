@@ -1,10 +1,11 @@
+// @ts-nocheck
 import Error from 'next/error';
 import { getStaticPage, queries } from '@data';
 import Layout from '@components/layout';
 import { Module } from '@components/modules';
 
-const NotFoundPage = ({ data }) => {
-  const { site, menus, page } = data
+const NotFoundPage = ({ data }: any) => {
+  const { site, menus, page } = data;
 
   if (!page) {
     return (

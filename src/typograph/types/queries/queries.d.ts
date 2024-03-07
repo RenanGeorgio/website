@@ -1,6 +1,10 @@
 import { Obj, Url } from '../';
 import { Crop } from '../urils.d';
 
+type mimeTypeObj = {
+  [mimeType: string]: string[]
+}
+
 export type ImageMetaProps = {
   alt: string;
   asset?: string[] | Obj;
@@ -8,7 +12,7 @@ export type ImageMetaProps = {
   customRatio?: number;
   hotspot?: boolean;
   id: number | string;
-  type: ([mimeType: string]: string[]) | string;
+  type: mimeTypeObj | string;
   aspectRatio: number;
   lqip: Url | string;
 }

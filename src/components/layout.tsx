@@ -40,7 +40,7 @@ const pageTransitionAnim = {
   },
 }
 
-const Layout = ({ site, page, schema, preview, children }: Props) => {
+const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props): JSX.Element => {
   const { height: windowHeight } = useWindowSize();
   const [lockHeight, setLockHeight] = useState<boolean>(false);
   const hasChin: boolean | undefined = isMobileSafari();

@@ -1,73 +1,43 @@
-export * from './image.d';
+import { 
+  ImageType, 
+  ImageData, 
+  ImageInterface, 
+  Fields, 
+  PhotoProps, 
+  StaticImageData, 
+  StaticRequire 
+} from './image.d';
+import { 
+  LayoutProps, 
+  CustomTransitionOptions,
+  CustomFetchDataOutput,
+  CustomFetchNextDataParams,
+  CustomNextDataCache,
+  ImageParamsResult,
+  ImageUpstream,
+  Options
+} from './extras.d';
+import { Config, Page, Media, User, MainMenu } from './payload.d';
 
-export interface LayoutProps {
-    title?: string;
-    description?: string;
-    metaTitle?: string;
-    metaDescription?: string;
-    image?: string;
-    children: React.ReactNode;
-    loadTwitterWidget?: boolean;
-};
-
-export interface CustomTransitionOptions {
-    shallow?: boolean;
-    locale?: string | false;
-    scroll?: boolean;
-    unstable_skipClientCache?: boolean;
-};
-
-export interface CustomFetchDataOutput {
-    dataHref: string;
-    json: Record<string, any> | null;
-    response: Response;
-    text: string;
-    cacheKey: string;
-};
-  
-export interface CustomFetchNextDataParams {
-    dataHref: string;
-    isServerRender: boolean;
-    parseJSON: boolean | undefined;
-    hasMiddleware?: boolean;
-    inflightCache: CustomNextDataCache;
-    persistCache: boolean;
-    isPrefetch: boolean;
-    isBackground?: boolean;
-    unstable_skipClientCache?: boolean;
-};
-
-export interface CustomNextDataCache {
-    [asPath: string]: Promise<CustomFetchDataOutput>;
-};
-
-
-export interface ImageParamsResult {
-    href: string
-    isAbsolute: boolean
-    isStatic: boolean
-    width: number
-    quality: number
-    mimeType: string
-    sizes: number[]
-    minimumCacheTTL: number
-  }
-  
-  interface ImageUpstream {
-    buffer: Buffer
-    contentType: string | null | undefined
-    cacheControl: string | null | undefined
-  }
-  
-  
-  interface Options {
-    base?: string | URL
-    headers?: OutgoingHttpHeaders
-    forceLocale?: boolean
-    nextConfig?: {
-      basePath?: string
-      i18n?: I18NConfig | null
-      trailingSlash?: boolean
-    }
-    i18nProvider?: I18NProvider
-  }
+export type {
+  ImageType, 
+  ImageData, 
+  ImageInterface, 
+  Fields, 
+  PhotoProps, 
+  StaticImageData, 
+  StaticRequire,
+  LayoutProps,
+  CustomTransitionOptions,
+  CustomFetchDataOutput,
+  CustomFetchNextDataParams,
+  CustomNextDataCache,
+  ImageParamsResult,
+  ImageUpstream,
+  Options,
+  Config, 
+  Page, 
+  Media, 
+  User, 
+  MainMenu
+}

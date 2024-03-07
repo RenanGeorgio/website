@@ -1,4 +1,4 @@
-import PostPreview from "./post-preview";
+import PostPreview from "./post/post-preview";
 import { PostType } from "@typograph/types";
 
 type Props = {

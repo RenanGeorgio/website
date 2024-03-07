@@ -20,11 +20,11 @@ const addUrls = async (smStream: SitemapStream) => {
   const allPages = await getAllDocSlugs('page')
   const allCollections = await getAllDocSlugs('collection')
 
-  allCollections.map((collection) => {
+  allCollections.map((collection: any) => {
     smStream.write({ url: `/shop/${collection.slug}`, changefreq: 'weekly', priority: 0.8 })
   })
   
-  allPages.map((page) => {
+  allPages.map((page: any) => {
     smStream.write({ url: `/${page.slug}`, changefreq: 'weekly', priority: 0.7 })
   })
 }

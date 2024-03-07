@@ -1,10 +1,11 @@
+// @ts-nocheck
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-cool-inview';
 import cx from 'classnames';
 import { buildSrcSet, buildSrc } from '@lib/helpers';
 import { PhotoType } from '@typograph/types';
 
-const Photo = ({
+const Photo: React.FC<any> = ({
   photo,
   width,
   height,

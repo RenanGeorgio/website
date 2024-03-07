@@ -1,13 +1,21 @@
 import cx from 'classnames';
-import { useSiteContext, useAddItem } from '@lib/context'
+import { useSiteContext, useAddItem } from '@lib/context';
 
-const ProductAdd = ({ productID, quantity = 1, className, children }) => {
-  const addItemToCart = useAddItem()
-  const { shopifyClient, isLoading, isAdding } = useSiteContext()
+interface Props {
+  productID: number | string;
+  quantity?: number;
+  className: string;
+  children?: React.ReactNode;
+}
+
+const ProductAdd = ({ productID, quantity = 1, className, children }: Props) => {
+  const addItemToCart = useAddItem();
+  const { shopifyClient, isLoading, isAdding } = useSiteContext();
 
   // Check that Shopify is connected
   if (!shopifyClient) {
     return (
+      // @ts-ignore
       <span className={cx('is-disabled', className)} disabled>
         Unavailable
       </span>

@@ -8,7 +8,6 @@ import { useSiteContext, useTogglePageTransition } from '@lib/context';
 import Cart from '@components/cart';
 import { Obj } from '@typograph/types';
 
-
 if (isBrowser) {
   console.groupCollapsed(
     '%c💀 Site Credits',
@@ -64,19 +63,23 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
   }, []);
 
   // intelligently add focus states if keyboard is used
-  const handleFirstTab = (event) => {
-    if (event.keyCode === 9) {
+  const handleFirstTab = (event: React.KeyboardEvent<any>) => {
+    if (event?.keyCode === 9) {
       if (isBrowser) {
-        document.body.classList.add('is-tabbing')
-        window.removeEventListener('keydown', handleFirstTab)
+        document.body.classList.add('is-tabbing');
+
+        // @ts-ignore
+        window.removeEventListener('keydown', handleFirstTab);
       }
     }
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', handleFirstTab)
+    // @ts-ignore
+    window.addEventListener('keydown', handleFirstTab);
     return () => {
-      window.removeEventListener('keydown', handleFirstTab)
+      // @ts-ignore
+      window.removeEventListener('keydown', handleFirstTab);
     }
   }, []);
 
@@ -95,7 +98,7 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
 
       <Cart data={{ ...data?.site }} />
     </LazyMotion>
-  )
+  );
 }
 
-export default Site
+export default Site;

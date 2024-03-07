@@ -1,15 +1,8 @@
-import { 
-  DictionaryPhrases, 
-  ComponentPropsCollection, 
-  LayoutServiceData, 
-  SiteInfo 
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { DictionaryPhrases, ComponentPropsCollection, LayoutServiceData, SiteInfo } from '@sitecore-jss/sitecore-jss-nextjs';
 import type { UrlObject } from 'url';
 import { ImageElementProps, ImgProps, ImageProps } from './image.d';
+import { Crop, FieldArrayHelpers } from './utils.d';
 import { PhotoProps } from '../interfaces';
-
-export * from './image.d';
-export * from './alternative-urls-types';
 
 export type LayoutHtmlProp = 'intrinsic' | 'fixed' | 'responsive' | 'fill' | 'original';
 
@@ -57,7 +50,7 @@ export type LinkType = (options?: {
 }) => (Obj | any);
 
 export type LinkGroupType = (options?: {
-  overrides?: Partial<ArrayField>;
+  overrides?: Partial<FieldArrayHelpers>;
   appearances?: LinkAppearances[] | false;
 }) => (Obj | any);
 
@@ -66,7 +59,7 @@ export type CMSLinkType = {
   url?: Url;
   newTab?: boolean;
   reference?: {
-    value: string | Page;
+    value: string | any;
     relationTo: "pages";
   };
   label?: string;
@@ -83,8 +76,23 @@ export type ScriptEmbed = {
   dataNtpc?: string;
 };
 
+type mimeTypeObj = {
+  [mimeType: string]: string[]
+}
+
+interface PhotoL extends ImageElementProps {
+  alt: string;
+  asset?: string[] | Obj;
+  crop?: Crop;
+  customRatio?: number;
+  hotspot?: boolean;
+  type: mimeTypeObj | string;
+  aspectRatio: number;
+  lqip: Url | string;
+};
+
 export type PhotoType = {
-  photo: ImageElementProps & PhotoProps;
+  photo: PhotoL & PhotoProps;
   width?: string | number | null;
   height?: string | number | null;
   srcSizes?: number[];

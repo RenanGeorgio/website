@@ -135,7 +135,7 @@ const ProductCard: any = React.forwardRef(function ProductCard(
             {showThumbs && (
               <div className="product-card--thumb">
                 <ProductThumbnail
-                  thumbnails={product.photos.listing}
+                  thumbnails={product?.photos?.listing}
                   activeVariant={activeVariant}
                 />
               </div>

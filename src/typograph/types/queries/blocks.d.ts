@@ -2,31 +2,30 @@ import { ProductProp } from './product.d';
 import { ptContent } from './queries.d';
 
 interface BlockParams {
-  _type: 'freeform' | 'accordions' | 'productCard' | undefined;
   _key: any;
 };
 
+type maxWidthType = (width: string | number) => any;
+
 export interface FreeFormProps extends BlockParams {
+  _type: 'freeform';
   content?: ptContent[];
   textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit' | 'start' | 'end' | 'match-parent' | 'justify-all' |  undefined;
-  maxWidth?: string | (width: string | number) => any;
+  maxWidth?: maxWidthType | string;
 };
 
 export interface AccordionsProps extends BlockParams {
+  _type: 'accordions';
   items: {
-    ["id": _key]: string;
+    id: string | number;
     title?: string;
     content?: ptContent[];
   }[];
 };
 
 export interface ProductBlockParams extends BlockParams {
+  _type: 'productCard';
   product: ProductProp;
 }
 
-export type BlocksProps = {
-  [_type: "freeform"]: FreeFormProps |
-  [_type: "accordions"]: AccordionsProps |
-  [_type: "productCard"]: ProductBlockParams |
-  undefined
-}
+export type BlocksProps = FreeFormProps | AccordionsProps | ProductBlockParams | undefined;

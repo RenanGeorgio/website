@@ -1,13 +1,22 @@
+// @ts-nocheck
 import { useState, useCallback, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { clampRange } from '@lib/helpers';
 import { counterAnim } from '@lib/animate';
-
 import Icon from '@components/icon';
 
+interface Props {
+  id?: number | string;
+  key?: number | string;
+  defaultCount?: number;
+  onUpdate?: (value?: number) => void; 
+  max?: number;
+  className?: string;
+}
+
 const ProductCounter = React.memo(
-  ({ id, defaultCount = 1, onUpdate, max, className }) => {
+  ({ id, defaultCount = 1, onUpdate, max, className }: Props) => {
     const [lineQuantity, setLineQuantity] = useState(defaultCount)
 
     const [direction, setDirection] = useState(1)

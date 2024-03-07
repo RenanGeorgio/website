@@ -4,11 +4,11 @@ import { ptContent } from './queries.d';
 import { ProductProp, listingPhoto } from './product.d';
 
 type ModuleParams = {
-  _type: 'grid' | 'hero' | 'marquee' | 'dividerPhoto' | 'productHero' | 'collectionGrid' | undefined;
   _key: string | number;
 }
 
 export interface HeroProps extends ModuleParams {
+  _type: 'hero';
   content?: ptContent[];
   bgType?: 'video' | 'photo' | undefined;
   photos?: {
@@ -37,25 +37,27 @@ type MarqueeProductType = {
   product?: ProductProp;
 }
 
+type MarqueePropsItem = MarqueeSimpleType | MarqueePhotoType | MarqueeProductType;
+
 export interface MarqueeProps extends ModuleParams {
-  items?: {
-    [_type: "simple"]: MarqueeSimpleType |
-    [_type: "photo"]: MarqueePhotoType |
-    [_type: "product"]: MarqueeProductType |
-    undefined
-  }[];
+  _type: 'marquee';
   speed?: any;
   reverse?: boolean;
   pausable?: boolean;
+  items:  MarqueePropsItem[];
 };
 
 export interface DividerPhotoProps extends ModuleParams {
+  _type: 'dividerPhoto';
   photo?: listingPhoto;
 }
 
-export type ProductHeroProps = ModuleParams;
+export interface ProductHeroProps extends ModuleParams {
+  _type: 'productHero';
+}
 
 export interface CollectionGridProps extends ModuleParams {
+  _type: 'collectionGrid';
   title?: string;
   paginationLimit?: any;
   filter?: {
@@ -97,17 +99,10 @@ export type GridColumn = {
 }
 
 export interface GridProps extends ModuleParams {
+  _type: 'grid';
   size?: string | number[];
   columns?: GridColumn[];
   children?: React.ReactNode;
 }
 
-export type ModulesProps = {
-  [_type: "grid"]: GridProps |
-  [_type: "hero"]: HeroProps |
-  [_type: "marquee"]: MarqueeProps |
-  [_type: "dividerPhoto"]: DividerPhotoProps |
-  [_type: "productHero"]: ProductHeroProps |
-  [_type: "collectionGrid"]: CollectionGridProps |
-  undefined
-}
+export type ModulesProps = GridProps | HeroProps | MarqueeProps | DividerPhotoProps | ProductHeroProps | CollectionGridProps | undefined;

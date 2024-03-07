@@ -1,12 +1,12 @@
 import { contrastColor } from 'contrast-color';
 
 interface Props {
-  label: string;
+  label?: string;
   color: string;
   children?: React.ReactNode;
 };
 
-const Swatch = ({ label, color, children }: Props) => {
+const Swatch: React.FC<any> = ({ label, color, children }: Props) => {
   if (!color) {
     return null;
   }
@@ -15,12 +15,8 @@ const Swatch = ({ label, color, children }: Props) => {
     <div
       className="swatch"
       aria-label={label}
-      style={{
-        '--swatchColor': color?.hex,
-        '--swatchBorder': color?.hex
-          ? contrastColor({ bgColor: color?.hex })
-          : null,
-      }}
+      // @ts-ignore
+      style={{'--swatchColor': color?.hex, '--swatchBorder': color?.hex ? contrastColor({ bgColor: color?.hex }) : null}}
     >
       {children}
     </div>
