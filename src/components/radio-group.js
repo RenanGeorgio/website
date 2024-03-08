@@ -1,5 +1,5 @@
-import React, { createContext, useContext } from 'react'
-import flattenChildren from 'react-keyed-flatten-children'
+import React, { createContext, useContext } from 'react';
+import flattenChildren from 'react-keyed-flatten-children';
 
 // Create radio contexts
 const RadioGroupContext = createContext()

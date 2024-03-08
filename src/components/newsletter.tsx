@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { fadeAnim } from '@lib/animate';
-import BlockContent from '@components/block-content';
+import { BlockContent } from '@components/block';
 import Icon from '@components/icon';
 
 const Newsletter = ({ data = {} }) => {
