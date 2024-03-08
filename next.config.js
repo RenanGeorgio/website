@@ -1,10 +1,10 @@
-const sanityClient = require('@sanity/client')
+/*const sanityClient = require('@sanity/client')
 const client = sanityClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_PROJECT_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV === 'production',
   apiVersion: '2022-08-30',
-})
+})*/
 
 // see breakdown of code bloat
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -12,7 +12,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 // get redirects from Sanity for Vercel
-async function fetchSanityRedirects() {
+/*async function fetchSanityRedirects() {
   const redirectData = await client.fetch(`
     *[_type == "redirect"]{
       "source": "/" + from,
@@ -22,14 +22,14 @@ async function fetchSanityRedirects() {
   `)
 
   return redirectData
-}
+}*/
 
 module.exports = withBundleAnalyzer({
   swcMinify: true,
-  async redirects() {
-    const sanityRedirects = await fetchSanityRedirects()
-    return sanityRedirects
-  },
+  //async redirects() {
+    //const sanityRedirects = await fetchSanityRedirects()
+    //return sanityRedirects
+ // },
   async headers() {
     return [
       {
