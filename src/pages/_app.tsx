@@ -6,7 +6,6 @@ import Site from '@views/site';
 import { Obj } from '@typograph/types';
 
 import '@styles/index.css';
-import '@styles/tailwind.css';
 import '@styles/app.css';
 
 const App: React.FC<AppProps> = ({ Component, router, pageProps }: AppProps): any => {
