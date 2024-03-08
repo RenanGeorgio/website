@@ -159,12 +159,12 @@ const Collection = (data: Props) => {
           {paginatedProducts.map((product: ProductProp, key: number | string) => (
             <ProductCard
               // @ts-ignore
-              ref={(node: any) => (collectionItems?.current[key] = node)}
+              ref={(node: any) => (collectionItems.current[key] = node)}
               key={
                 product.id +
                 activeParams
-                  .filter((f: any) => f?.name !== 'page')
-                  .map((f: any) => f?.value)
+                  .filter((f: any) => f.name !== 'page')
+                  .map((f: any) => f.value)
                   .filter(Boolean)
                   .join('-')
               }
