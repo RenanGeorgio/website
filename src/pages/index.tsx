@@ -12,7 +12,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Home = (data: Props) => {
+function Home(data: Props) {
   const { site, page } = data;
 
   if (!page) {
