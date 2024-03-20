@@ -1,6 +1,8 @@
 import { gql, GraphQLClient } from 'graphql-request';
+import * as queries from '@data/queries';
 import { Obj } from '@typograph/types';
-import { ProductProp, Page, CollectionGridProps } from '@typograph/types/queries';
+import { Page } from '@typograph/interfaces';
+import { ProductProp, CollectionGridProps } from '@typograph/types/queries';
 import { fetchCmsEntityAPI } from './entity/twins';
 
 const API_URL = 'https://graphql.datocms.com/';
@@ -38,6 +40,7 @@ export async function getAllDocSlugsSchema(doc: string): Promise<any[]> {
    }
   `
   const fetchApi: Obj = fetchCmsEntityAPI();
+  // @ts-ignore
   const { allDocsModels }: any[] = await fetchApi?.request(query);
   
   return allDocsModels;  
@@ -64,7 +67,8 @@ export async function getStaticPageSchema(pageData: any, preview: Obj): Promise<
   }
   `
   const fetchApi: Obj = fetchCmsEntityAPI();
-  const { staticPage } : any = await fetchApi?.request(query);
+  // @ts-ignore
+  const { staticPage }: any = await fetchApi?.request(query);
   
   return staticPage;
 }
@@ -92,6 +96,7 @@ export async function getPageSchema(slug: any, preview: any): Promise<Page> {
   }
   `
   const fetchApi: Obj = fetchCmsEntityAPI();
+  // @ts-ignore
   const { page }: Page = await fetchApi?.request(query);
   
   return page;
@@ -120,6 +125,7 @@ export async function getProductSchema(slug: any, preview: any): Promise<Product
   `
   
   const fetchApi: Obj = fetchCmsEntityAPI();
+  // @ts-ignore
   const { product }: ProductProp = await fetchApi?.request(query);
   
   return product;
@@ -147,6 +153,7 @@ export async function getCollectionSchema(slug: any, preview: any): Promise<Coll
   }
   `
   const fetchApi: Obj = fetchCmsEntityAPI();
+  // @ts-ignore
   const { collection }: CollectionGridProps = await fetchApi?.request(query);
   
   return collection;

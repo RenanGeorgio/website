@@ -41,6 +41,9 @@
       ],
       "@data": [
         "data/index"
+      ],
+      "@data/*": [
+        "data/*"
       ]
     },
     "incremental": true,

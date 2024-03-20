@@ -7,7 +7,8 @@ import {
     getCollectionSchema 
 } from '@lib/cms-providers/dato';
 import { Obj } from '@typograph/types';
-import { ProductProp, Page, CollectionGridProps } from '@typograph/types/queries';
+import { Page } from '@typograph/interfaces';
+import { ProductProp, CollectionGridProps } from '@typograph/types/queries';
 
 export async function getAllDocSlugs(doc: string): Promise<any[]> {
     return getAllDocSlugsSchema(doc);
