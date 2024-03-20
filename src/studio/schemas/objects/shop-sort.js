@@ -1,4 +1,4 @@
-import { SortAscending } from 'phosphor-react'
+import { SortAscending } from 'phosphor-react';
 
 export const sortTypes = [
   { title: 'Featured', value: 'featured' },
