@@ -12,12 +12,12 @@ export interface HeroProps extends ModuleParams {
   content?: ptContent[];
   bgType?: 'video' | 'photo' | undefined;
   photos?: {
-      mobilePhoto?: listingPhoto;
-      desktopPhoto?: listingPhoto;
+    mobilePhoto?: listingPhoto;
+    desktopPhoto?: listingPhoto;
   };
   video?: {
-      id: string | number;
-      title?: string;
+    id: string | number;
+    title?: string;
   }
 };
 
