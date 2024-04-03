@@ -1,3 +1,7 @@
+/** @type {import('next').NextConfig} */
+
+// @ts-nocheck
+/* tslint:disable */
 /*const sanityClient = require('@sanity/client')
 const client = sanityClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_PROJECT_DATASET,
