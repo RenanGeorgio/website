@@ -158,3 +158,5 @@ export async function getCollectionSchema(slug: any, preview: any): Promise<Coll
   
   return collection;
 }
+
+export { queries }

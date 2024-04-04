@@ -39,11 +39,11 @@
       "@views/*": [
         "views/*"
       ],
-      "@data": [
-        "data/index"
-      ],
       "@data/*": [
         "data/*"
+      ],
+      "@studio/*": [
+        "studio/*"
       ]
     },
     "incremental": true,
@@ -54,15 +54,7 @@
   ],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/**/*.js",
-    "./src/**/*.jsx",
-    "./src/@types/*.ts",
+    "src",
     "global.d.ts"
   ],
   "typeRoots": [

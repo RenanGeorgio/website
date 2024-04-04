@@ -1,5 +1,6 @@
 import Error from 'next/error';
-import { getStaticPage, queries } from '@data';
+import { getStaticPage } from '@data/cms-api';
+import { queries } from '@lib/cms-providers/dato';
 import Layout from '@components/layout';
 import { Module } from '@components/modules';
 import Container from '@components/container';
