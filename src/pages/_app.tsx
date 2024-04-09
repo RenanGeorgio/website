@@ -1,3 +1,4 @@
+import * as React from "react";
 import { AppProps } from 'next/app';
 import type { AppInitialProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';

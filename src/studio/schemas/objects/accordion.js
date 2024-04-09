@@ -1,4 +1,4 @@
-import { CaretCircleDown } from 'phosphor-react'
+import { CaretCircleDown } from 'phosphor-react';
 
 export default {
   title: 'Accordion',

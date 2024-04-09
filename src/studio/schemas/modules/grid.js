@@ -1,6 +1,5 @@
-import { TextAlignLeft, Question } from 'phosphor-react'
-
-import { getTypeTitles } from '../../lib/helpers'
+import { TextAlignLeft, Question } from 'phosphor-react';
+import { getTypeTitles } from '../../lib/helpers';
 
 export default {
   title: 'Content Grid',

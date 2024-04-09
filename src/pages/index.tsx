@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import Error from 'next/error';
 import { getStaticPage } from '@data/cms-api';
 import { queries } from '@lib/cms-providers/dato';

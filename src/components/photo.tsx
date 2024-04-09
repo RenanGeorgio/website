@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-cool-inview';
 import cx from 'classnames';
-import { buildSrcSet, buildSrc } from '@lib/helpers';
+//import { buildSrcSet, buildSrc } from '@lib/helpers';
 import { PhotoType } from '@typograph/types';
 
 const Photo: React.FC<any> = ({
@@ -35,8 +35,11 @@ const Photo: React.FC<any> = ({
 
   const aspectCustom = layout === 'intrinsic' ? { paddingTop: `${aspect}%` } : null
 
+  const src = null;
+  const srcset = null;
+
   // define our src and srcset
-  const src = buildSrc(photo, {
+  /*const src = buildSrc(photo, {
     ...{ width },
     ...{ height },
     ...{ quality },
@@ -46,7 +49,7 @@ const Photo: React.FC<any> = ({
     ...{ srcSizes },
     ...{ aspect },
     ...{ quality },
-  })
+  })*/
 
   // handle our image onLoad
   function handleLoad() {

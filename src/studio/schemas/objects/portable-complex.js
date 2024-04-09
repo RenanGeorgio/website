@@ -4,9 +4,8 @@ import {
   Header3,
   Header4,
   Button
-} from '../../components/block-renders'
-
-import customImage from '../../lib/custom-image'
+} from '../../components/block-renders';
+import customImage from '../../lib/custom-image';
 
 export default {
   title: 'Rich Text',

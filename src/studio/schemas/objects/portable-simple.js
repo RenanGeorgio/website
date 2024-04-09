@@ -1,4 +1,4 @@
-import { Button } from '../../components/block-renders'
+import { Button } from '../../components/block-renders';
 
 export default {
   title: 'Portable Text',

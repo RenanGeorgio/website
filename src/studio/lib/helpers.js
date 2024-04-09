@@ -1,5 +1,5 @@
-import React from 'react'
-import { Circle } from 'phosphor-react'
+import React from 'react';
+import { Circle } from 'phosphor-react';
 
 export const getModuleName = type => {
   switch (type) {

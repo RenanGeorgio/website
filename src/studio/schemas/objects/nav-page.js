@@ -1,6 +1,5 @@
-import { LinkSimpleHorizontal } from 'phosphor-react'
-
-import { getStaticRoute, getDynamicRoute } from '../../lib/helpers'
+import { LinkSimpleHorizontal } from 'phosphor-react';
+import { getStaticRoute, getDynamicRoute } from '../../lib/helpers';
 
 export default {
   title: 'Page',

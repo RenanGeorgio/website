@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "target": "esnext",
+    "target": "es2020",
     "module": "esnext",
     "jsx": "preserve",
     "strict": true,
@@ -18,6 +18,13 @@
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": false,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
     "paths": {
       "@components/*": [
         "components/*",
@@ -46,8 +53,7 @@
         "studio/*"
       ]
     },
-    "incremental": true,
-    "isolatedModules": true
+    "incremental": true
   },
   "exclude": [
     "node_modules"
@@ -55,7 +61,10 @@
   "include": [
     "next-env.d.ts",
     "src",
-    "global.d.ts"
+    "global.d.ts",
+    "**/*.ts", 
+    "**/*.tsx", 
+    "**/*.js"
   ],
   "typeRoots": [
     "node_modules/@types",

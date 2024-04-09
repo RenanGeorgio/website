@@ -1,5 +1,5 @@
-import React from 'react'
-import { SquaresFour } from 'phosphor-react'
+import React from 'react';
+import { SquaresFour } from 'phosphor-react';
 
 export default {
   title: 'Collection',

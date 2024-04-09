@@ -1,4 +1,4 @@
-import { WarningCircle } from 'phosphor-react'
+import { WarningCircle } from 'phosphor-react';
 
 export default {
   title: 'Header Settings',

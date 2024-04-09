@@ -1,8 +1,6 @@
-import React from 'react'
-import { Broadcast } from 'phosphor-react'
-import { Badge } from '@sanity/ui'
-
-import { getModuleName } from '../../lib/helpers'
+import React from 'react';
+import { Broadcast } from 'phosphor-react';
+import { getModuleName } from '../../lib/helpers';
 
 export default {
   title: 'Reusable Section',

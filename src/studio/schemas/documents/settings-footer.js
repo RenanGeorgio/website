@@ -1,4 +1,4 @@
-import { PaperPlaneTilt, List, GlobeSimple } from 'phosphor-react'
+import { PaperPlaneTilt, List, GlobeSimple } from 'phosphor-react';
 
 export default {
   title: 'Footer Settings',

@@ -1,5 +1,5 @@
-import React from 'react'
-import { decodeAssetUrl } from '../../lib/helpers'
+import React from 'react';
+import { decodeAssetUrl } from '../../lib/helpers';
 
 export default {
   title: 'Default SEO / Share',

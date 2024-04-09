@@ -1,7 +1,6 @@
-import React from 'react'
-import { Gift, CloudArrowDown, ArrowsClockwise } from 'phosphor-react'
-
-import { getIcon } from './filter'
+import React from 'react';
+import { Gift, CloudArrowDown, ArrowsClockwise } from 'phosphor-react';
+import { getIcon } from './filter';
 
 export default {
   name: 'product',

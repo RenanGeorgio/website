@@ -7,7 +7,7 @@ import {
   FaTwitter,
   FaYoutube,
   FaGithub
-} from 'react-icons/fa'
+} from 'react-icons/fa';
 
 const getIcon = icon => {
   switch (icon) {

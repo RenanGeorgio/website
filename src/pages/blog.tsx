@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import Head from "next/head";
 import Container from "@components/container";
 import MoreStories from "@components/more-stories";
@@ -15,6 +17,7 @@ type Props = {
 export default function Blog({ allPosts }: Props) {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
+
   return (
     <>
       <Layout>

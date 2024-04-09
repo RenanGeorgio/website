@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { imageBuilder } from '@lib/sanity'
+//import { imageBuilder } from '@lib/sanity'
 import Router, { useRouter } from 'next/router'
 import queryString from 'query-string'
 
@@ -341,6 +341,7 @@ export function useScrollRestoration(router, delay) {
 /*  Image helpers
 /*  ------------------------------ */
 
+/*
 export function buildSrc(image, { width, height, format, quality }) {
   let imgSrc = imageBuilder.image(image)
 
@@ -380,4 +381,4 @@ export function buildSrcSet(image, { srcSizes, aspect, format, quality }) {
   })
 
   return sizes.join(',')
-}
+}*/

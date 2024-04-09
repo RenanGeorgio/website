@@ -1,6 +1,5 @@
-import { Image } from 'phosphor-react'
-
-import customImage from '../../lib/custom-image'
+import { Image } from 'phosphor-react';
+import customImage from '../../lib/custom-image';
 
 export default {
   title: 'Divider Photo',

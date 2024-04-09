@@ -1,5 +1,5 @@
-import React from 'react'
-import { Copy, CloudArrowDown, ArrowsClockwise } from 'phosphor-react'
+import React from 'react';
+import { Copy, CloudArrowDown, ArrowsClockwise } from 'phosphor-react';
 
 export default {
   name: 'productVariant',

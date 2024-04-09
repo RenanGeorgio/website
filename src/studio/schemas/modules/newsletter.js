@@ -1,4 +1,4 @@
-import { PaperPlaneTilt } from 'phosphor-react'
+import { PaperPlaneTilt } from 'phosphor-react';
 
 export default {
   title: 'Newsletter Form',

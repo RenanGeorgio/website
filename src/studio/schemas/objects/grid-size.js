@@ -1,6 +1,5 @@
-import React from 'react'
-import { Question } from 'phosphor-react'
-import { Avatar } from '@sanity/ui'
+import React from 'react';
+import { Question } from 'phosphor-react';
 
 export default {
   title: 'Column Size',
@@ -142,10 +141,7 @@ export default {
         title: `Width: ${width}`,
         subtitle: start ? `Offset: ${start}` : null,
         media: (
-          <Avatar
-            initials={breakpoint && breakpoint.trim() ? breakpoint : 'D'}
-            size={1}
-          />
+          null // TODO: trocar por midia real
         )
       }
     }

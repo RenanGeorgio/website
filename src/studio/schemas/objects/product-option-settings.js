@@ -1,7 +1,6 @@
-import React from 'react'
-import { Gear } from 'phosphor-react'
-
-import { getSwatch } from '../../lib/helpers'
+import React from 'react';
+import { Gear } from 'phosphor-react';
+import { getSwatch } from '../../lib/helpers';
 
 export default {
   title: 'option Settings',
