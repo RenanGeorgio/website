@@ -43,6 +43,7 @@ const ProductThumbnail = ({ thumbnails = [], activeVariant }: Props) => {
 
   const photos = variantThumbnails ? variantThumbnails : defaultThumbnails
 
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   const id = photos?.default?.id + photos?.hover?.id
 
   return (

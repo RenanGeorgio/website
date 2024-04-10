@@ -3,10 +3,12 @@ import { PaintBucket } from 'phosphor-react'
 
 import { getSwatch } from '../../lib/helpers'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Color',
   name: 'solidColor',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <PaintBucket />,
   fields: [
     {

@@ -15,6 +15,7 @@ interface Props {
   className?: string;
 }
 
+// eslint-disable-next-line react/display-name
 const ProductCounter = React.memo(
   ({ id, defaultCount = 1, onUpdate, max, className }: Props) => {
     const [lineQuantity, setLineQuantity] = useState(defaultCount)
@@ -31,12 +32,14 @@ const ProductCounter = React.memo(
 
       setIsAnimating(true);
       setDirection(direction);
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       setMotionKey(count + (direction > 0 ? '-up' : '-down'));
       setLineQuantity(count);
 
       if (onUpdate) {
         onUpdate(count);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const updateQuantity = useCallback((amount) => {
@@ -50,6 +53,7 @@ const ProductCounter = React.memo(
       if (onUpdate) {
         onUpdate(count);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -81,7 +85,7 @@ const ProductCounter = React.memo(
                 onChange={(e) =>
                   updateQuantity(parseInt(e.currentTarget.value, 10))
                 }
-                onBlur={(e) => isNaN(lineQuantity) && updateQuantity(1)}
+                onBlur={(_e) => isNaN(lineQuantity) && updateQuantity(1)}
                 type="number"
                 inputMode="numeric"
                 min="1"

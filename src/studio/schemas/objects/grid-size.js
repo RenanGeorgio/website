@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Question } from 'phosphor-react';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Column Size',
   name: 'gridSize',
@@ -136,7 +138,7 @@ export default {
       width: 'width',
       start: 'start'
     },
-    prepare({ breakpoint, width, start }) {
+    prepare({ _breakpoint, width, start }) {
       return {
         title: `Width: ${width}`,
         subtitle: start ? `Offset: ${start}` : null,

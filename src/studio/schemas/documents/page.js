@@ -1,10 +1,12 @@
 import React from 'react'
 import { Browser } from 'phosphor-react'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Page',
   name: 'page',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <Browser />,
   groups: [
     { title: 'Content', name: 'content', default: true },

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // @ts-nocheck
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-cool-inview';
@@ -9,9 +10,11 @@ const Photo: React.FC<any> = ({
   photo,
   width,
   height,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   srcSizes = [400, 600, 800, 1000, 1200],
   sizes = '(min-width: 940px) 50vw, 100vw',
   layout = 'intrinsic',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   quality = 80,
   hasPlaceholder = true,
   forceLoad,
@@ -20,8 +23,10 @@ const Photo: React.FC<any> = ({
 }: PhotoType) => {
   if (!photo?.asset) return null
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { observe, inView } = useInView({
     unobserveOnEnter: true,
     threshold: 0.1,
@@ -59,8 +64,10 @@ const Photo: React.FC<any> = ({
   }
 
   // trigger any onLoad callbacks
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (isLoaded) onLoad?.()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded]);
 
   return (

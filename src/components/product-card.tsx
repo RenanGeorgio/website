@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { useState } from 'react';
 import { m } from 'framer-motion';

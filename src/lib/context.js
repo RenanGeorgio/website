@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { gql } from 'graphql-request';
 import { Base64 } from 'base64-string';
@@ -231,6 +232,7 @@ function useSiteContext() {
 // Toggle page transition state
 function useTogglePageTransition() {
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     context: { isPageTransition },
     setContext,
   } = useContext(SiteContext)
@@ -277,6 +279,7 @@ function useCartCount() {
   let count = 0
 
   if (checkout.lineItems) {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     count = checkout.lineItems.reduce((total, item) => item.quantity + total, 0)
   }
 

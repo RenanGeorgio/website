@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Head from "next/head";
 import Container from "@components/container";
 import MoreStories from "@components/more-stories";
@@ -43,6 +42,7 @@ export default function Blog({ allPosts }: Props) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticProps = async () => {
   const allPosts = getAllPosts([
     "title",

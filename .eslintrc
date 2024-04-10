@@ -5,37 +5,67 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "next",
-    "prettier",
-    "next/core-web-vitals",
-    "eslint:recommended", 
-    "plugin:prettier/recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
   "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "react",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 12,
+    "project": ["./tsconfig.json"],
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "prettier"
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking", 
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+      },
+      "typescript": {}
+    }
+  },
   "rules": {
+    "space-before-function-paren": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn", { "args": "after-used", "ignoreRestSiblings": false, "argsIgnorePattern": "^_.*?$" }],
+    "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "@typescript-eslint/no-unsafe-member-access": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-unsafe-call": 0,
+    "@typescript-eslint/no-unsafe-return": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-floating-promises": 0,
+    "@typescript-eslint/no-unsafe-assignment": 0,
+    "@typescript-eslint/restrict-template-expressions": 0,
+    "@typescript-eslint/no-empty-function": 0,
     "prettier/prettier": ["off", {
       "endOfLine":"auto"
     }],
-    "space-before-function-paren": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/prop-types": "off"
   }
 }

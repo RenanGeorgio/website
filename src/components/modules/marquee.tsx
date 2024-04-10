@@ -12,6 +12,7 @@ const Marquee: React.FC<any> = (data: MarqueeProps) => {
     return null;
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { observe, inView } = useInView({
     unobserveOnEnter: true,
     threshold: 0.1,

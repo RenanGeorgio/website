@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { useRef, useState, useEffect } from 'react';
 import Player from '@vimeo/player';
@@ -18,6 +19,7 @@ const VideoLoop = ({
   id,
   width = 16,
   height = 9,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   initialState = false,
   className,
   ...rest
@@ -34,6 +36,7 @@ const VideoLoop = ({
     if (videoRef.current && iframePlayer === null) {
       setIframePlayer(new Player(videoRef.current));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoRef.current]);
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Gift, CloudArrowDown, ArrowsClockwise } from 'phosphor-react';
 import { getIcon } from './filter';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   name: 'product',
   title: 'Product',
@@ -27,6 +28,7 @@ export default {
       options: { columns: 2 }
     }
   ],
+  // eslint-disable-next-line react/display-name
   icon: () => <Gift />,
   fields: [
     {
@@ -345,6 +347,7 @@ export default {
       const path = `/products/${slug.current ?? store.slug?.current}`
       return {
         title:
+          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           (title ? title : store.title) +
           (wasDeleted ? ' (removed)' : '') +
           (isDraft ? ' (draft)' : ''),

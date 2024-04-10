@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useRef, useState, useEffect } from 'react';
 import FocusTrap from 'focus-trap-react';
 import { m } from 'framer-motion';

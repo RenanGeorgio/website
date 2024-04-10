@@ -18,6 +18,7 @@ type Props = {
   preview?: boolean;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Post({ post, morePosts, preview }: Props) {
   const router = useRouter();
   const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
@@ -81,6 +82,7 @@ export async function getStaticProps({ params }: Params) {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function getStaticPaths() {
   const posts = getAllPosts(["slug"]);
 

@@ -105,6 +105,7 @@ export const assemblePageUrl = ({ document, domain }) => {
     return ''
   }
 
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   return domain + (slug ? `/${slug.current}` : '')
 }
 

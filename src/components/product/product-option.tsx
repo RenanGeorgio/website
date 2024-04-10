@@ -47,6 +47,7 @@ const ProductOption = ({
 }: Props) => {
   const otherOpts = [
     ...activeVariant.options.slice(0, position),
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     ...activeVariant.options.slice(position + 1),
   ]
 

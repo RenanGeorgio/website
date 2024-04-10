@@ -14,10 +14,12 @@ export const getIcon = (type, color) => {
   }
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Filter',
   name: 'filter',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <Sliders />,
   fields: [
     {

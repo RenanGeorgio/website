@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-regexp-exec */
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 //import { imageBuilder } from '@lib/sanity'
@@ -250,6 +252,7 @@ export function useParams(fallback) {
         shallow: true,
       })
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [router]
   )
 
@@ -334,6 +337,7 @@ export function useScrollRestoration(router, delay) {
       Router.events.off('routeChangeComplete', onRouteChangeComplete)
       Router.beforePopState(() => true)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
 

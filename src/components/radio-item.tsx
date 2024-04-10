@@ -60,6 +60,7 @@ const RadioItem: React.FC<any> = ({ title, value, children, ...rest }: Props) =>
 
       case 'ArrowDown':
       case 'ArrowRight': {
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         onChange(items[wrap(index + 1, items.length)].props.value);
         flag = true;
         break;

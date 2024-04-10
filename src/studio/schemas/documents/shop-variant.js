@@ -1,6 +1,7 @@
 import React from 'react';
 import { Copy, CloudArrowDown, ArrowsClockwise } from 'phosphor-react';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   name: 'productVariant',
   title: 'Variant',
@@ -18,6 +19,7 @@ export default {
       options: { columns: 2 }
     }
   ],
+  // eslint-disable-next-line react/display-name
   icon: () => <Copy />,
   fields: [
     {
@@ -170,6 +172,7 @@ export default {
 
       return {
         title:
+          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           (title ? title : variantTitle ?? store.title) +
           (wasDeleted ? ' (removed)' : '') +
           (isDraft ? ' (draft)' : ''),

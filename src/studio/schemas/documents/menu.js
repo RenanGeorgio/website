@@ -1,10 +1,12 @@
 import React from 'react'
 import { List } from 'phosphor-react'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Menu',
   name: 'menu',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <List />,
   fields: [
     {
