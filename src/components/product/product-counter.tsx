@@ -1,6 +1,5 @@
 // @ts-nocheck
 import { useState, useCallback, useEffect, memo } from 'react';
-import { useState, useCallback, useEffect, memo } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { clampRange } from '@lib/helpers';
@@ -16,8 +15,7 @@ interface Props {
   className?: string;
 }
 
-const ProductCounter = memo(
-  ({ id, defaultCount = 1, onUpdate, max, className }: Props) => {
+const ProductCounter = memo(function ProductCounter({ id, defaultCount = 1, onUpdate, max, className }: Props) {
     const [lineQuantity, setLineQuantity] = useState(defaultCount)
 
     const [direction, setDirection] = useState(1)
@@ -104,6 +102,5 @@ const ProductCounter = memo(
       </div>
     );
   }
-)
-
+);
 export default ProductCounter;

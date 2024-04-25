@@ -1,9 +1,7 @@
-import { sortTypes } from '@studio/schemas/objects/shop-sort';
+import { sortTypes } from '@studio/schemas/objects/shop-sort'
 
 // Create our sorting fallback titles from Sanity
-const sortFallbacks = sortTypes
-  .map((type) => `type == "${type.value}" => "${type.title}"`)
-  .join(',')
+const sortFallbacks = sortTypes.map(type => `type == "${type.value}" => "${type.title}"`).join(',')
 
 // Construct our "home" and "error" page GROQ
 export const homeID = `*[_type=="generalSettings"][0].home->_id`
@@ -385,49 +383,93 @@ export const modules = `
 // `
 
 export const site = `
-siteInfo {
-  header {
-    menuDesktopLeft {
-      items {
-        link
-        featured {
-          price
-          lowSotck
-          inStock
-          id
-          slug
-          surfaceOption
-          title
-          useGallery
-        }
-      }
-    }
-    promo {
-      link
-      text
-    }
-  }
-  footer
+currentSite {
+  id
   title
-  rootDomain
-  shop {
-    storeUrl
-    cartMessage
+  footer {
+    blocks {
+      block
+    }
   }
-  productCount {
+  gtmid {
+    id
+    gtmid
+    preview
+    datalayername
+    datalayer(markdown: false)
+  }
+  rootDomain
+  productcounts {
     slug
+    id
     count
   }
-  gtmId
-  cookieConsent {
-    enabled
+  seo {
+    description
+    noIndex
+    title
+    twitterCard
+  }
+  shop {
     id
-    link
-    message
+    storeUrl
+  }
+  header {
+    id
+    promo {
+      id
+      enabled
+      display
+      link
+      text(markdown: false)
+    }
   }
 }
-
 `
+// export const site = ` reference
+// siteInfo {
+//   header {
+//     menuDesktopLeft {
+//       items {
+//         link
+//         featured {
+//           price
+//           lowSotck
+//           inStock
+//           id
+//           slug
+//           surfaceOption
+//           title
+//           useGallery
+//         }
+//       }
+//     }
+//     promo {
+//       link
+//       text
+//     }
+//   }
+//   footer
+//   title
+//   rootDomain
+//   shop {
+//     storeUrl
+//     cartMessage
+//   }
+//   productCount {
+//     slug
+//     count
+//   }
+//   gtmId
+//   cookieConsent {
+//     enabled
+//     id
+//     link
+//     message
+//   }
+// }
+
+// `
 
 // All Products
 export const allProducts = `

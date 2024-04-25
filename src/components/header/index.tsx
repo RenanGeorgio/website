@@ -26,6 +26,7 @@ interface Props {
 };
 
 const Header: React.FC<any> = ({ data , isTransparent, onSetup }: Props) => {
+  console.log("data of header", data)
   // @ts-ignore
   const { promo, menuDesktopLeft, menuDesktopRight, menuMobilePrimary, menuMobileSecondary } = data;
 

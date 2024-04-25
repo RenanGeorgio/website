@@ -1,14 +1,16 @@
-import { gql, GraphQLClient } from 'graphql-request';
-import * as queries from '@data/queries';
-import { Obj } from '@typograph/types';
-import { Page } from '@typograph/interfaces';
-import { ProductProp, CollectionGridProps } from '@typograph/types/queries';
-import { fetchCmsEntityAPI } from './entity/twins';
+import { gql, GraphQLClient } from 'graphql-request'
+import * as queries from '@data/queries'
+import { Obj } from '@typograph/types'
+import { Page } from '@typograph/interfaces'
+import { ProductProp, CollectionGridProps } from '@typograph/types/queries'
+import { fetchCmsEntityAPI } from './entity/twins'
 
-const API_URL = 'https://graphql.datocms.com/';
+const API_URL = 'https://graphql.datocms.com/'
 
-export async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
-
+export async function fetchCmsAPI(
+  query: string,
+  { variables }: { variables?: Record<string, any> } = {}
+) {
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
@@ -19,17 +21,17 @@ export async function fetchCmsAPI(query: string, { variables }: { variables?: Re
       query,
       variables
     })
-  });
+  })
   console.log(res, 'res')
-  const json = await res.json();
+  const json = await res.json()
   if (json.errors) {
     // eslint-disable-next-line no-console
-    console.error(json.errors);
-    throw new Error('Failed to fetch API');
+    console.error(json.errors)
+    throw new Error('Failed to fetch API')
   }
 
   console.log(json.data, 'json.data')
-  return json.data;
+  return json.data
 }
 
 export async function getAllDocSlugsSchema(doc: string): Promise<any[]> {
@@ -40,11 +42,11 @@ export async function getAllDocSlugsSchema(doc: string): Promise<any[]> {
     // }
    }
   `
-  const fetchApi: Obj = fetchCmsEntityAPI();
+  const fetchApi: Obj = fetchCmsEntityAPI()
   // @ts-ignore
-  const { allDocsModels }: any[] = await fetchApi?.request(query);
-  
-  return allDocsModels;  
+  const { allDocsModels }: any[] = await fetchApi?.request(query)
+
+  return allDocsModels
 }
 
 export async function getAllRedirectsSchema(): Promise<any> {
@@ -55,27 +57,34 @@ export async function getAllRedirectsSchema(): Promise<any> {
         to
       }
     }
-  `);
+  `)
 
-  return data.allRedirects;
+  return data.allRedirects
 }
 
 export async function getStaticPageSchema(pageData: any, preview: Obj): Promise<any> {
   const query: string = gql`
   {
+    
+      ${pageData},
+      ${queries.site}
+  }
+  `
+  console.log(`
+  {
     ${pageData},
     ${queries.site}
   }
-  `
-  const fetchApi: Obj = fetchCmsEntityAPI();
+  `)
+  const fetchApi: Obj = fetchCmsEntityAPI()
   // @ts-ignore
-  const staticPage: any = await fetchApi?.request(query);
+  const staticPage: any = await fetchApi?.request(query)
   console.log(staticPage, 'staticPage')
-  return staticPage;
+  return staticPage
 }
 
 export async function getPageSchema(slug: any, preview: any): Promise<Page> {
-  const slugs = JSON.stringify([slug, `/${slug}`, `/${slug}/`]);
+  const slugs = JSON.stringify([slug, `/${slug}`, `/${slug}/`])
   console.log('slugs ', slugs)
   const query: string = gql`
   {
@@ -96,11 +105,11 @@ export async function getPageSchema(slug: any, preview: any): Promise<Page> {
     ${queries.site}
   }
   `
-  const fetchApi: Obj = fetchCmsEntityAPI();
+  const fetchApi: Obj = fetchCmsEntityAPI()
   // @ts-ignore
-  const { page }: Page = await fetchApi?.request(query);
-  
-  return page;
+  const { page }: Page = await fetchApi?.request(query)
+
+  return page
 }
 
 export async function getProductSchema(slug: any, preview: any): Promise<ProductProp> {
@@ -124,12 +133,12 @@ export async function getProductSchema(slug: any, preview: any): Promise<Product
     ${queries.site}
    }
   `
-  
-  const fetchApi: Obj = fetchCmsEntityAPI();
+
+  const fetchApi: Obj = fetchCmsEntityAPI()
   // @ts-ignore
-  const { product }: ProductProp = await fetchApi?.request(query);
-  
-  return product;
+  const { product }: ProductProp = await fetchApi?.request(query)
+
+  return product
 }
 
 export async function getCollectionSchema(slug: any, preview: any): Promise<CollectionGridProps> {
@@ -153,11 +162,11 @@ export async function getCollectionSchema(slug: any, preview: any): Promise<Coll
     ${queries.site}
   }
   `
-  const fetchApi: Obj = fetchCmsEntityAPI();
+  const fetchApi: Obj = fetchCmsEntityAPI()
   // @ts-ignore
-  const { collection }: CollectionGridProps = await fetchApi?.request(query);
-  
-  return collection;
+  const { collection }: CollectionGridProps = await fetchApi?.request(query)
+
+  return collection
 }
 
 export { queries }

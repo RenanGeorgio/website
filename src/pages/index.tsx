@@ -16,7 +16,8 @@ interface Props {
 }
 
 function Home({ data }: Props) {
-  const { siteInfo, page } = data
+  console.log("home data", data)
+  const { currentSite, page } = data
   if (!page) {
     return (
       // @ts-ignore
@@ -27,9 +28,9 @@ function Home({ data }: Props) {
     )
   }
 
-  console.log(siteInfo, 'siteInfo')
+  console.log(currentSite, 'siteInfo')
   return (
-    <Layout site={siteInfo} page={page}>
+    <Layout site={currentSite} page={page}>
       <Container>
         <Intro />
         {page?.modules?.map((module: Obj, key: number | string) => (
@@ -62,11 +63,11 @@ export async function getStaticProps({ preview, previewData }: any) {
     // `,
 
     `  page {
-        id
-        isHome
-        isShop
-        pageType
-        slug
+      id
+      pageType
+      slug
+      ishome
+      isshop
       }
     `,
     {

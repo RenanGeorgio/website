@@ -44,7 +44,7 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
   const { height: windowHeight } = useWindowSize();
   const [lockHeight, setLockHeight] = useState<boolean>(false);
   const hasChin: boolean | undefined = isMobileSafari();
-  console.log(site, 'site')
+  console.log(site, 'site layout debug')
   // set header height
   const [headerHeight, setHeaderHeight] = useState<number | string | null>(null);
 
@@ -61,7 +61,7 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
   return (
     <>
       <Meta site={site} page={page} schema={schema} />
-      {site.gtmId && (
+      {site?.gtmId && (
         <Script
           id="gtm"
           dangerouslySetInnerHTML={{

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import Error from 'next/error';
-import { queries } from '@data';
+import { queries } from '../data/queries';
 import { getStaticPageSchema } from '@lib/cms-providers/dato';
 import Layout from '@components/layout';
 import { Module } from '@components/modules';
