@@ -1,12 +1,13 @@
-import React from 'react'
-import { Gear } from 'phosphor-react'
+import React from 'react';
+import { Gear } from 'phosphor-react';
+import { getSwatch } from '../../lib/helpers';
 
-import { getSwatch } from '../../lib/helpers'
-
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'option Settings',
   name: 'productOptionSettings',
   type: 'object',
+  // eslint-disable-next-line react/display-name
   icon: () => <Gear />,
   fields: [
     {

@@ -4,7 +4,6 @@ import FocusTrap from 'focus-trap-react';
 import { useHasMounted } from '@lib/helpers';
 import CustomLink from '@components/link';
 import { useAcceptCookies } from '@hooks/useAcceptCookies';
-import { Obj } from '@typograph/types';
 import { CookieConsent } from '@typograph/types/queries';
 
 const barAnim = {
@@ -25,12 +24,15 @@ const barAnim = {
   },
 }
 
+// eslint-disable-next-line react/display-name
 const CookieBar = memo((data: CookieConsent) => {
   const { enabled, message, link } = data;
 
   if (!enabled) return null
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const hasMounted = useHasMounted();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
 
   if (!hasMounted || !message) return null

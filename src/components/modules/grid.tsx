@@ -17,9 +17,9 @@ const Grid: React.FC<any> = (data: Props): JSX.Element => {
   const getGridSize = (
     breakpoint: any,
     size: number,
-    justify: boolean = false,
-    align: boolean = false,
-    start: boolean = false
+    justify = false,
+    align = false,
+    start = false
   ) => {
     const hasBreakpoint = breakpoint && breakpoint.trim();
     const colSpan = hasBreakpoint

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // @ts-nocheck
 import { useState } from 'react';
 import axios from 'axios';

@@ -1,6 +1,5 @@
-import { Minus } from 'phosphor-react'
-
-import HR from '../../components/hr'
+import { Minus } from 'phosphor-react';
+import HR from '../../components/hr';
 
 export default {
   title: 'Horizontal Rule',

@@ -1,4 +1,4 @@
-import { Gift } from 'phosphor-react'
+import { Gift } from 'phosphor-react';
 
 export default {
   title: 'Product Card',

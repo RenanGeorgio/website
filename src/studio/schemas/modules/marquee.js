@@ -1,6 +1,5 @@
-import { Infinity } from 'phosphor-react'
-
-import customImage from '../../lib/custom-image'
+import { Infinity } from 'phosphor-react';
+import customImage from '../../lib/custom-image';
 
 export default {
   title: 'Marquee',

@@ -1,28 +1,10 @@
-/*const sanityClient = require('@sanity/client')
-const client = sanityClient({
-  dataset: process.env.NEXT_PUBLIC_SANITY_PROJECT_DATASET,
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  useCdn: process.env.NODE_ENV === 'production',
-  apiVersion: '2022-08-30',
-})*/
+/** @type {import('next').NextConfig} */
 
-// see breakdown of code bloat
+// @ts-nocheck
+/* tslint:disable */
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
-
-// get redirects from Sanity for Vercel
-/*async function fetchSanityRedirects() {
-  const redirectData = await client.fetch(`
-    *[_type == "redirect"]{
-      "source": "/" + from,
-      "destination": "/" + to,
-      "permanent": isPermanent
-    }
-  `)
-
-  return redirectData
-}*/
+});
 
 module.exports = withBundleAnalyzer({
   swcMinify: true,
@@ -52,10 +34,6 @@ module.exports = withBundleAnalyzer({
     URL: process.env.URL
   },
   outputFileTracing: true,
-  //async redirects() {
-    //const sanityRedirects = await fetchSanityRedirects()
-    //return sanityRedirects
- // },
   async headers() {
     return [
       {

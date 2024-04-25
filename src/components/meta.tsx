@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import { imageBuilder } from '@lib/sanity';
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '@lib/constants';
+import { CMS_NAME, HOME_OG_IMAGE_URL, HOME_TWITTER_IMAGE_URL } from '@lib/constants';
 import { Obj } from '@typograph/types';
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 };
 
 function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
-  let newString = value;
+  const newString = value;
 
   templateTags.map((v) => {
     console.log(v)
@@ -75,8 +74,7 @@ const Meta = ({ site, page, schema }: Props) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          // @ts-ignore
-          href={imageBuilder?.image(siteTouchIcon).width(192).height(192).url()}
+          href="/favicon/apple-touch-icon.png"
         />
       )}
 
@@ -111,24 +109,8 @@ const Meta = ({ site, page, schema }: Props) => {
 
       {shareGraphic && (
         <>
-          <meta
-            property="og:image"
-            // @ts-ignore
-            content={imageBuilder
-              .image(shareGraphic)
-              .width(1200)
-              .height(630)
-              .url()}
-          />
-          <meta
-            name="twitter:image"
-            // @ts-ignore
-            content={imageBuilder
-              .image(shareGraphic)
-              .width(1200)
-              .height(630)
-              .url()}
-          />
+          <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+          <meta name="twitter:image" content={HOME_TWITTER_IMAGE_URL} />
         </>
       )}
 

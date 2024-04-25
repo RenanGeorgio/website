@@ -1,4 +1,4 @@
-import { CheckCircle } from 'phosphor-react'
+import { CheckCircle } from 'phosphor-react';
 
 export default {
   title: 'Option',

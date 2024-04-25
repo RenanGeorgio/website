@@ -1,6 +1,5 @@
-import { Stack } from 'phosphor-react'
-
-import customImage from '../../lib/custom-image'
+import { Stack } from 'phosphor-react';
+import customImage from '../../lib/custom-image';
 
 export default {
   title: 'Cart Photos',

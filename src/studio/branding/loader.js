@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Loader = ({ text = 'Loading...' }) => {
   return (
@@ -62,4 +62,4 @@ const LoadingScreenIcon = styled.div`
   }
 `
 
-export default Loader
+export default Loader;

@@ -1,4 +1,4 @@
-import { ShoppingBag } from 'phosphor-react'
+import { ShoppingBag } from 'phosphor-react';
 
 export default {
   title: 'Product Hero',

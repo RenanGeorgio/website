@@ -1,8 +1,6 @@
-import React from 'react'
-import { TextAlignLeft } from 'phosphor-react'
-import { Avatar } from '@sanity/ui'
-
-import { getTypeTitles } from '../../lib/helpers'
+import React from 'react';
+import { TextAlignLeft } from 'phosphor-react';
+import { getTypeTitles } from '../../lib/helpers';
 
 export default {
   title: 'Column',
@@ -46,7 +44,7 @@ export default {
       return {
         title: title || 'Block',
         subtitle: subtitle || '',
-        media: <Avatar initials={width} size={1} />
+        media: null // TODO: Alterar para uma midia real 
       }
     }
   }

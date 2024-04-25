@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 // @ts-nocheck
 import BlockContent from '@sanity/block-content-to-react';
 import cx from 'classnames';

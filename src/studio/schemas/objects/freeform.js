@@ -1,6 +1,5 @@
-import { TextAlignLeft } from 'phosphor-react'
-
-import { getPtPreview } from '../../lib/helpers'
+import { TextAlignLeft } from 'phosphor-react';
+import { getPtPreview } from '../../lib/helpers';
 
 export default {
   title: 'Freeform',

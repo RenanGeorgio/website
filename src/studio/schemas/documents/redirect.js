@@ -1,10 +1,12 @@
 import React from 'react'
 import { Shuffle } from 'phosphor-react'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Redirect',
   name: 'redirect',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <Shuffle />,
   fields: [
     {

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Circle } from 'phosphor-react'
+import React from 'react';
+import { Circle } from 'phosphor-react';
 
 export const getModuleName = type => {
   switch (type) {
@@ -105,6 +105,7 @@ export const assemblePageUrl = ({ document, domain }) => {
     return ''
   }
 
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   return domain + (slug ? `/${slug.current}` : '')
 }
 

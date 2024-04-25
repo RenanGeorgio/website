@@ -1,10 +1,12 @@
-import React from 'react'
-import { SquaresFour } from 'phosphor-react'
+import React from 'react';
+import { SquaresFour } from 'phosphor-react';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Collection',
   name: 'collection',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <SquaresFour />,
   groups: [
     { title: 'Content', name: 'content', default: true },

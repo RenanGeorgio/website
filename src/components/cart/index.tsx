@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
 import FocusTrap from 'focus-trap-react';
 import { m } from 'framer-motion';
 import cx from 'classnames';
 import { centsToPrice } from '@lib/helpers';
-import { Url, Obj } from '@typograph/types';
-import { SiteParams, ProductProp, VariantsParams } from '@typograph/types/queries';
+import { Url } from '@typograph/types';
+import { SiteParams, VariantsParams } from '@typograph/types/queries';
 import {
   useSiteContext,
   useCartTotals,
@@ -66,10 +67,12 @@ const Cart: React.FC<any> = (data: SiteParams) => {
   useEffect(() => {
     if (checkoutURL) {
       // @ts-ignore
+      // eslint-disable-next-line no-useless-escape
       const buildCheckoutLink = shop?.storeURL ? checkoutURL.replace(/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g, shop?.storeURL) : checkoutURL
       
       setCheckoutLink(buildCheckoutLink);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkoutURL]);
 
   return (

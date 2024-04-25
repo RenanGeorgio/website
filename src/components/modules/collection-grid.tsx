@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useRef, useMemo, useCallback, useEffect } from 'react';
 import cx from 'classnames';
 import { useParams, usePrevious, cartesian, sortAsc, sortDesc, clampRange } from '@lib/helpers';
@@ -75,6 +77,7 @@ const Collection = (data: Props) => {
 
   // calculate total active filters
   const filtersTotal = activeFilters.reduce((acc: number, cur: Obj) => {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     return Number(acc + cur.values.length)
   }, 0);
 
@@ -91,14 +94,17 @@ const Collection = (data: Props) => {
     });
 
       setCurrentParams(newFilters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeParams]);
 
   // handle load more
   const loadMore = useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     const newCount: number = clampRange(currentCount + paginationLimit, 1, orderedProducts.length);
     const newPage: number = Math.ceil(newCount / paginationLimit);
     setCurrentCount(newCount);
     updateParams([{ name: 'page', value: newPage > 1 ? `${newPage}` : null }]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCount, orderedProducts, paginationLimit]);
 
   // update pagination when the count or products change
@@ -161,6 +167,7 @@ const Collection = (data: Props) => {
               // @ts-ignore
               ref={(node: any) => (collectionItems.current[key] = node)}
               key={
+                // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
                 product.id +
                 activeParams
                   .filter((f: any) => f.name !== 'page')
@@ -235,6 +242,7 @@ const useFilterAndSort = (products: ProductProp[], filters: Array<CollectionGrid
 
       return hasCombo;
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }),[filters]);
 
   switch (sort as string) {

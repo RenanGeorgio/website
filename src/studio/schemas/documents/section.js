@@ -1,13 +1,13 @@
-import React from 'react'
-import { Broadcast } from 'phosphor-react'
-import { Badge } from '@sanity/ui'
+import React from 'react';
+import { Broadcast } from 'phosphor-react';
+import { getModuleName } from '../../lib/helpers';
 
-import { getModuleName } from '../../lib/helpers'
-
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Reusable Section',
   name: 'section',
   type: 'document',
+  // eslint-disable-next-line react/display-name
   icon: () => <Broadcast />,
   fields: [
     {

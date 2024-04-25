@@ -1,13 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { Base64 } from 'base64-string'
+/* eslint-disable @typescript-eslint/require-await */
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { gql } from 'graphql-request';
+import { Base64 } from 'base64-string';
+import { fetchCmsEntityAPI } from './cms-providers/entity/twins';
 
-// get our API clients (shopify + sanity)
-// import { getSanityClient } from '@lib/sanity'
-import shopify from '@lib/shopify'
+// get our API clients (shopify)
+import shopify from '@lib/shopify';
 
 // get our global image GROQ
-import { queries } from '@data'
-import { fetchCmsAPI } from './cms-providers/dato'
+import { queries } from './cms-providers/dato';
 
 // Set our initial context states
 const initialContext = {
@@ -46,9 +47,35 @@ const fetchCheckout = (context, id) => {
   return context.shopifyClient?.checkout.fetch(id)
 }
 
-// get associated variant from Sanity
+// get associated variant
 const fetchVariant = async (id) => {
-  const variant = await fetchCmsAPI(
+  const query = gql`
+  *[_type == "productVariant" && variantID == ${id}][0]{
+    "product": *[_type == "product" && productID == ^.productID][0]{
+      title,
+      "slug": slug.current,
+    },
+    "id": variantID,
+    title,
+    price,
+    "photos": {
+      "cart": *[_type == "product" && productID == ^.productID][0].cartPhotos[]{
+        forOption,
+        "default": cartPhoto{
+          ${queries.imageMeta}
+        },
+      }
+    },
+    options[]{
+      name,
+      position,
+      value
+    }
+  }
+  `
+  // LEMBRETE DE COMO ERA FEITO NO EXEMPLO ANTERIOR
+  /*
+  const variant = await getSanityClient().fetch(
     `
       *[_type == "productVariant" && variantID == ${id}][0]{
         "product": *[_type == "product" && productID == ^.productID][0]{
@@ -73,8 +100,12 @@ const fetchVariant = async (id) => {
         }
       }
     `
-  )
+  )*/
 
+  const fetchApi = fetchCmsEntityAPI();
+  // @ts-ignore
+  const { variant } = await fetchApi?.request(query);
+  
   return variant
 }
 
@@ -90,7 +121,7 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
     localStorage.setItem(shopifyCheckoutID, checkout.id)
   }
 
-  // get real lineItems data from Sanity
+  // get real lineItems data
   const lineItems = await Promise.all(
     checkout.lineItems.map(async (item) => {
       const variantID = item.variant.id.split(shopifyVariantGID)[1]
@@ -203,6 +234,7 @@ function useSiteContext() {
 // Toggle page transition state
 function useTogglePageTransition() {
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     context: { isPageTransition },
     setContext,
   } = useContext(SiteContext)
@@ -249,6 +281,7 @@ function useCartCount() {
   let count = 0
 
   if (checkout.lineItems) {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     count = checkout.lineItems.reduce((total, item) => item.quantity + total, 0)
   }
 

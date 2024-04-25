@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-import './skin.css?raw'
+import './skin.css?raw';
 
 const Logo = ({ projectName }) => {
   return (
@@ -47,4 +47,4 @@ const Icon = styled.div`
   }
 `
 
-export default Logo
+export default Logo;

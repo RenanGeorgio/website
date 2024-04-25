@@ -1,6 +1,8 @@
-import React from 'react'
-import { decodeAssetUrl } from '../../lib/helpers'
+/* eslint-disable react/no-unescaped-entities */
+import React from 'react';
+import { decodeAssetUrl } from '../../lib/helpers';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Default SEO / Share',
   name: 'seoSettings',

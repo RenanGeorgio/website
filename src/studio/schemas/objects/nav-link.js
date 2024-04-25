@@ -1,4 +1,4 @@
-import { ArrowSquareOut } from 'phosphor-react'
+import { ArrowSquareOut } from 'phosphor-react';
 
 export default {
   title: 'Link',

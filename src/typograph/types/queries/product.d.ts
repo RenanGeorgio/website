@@ -51,7 +51,7 @@ export type ProductProp = {
   inStock: boolean;
   lowStock: boolean;
   useGallery: boolean;
-  surfaceOption: any;
+  surfaceOption: boolean;
   options: {
     name: string;
     position: any;

@@ -1,4 +1,4 @@
-import { SquaresFour } from 'phosphor-react'
+import { SquaresFour } from 'phosphor-react';
 
 export default {
   title: 'Collection Grid',

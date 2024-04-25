@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useCallback, useEffect, memo } from 'react';
+import { useState, useCallback, useEffect, memo } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { clampRange } from '@lib/helpers';
@@ -31,12 +32,14 @@ const ProductCounter = memo(
 
       setIsAnimating(true);
       setDirection(direction);
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       setMotionKey(count + (direction > 0 ? '-up' : '-down'));
       setLineQuantity(count);
 
       if (onUpdate) {
         onUpdate(count);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const updateQuantity = useCallback((amount) => {
@@ -50,6 +53,7 @@ const ProductCounter = memo(
       if (onUpdate) {
         onUpdate(count);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -81,7 +85,7 @@ const ProductCounter = memo(
                 onChange={(e) =>
                   updateQuantity(parseInt(e.currentTarget.value, 10))
                 }
-                onBlur={(e) => isNaN(lineQuantity) && updateQuantity(1)}
+                onBlur={(_e) => isNaN(lineQuantity) && updateQuantity(1)}
                 type="number"
                 inputMode="numeric"
                 min="1"

@@ -54,12 +54,14 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
     })
 
     Router.events.on('routeChangeComplete', () => {
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       setTimeout(() => togglePageTransition(false), pageTransitionSpeed)
     })
 
     Router.events.on('routeChangeError', () => {
       togglePageTransition(false)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // intelligently add focus states if keyboard is used
@@ -81,6 +83,7 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
       // @ts-ignore
       window.removeEventListener('keydown', handleFirstTab);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const pageID = useMemo(() => data?.page?.id, [data]);

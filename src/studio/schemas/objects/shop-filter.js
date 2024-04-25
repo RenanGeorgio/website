@@ -1,4 +1,4 @@
-import { Funnel } from 'phosphor-react'
+import { Funnel } from 'phosphor-react';
 
 export default {
   title: 'Filter',

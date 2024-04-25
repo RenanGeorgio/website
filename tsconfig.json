@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "target": "esnext",
+    "target": "es2020",
+    "lib": ["dom", "dom.iterable", "esnext", "es2020"],
     "module": "esnext",
     "jsx": "preserve",
     "strict": true,
@@ -9,61 +10,40 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "allowJs": true,
     "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": false,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
     "paths": {
-      "@components/*": [
-        "components/*",
-        "components/*/index",
-        "components/index"
-      ],
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@typograph/*": [
-        "typograph/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ],
-      "@views/*": [
-        "views/*"
-      ],
-      "@data": [
-        "data/index"
-      ],
-      "@data/*": [
-        "data/*"
-      ]
+      "@components/*": ["components/*", "components/*/index", "components/index"],
+      "@lib/*": ["lib/*"],
+      "@styles/*": ["styles/*"],
+      "@typograph/*": ["typograph/*"],
+      "@hooks/*": ["hooks/*"],
+      "@views/*": ["views/*"],
+      "@data/*": ["data/*"],
+      "@studio/*": ["studio/*"]
     },
-    "incremental": true,
-    "isolatedModules": true
+    "incremental": true
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/**/*.js",
-    "./src/**/*.jsx",
-    "./src/@types/*.ts",
-    "global.d.ts"
+    "src",
+    "global.d.ts",
+    "**/*.ts", 
+    "**/*.tsx", 
+    "**/*.js"
   ],
   "typeRoots": [
     "node_modules/@types",
