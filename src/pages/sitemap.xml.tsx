@@ -16,13 +16,13 @@ export default Sitemap
 let sitemap: Buffer | null = null
 
 const addUrls = async (smStream: SitemapStream) => {
-  const allPages = await getAllDocSlugs('page')
-  const allCollections = await getAllDocSlugs('collection')
-
+  const allPages = await getAllDocSlugsSchema('page')
+  const allCollections = await getAllDocSlugsSchema('collection')
+  console.log(allPages)
   allCollections.map((collection: any) => {
     smStream.write({ url: `/shop/${collection.slug}`, changefreq: 'weekly', priority: 0.8 })
   })
-  
+
   allPages.map((page: any) => {
     smStream.write({ url: `/${page.slug}`, changefreq: 'weekly', priority: 0.7 })
   })
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
     smStream.write({ url: '/shop', changefreq: 'daily', priority: 0.9 })
     await addUrls(smStream)
     smStream.end()
-    
+
     const resp = await streamToPromise(pipeline);
 
     sitemap = resp;

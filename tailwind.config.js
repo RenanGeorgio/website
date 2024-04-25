@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   corePlugins: {
     preflight: false,
@@ -121,11 +120,8 @@ module.exports = {
         '6xl': '115rem',
         '7xl': '130rem',
         prose: '100ch',
-      }
+      },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

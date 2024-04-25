@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useCallback, useEffect, memo } from 'react';
+import { useState, useCallback, useEffect, memo } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { clampRange } from '@lib/helpers';
@@ -15,7 +16,6 @@ interface Props {
   className?: string;
 }
 
-// eslint-disable-next-line react/display-name
 const ProductCounter = memo(
   ({ id, defaultCount = 1, onUpdate, max, className }: Props) => {
     const [lineQuantity, setLineQuantity] = useState(defaultCount)

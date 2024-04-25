@@ -154,11 +154,13 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
 /*  ------------------------------ */
 
 const SiteContextProvider = ({ data, children }) => {
-  const { productCounts } = data
-
+  console.log('data contextttttttttttttttttttttttt', data)
+  debugger
+  const { productCount } = data
+  console.log('productCounts', productCount)
   const [context, setContext] = useState({
     ...initialContext,
-    ...{ productCounts },
+    ...{ productCounts: productCount },
   })
 
   const [initContext, setInitContext] = useState(false)
@@ -436,7 +438,7 @@ function useProductCount() {
   } = useContext(SiteContext)
 
   function productCount(collection) {
-    const collectionItem = productCounts.find((c) => c.slug === collection)
+    const collectionItem = Array.from(productCounts).find((c) => c.slug === collection)
     return collectionItem.count
   }
 

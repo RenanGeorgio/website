@@ -7,7 +7,7 @@ import { fetchCmsEntityAPI } from './entity/twins';
 
 const API_URL = 'https://graphql.datocms.com/';
 
-async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
+export async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
 
   const res = await fetch(API_URL, {
     method: 'POST',
@@ -20,7 +20,7 @@ async function fetchCmsAPI(query: string, { variables }: { variables?: Record<st
       variables
     })
   });
-
+  console.log(res, 'res')
   const json = await res.json();
   if (json.errors) {
     // eslint-disable-next-line no-console
@@ -28,15 +28,16 @@ async function fetchCmsAPI(query: string, { variables }: { variables?: Record<st
     throw new Error('Failed to fetch API');
   }
 
+  console.log(json.data, 'json.data')
   return json.data;
 }
 
 export async function getAllDocSlugsSchema(doc: string): Promise<any[]> {
   const query: string = gql`
   {
-    *[_type == "${doc}" && !(_id in [${queries.homeID}, ${queries.shopID}, ${queries.errorID}]) && wasDeleted != true && isDraft != true] {
-      "slug": slug.current
-    }
+    // *[_type == "${doc}" && !(_id in [${queries.homeID}, ${queries.shopID}, ${queries.errorID}]) && wasDeleted != true && isDraft != true] {
+    //   "slug": slug.current
+    // }
    }
   `
   const fetchApi: Obj = fetchCmsEntityAPI();
@@ -62,20 +63,20 @@ export async function getAllRedirectsSchema(): Promise<any> {
 export async function getStaticPageSchema(pageData: any, preview: Obj): Promise<any> {
   const query: string = gql`
   {
-    "page": ${pageData},
+    ${pageData},
     ${queries.site}
   }
   `
   const fetchApi: Obj = fetchCmsEntityAPI();
   // @ts-ignore
-  const { staticPage }: any = await fetchApi?.request(query);
-  
+  const staticPage: any = await fetchApi?.request(query);
+  console.log(staticPage, 'staticPage')
   return staticPage;
 }
 
 export async function getPageSchema(slug: any, preview: any): Promise<Page> {
   const slugs = JSON.stringify([slug, `/${slug}`, `/${slug}/`]);
-
+  console.log('slugs ', slugs)
   const query: string = gql`
   {
     "page": *[_type == "page" && slug.current in ${slugs}] | order(_updatedAt desc)[0]{
