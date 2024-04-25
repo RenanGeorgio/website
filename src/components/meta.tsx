@@ -14,7 +14,8 @@ function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
   let newString = value;
 
   templateTags.map((v) => {
-    newString = newString.replace(new RegExp(v.tag, 'g'), v.value)
+    console.log(v)
+    // newString = newString.replace(new RegExp(v.tag, 'g'), v.value)
   });
 
   return newString;
@@ -22,7 +23,7 @@ function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
 
 const Meta = ({ site, page, schema }: Props) => {
   const siteTitle = site.title;
-
+  console.log(page, "pageeeeeeeeeee")
   const siteFavicon = site.seo?.favicon || '/favicon/safari-pinned-tab.svg';
   const siteFaviconLegacy = site.seo?.faviconLegacy || '/favicon/favicon.ico';
   const siteTouchIcon = site.seo?.touchIcon;
@@ -37,7 +38,7 @@ const Meta = ({ site, page, schema }: Props) => {
       value: siteTitle,
     },
   ]
-
+  console.log(page.seo)
   const metaTitle = replaceTemplateTags(
     page.seo?.metaTitle || site.seo?.metaTitle,
     templateTags
@@ -75,7 +76,7 @@ const Meta = ({ site, page, schema }: Props) => {
           rel="apple-touch-icon"
           sizes="180x180"
           // @ts-ignore
-          href={imageBuilder.image(siteTouchIcon).width(192).height(192).url()}
+          href={imageBuilder?.image(siteTouchIcon).width(192).height(192).url()}
         />
       )}
 

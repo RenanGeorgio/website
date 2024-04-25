@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import cx from 'classnames';
@@ -45,7 +45,7 @@ const itemAnim = {
   },
 }
 
-const ProductCard: any = React.forwardRef(function ProductCard(
+const ProductCard: any = forwardRef(function ProductCard(
   {
     product,
     hasVisuals,

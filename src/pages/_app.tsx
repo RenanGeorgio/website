@@ -14,7 +14,7 @@ const App: React.FC<AppProps> = ({ Component, router, pageProps }: AppProps): an
 
   return (
     <ThemeProvider enableSystem={false} disableTransitionOnChange>
-      <SiteContextProvider data={{ ...data?.site }}>
+      <SiteContextProvider data={{ ...data?.siteInfo }}>
         <Site Component={Component} router={router} pageProps={pageProps} />
       </SiteContextProvider>
     </ThemeProvider>

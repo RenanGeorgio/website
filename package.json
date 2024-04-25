@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "debug": "node --inspect-brk ./node_modules/next/dist/bin/next"
   },
   "dependencies": {
     "@reach/rect": "^0.18.0",

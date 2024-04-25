@@ -41,3 +41,10 @@ export interface SeoProps {
   faviconLegacy?: Url | string;
   touchIcon?: any;
 };
+
+interface page {
+  type:  string;
+  slug:  string;
+  isHome?: boolean;
+  isShop?: boolean;
+}

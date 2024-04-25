@@ -44,7 +44,7 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
   const { height: windowHeight } = useWindowSize();
   const [lockHeight, setLockHeight] = useState<boolean>(false);
   const hasChin: boolean | undefined = isMobileSafari();
-
+  console.log(site, 'site')
   // set header height
   const [headerHeight, setHeaderHeight] = useState<number | string | null>(null);
 
@@ -61,7 +61,7 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
   return (
     <>
       <Meta site={site} page={page} schema={schema} />
-      {site.gtmID && (
+      {site.gtmId && (
         <Script
           id="gtm"
           dangerouslySetInnerHTML={{
@@ -69,13 +69,13 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','${site.gtmID}');`,
+      })(window,document,'script','dataLayer','${site.gtmId.gtmId}');`,
           }}
         />
       )}
       <m.div 
         className="min-h-screen"
-        key={page.id}
+        key={1}
         initial="hide"
         animate="show"
         exit="hide"
@@ -85,10 +85,10 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
       >
         <Alert preview={preview} />
         {/*@ts-ignore*/}
-        <CookieBar data={site?.cookieConsent as CookieConsent} />
+        {/* <CookieBar data={site?.cookieConsent as CookieConsent} /> */}
         <Header
           data={site?.header}
-          isTransparent={page.hasTransparentHeader}
+          // isTransparent={page.hasTransparentHeader}
           onSetup={(height: number | string) => setHeaderHeight(height)}
         />
         <main id="content">{children}</main>

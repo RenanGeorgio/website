@@ -265,123 +265,168 @@ export const modules = `
 `
 
 // Construct our "site" GROQ
+// export const site = `
+//   "site": {
+//     "title": *[_type == "generalSettings"][0].siteTitle,
+//     "rootDomain": *[_type == "generalSettings"][0].siteURL,
+//     "shop": *[_type == "shopSettings"][0]{
+//       storeURL,
+//       cartMessage
+//     },
+//     "productCounts": [ {"slug": "all", "count": count(*[_type == "product"])} ] + *[_type == "collection"]{
+//       "slug": slug.current,
+//       "count": count(products)
+//     },
+//     "cookieConsent": *[_type == "cookieSettings"][0]{
+//       enabled,
+//       message,
+//       "link": link->{"type": _type, "slug": slug.current}
+//     },
+//     "header": *[_type == "headerSettings"][0]{
+//       "promo": *[_type == "promoSettings"][0]{
+//         enabled,
+//         display,
+//         text,
+//         "link": link->{
+//           ${page}
+//         }
+//       },
+//       menuDesktopLeft->{
+//         items[]{
+//           ${link},
+//           dropdownItems[]{
+//             ${link}
+//           },
+//           featured[]->${product}
+//         }
+//       },
+//       menuDesktopRight->{
+//         items[]{
+//           ${link},
+//           dropdownItems[]{
+//             ${link}
+//           },
+//           featured[]->${product}
+//         }
+//       },
+//       menuMobilePrimary->{
+//         items[]{
+//           ${link},
+//           dropdownItems[]{
+//             ${link}
+//           },
+//         }
+//       },
+//       menuMobileSecondary->{
+//         items[]{
+//           ${link},
+//           dropdownItems[]{
+//             ${link}
+//           },
+//         }
+//       }
+//     },
+//     "footer": *[_type == "footerSettings"][0]{
+//       "blocks": [
+//         {
+//           "title": blockTitle1,
+//           newsletter{
+//             "id": "footer",
+//             klaviyoListID,
+//             submit,
+//             successMsg[]{
+//               ${ptContent}
+//             },
+//             errorMsg[]{
+//               ${ptContent}
+//             },
+//             terms[]{
+//               ${ptContent}
+//             }
+//           }
+//         },
+//         {
+//           "title": blockTitle2,
+//           "menu": blockMenu2->{
+//             items[]{
+//               ${link}
+//             }
+//           }
+//         },
+//         {
+//           "title": blockTitle3,
+//           "menu": blockMenu3->{
+//             items[]{
+//               ${link}
+//             }
+//           }
+//         },
+//         {
+//           "title": blockTitle4,
+//           social[]{
+//             icon,
+//             url
+//           }
+//         }
+//       ]
+//     },
+//     "seo": *[_type == "seoSettings"][0]{
+//       metaTitle,
+//       metaDesc,
+//       shareTitle,
+//       shareDesc,
+//       shareGraphic,
+//       "favicon": favicon.asset->url,
+//       "faviconLegacy": faviconLegacy.asset->url,
+//       touchIcon
+//     },
+//     "gtmID": *[_type == "generalSettings"][0].gtmID,
+//   }
+// `
+
 export const site = `
-  "site": {
-    "title": *[_type == "generalSettings"][0].siteTitle,
-    "rootDomain": *[_type == "generalSettings"][0].siteURL,
-    "shop": *[_type == "shopSettings"][0]{
-      storeURL,
-      cartMessage
-    },
-    "productCounts": [ {"slug": "all", "count": count(*[_type == "product"])} ] + *[_type == "collection"]{
-      "slug": slug.current,
-      "count": count(products)
-    },
-    "cookieConsent": *[_type == "cookieSettings"][0]{
-      enabled,
-      message,
-      "link": link->{"type": _type, "slug": slug.current}
-    },
-    "header": *[_type == "headerSettings"][0]{
-      "promo": *[_type == "promoSettings"][0]{
-        enabled,
-        display,
-        text,
-        "link": link->{
-          ${page}
-        }
-      },
-      menuDesktopLeft->{
-        items[]{
-          ${link},
-          dropdownItems[]{
-            ${link}
-          },
-          featured[]->${product}
-        }
-      },
-      menuDesktopRight->{
-        items[]{
-          ${link},
-          dropdownItems[]{
-            ${link}
-          },
-          featured[]->${product}
-        }
-      },
-      menuMobilePrimary->{
-        items[]{
-          ${link},
-          dropdownItems[]{
-            ${link}
-          },
-        }
-      },
-      menuMobileSecondary->{
-        items[]{
-          ${link},
-          dropdownItems[]{
-            ${link}
-          },
+siteInfo {
+  header {
+    menuDesktopLeft {
+      items {
+        link
+        featured {
+          price
+          lowSotck
+          inStock
+          id
+          slug
+          surfaceOption
+          title
+          useGallery
         }
       }
-    },
-    "footer": *[_type == "footerSettings"][0]{
-      "blocks": [
-        {
-          "title": blockTitle1,
-          newsletter{
-            "id": "footer",
-            klaviyoListID,
-            submit,
-            successMsg[]{
-              ${ptContent}
-            },
-            errorMsg[]{
-              ${ptContent}
-            },
-            terms[]{
-              ${ptContent}
-            }
-          }
-        },
-        {
-          "title": blockTitle2,
-          "menu": blockMenu2->{
-            items[]{
-              ${link}
-            }
-          }
-        },
-        {
-          "title": blockTitle3,
-          "menu": blockMenu3->{
-            items[]{
-              ${link}
-            }
-          }
-        },
-        {
-          "title": blockTitle4,
-          social[]{
-            icon,
-            url
-          }
-        }
-      ]
-    },
-    "seo": *[_type == "seoSettings"][0]{
-      metaTitle,
-      metaDesc,
-      shareTitle,
-      shareDesc,
-      shareGraphic,
-      "favicon": favicon.asset->url,
-      "faviconLegacy": faviconLegacy.asset->url,
-      touchIcon
-    },
-    "gtmID": *[_type == "generalSettings"][0].gtmID,
+    }
+    promo {
+      link
+      text
+    }
   }
+  footer
+  title
+  rootDomain
+  shop {
+    storeUrl
+    cartMessage
+  }
+  productCount {
+    slug
+    count
+  }
+  gtmId
+  cookieConsent {
+    enabled
+    id
+    link
+    message
+  }
+}
+
 `
 
 // All Products

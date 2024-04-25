@@ -2,11 +2,12 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { Base64 } from 'base64-string'
 
 // get our API clients (shopify + sanity)
-import { getSanityClient } from '@lib/sanity'
+// import { getSanityClient } from '@lib/sanity'
 import shopify from '@lib/shopify'
 
 // get our global image GROQ
 import { queries } from '@data'
+import { fetchCmsAPI } from './cms-providers/dato'
 
 // Set our initial context states
 const initialContext = {
@@ -47,7 +48,7 @@ const fetchCheckout = (context, id) => {
 
 // get associated variant from Sanity
 const fetchVariant = async (id) => {
-  const variant = await getSanityClient().fetch(
+  const variant = await fetchCmsAPI(
     `
       *[_type == "productVariant" && variantID == ${id}][0]{
         "product": *[_type == "product" && productID == ^.productID][0]{
@@ -122,11 +123,13 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
 /*  ------------------------------ */
 
 const SiteContextProvider = ({ data, children }) => {
-  const { productCounts } = data
-
+  console.log('data contextttttttttttttttttttttttt', data)
+  debugger
+  const { productCount } = data
+  console.log('productCounts', productCount)
   const [context, setContext] = useState({
     ...initialContext,
-    ...{ productCounts },
+    ...{ productCounts: productCount },
   })
 
   const [initContext, setInitContext] = useState(false)
@@ -402,7 +405,7 @@ function useProductCount() {
   } = useContext(SiteContext)
 
   function productCount(collection) {
-    const collectionItem = productCounts.find((c) => c.slug === collection)
+    const collectionItem = Array.from(productCounts).find((c) => c.slug === collection)
     return collectionItem.count
   }
 

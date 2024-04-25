@@ -4,6 +4,7 @@ import {  VALID_DISPLAY_VALUES } from '@assets/constants';
 import { Obj, Url, SitecorePageProps } from '../';
 import { SeoProps, Link } from './queries.d';
 import { ProductProp } from './product.d';
+import { GTMParams } from '@typograph/global';
 
 export type CookieConsent = {
   enabled?: boolean;
@@ -21,7 +22,7 @@ export interface SiteParams extends SiteInfo {
   productCounts?: {
     slug?: string;
     count?: number;
-  };
+  }[];
   cookieConsent?: CookieConsent;
   header?: {
     promo?: {

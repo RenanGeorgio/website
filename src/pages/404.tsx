@@ -1,6 +1,7 @@
 // @ts-nocheck
 import Error from 'next/error';
-import { getStaticPage, queries } from '@data';
+import { queries } from '@data';
+import { getStaticPageSchema } from '@lib/cms-providers/dato';
 import Layout from '@components/layout';
 import { Module } from '@components/modules';
 
@@ -32,7 +33,7 @@ const NotFoundPage = ({ data }: any) => {
 }
 
 export async function getStaticProps({ preview, previewData }) {
-  const pageData = await getStaticPage(
+  const pageData = await getStaticPageSchema(
     `
     *[_type == "page" && _id == ${queries.errorID}] | order(_updatedAt desc)[0]{
       "id": _id,

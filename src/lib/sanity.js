@@ -8,8 +8,8 @@ const options = {
   apiVersion: '2022-08-30',
 }
 
-export const sanityClient = createSanityClient(options);
-export const imageBuilder = sanityImage(sanityClient);
+// export const sanityClient = createSanityClient(options);
+// export const imageBuilder = sanityImage(sanityClient);
 
 export function createPreviewClient(token) {
   return createSanityClient({

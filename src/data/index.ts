@@ -1,21 +1,22 @@
 // @ts-nocheck
-import { getSanityClient } from '@lib/sanity';
+// import { getSanityClient } from '@lib/sanity';
+
 import * as queries from './queries';
 
 // Fetch all dynamic docs
 export async function getAllDocSlugs(doc) {
-  const data = await getSanityClient().fetch(
-    `*[_type == "${doc}" && !(_id in [${queries.homeID}, ${queries.shopID}, ${queries.errorID}]) && wasDeleted != true && isDraft != true]{ "slug": slug.current }`
-  )
-  return data
+  // const data = await getSanityClient().fetch(
+  //   `*[_type == "${doc}" && !(_id in [${queries.homeID}, ${queries.shopID}, ${queries.errorID}]) && wasDeleted != true && isDraft != true]{ "slug": slug.current }`
+  // )
+  // return data
 }
 
 // Fetch all our page redirects
 export async function getAllRedirects() {
-  const data = await getSanityClient().fetch(
-    `*[_type == "redirect"]{ from, to }`
-  )
-  return data
+  // const data = await getSanityClient().fetch(
+  //   `*[_type == "redirect"]{ from, to }`
+  // )
+  // return data
 }
 
 // Fetch a static page with our global data
@@ -27,7 +28,7 @@ export async function getStaticPage(pageData, preview) {
   }
   `
 
-  const data = await getSanityClient(preview).fetch(query)
+  // const data = await getSanityClient(preview).fetch(query)
 
   return data
 }
@@ -56,7 +57,7 @@ export async function getPage(slug, preview) {
     }
   `
 
-  const data = await getSanityClient(preview).fetch(query)
+  // const data = await getSanityClient(preview).fetch(query)
 
   return data
 }
@@ -84,7 +85,7 @@ export async function getProduct(slug, preview) {
     }
   `
 
-  const data = await getSanityClient(preview).fetch(query)
+  // const data = await getSanityClient(preview).fetch(query)
 
   return data
 }
@@ -112,7 +113,7 @@ export async function getCollection(slug, preview) {
     }
   `
 
-  const data = await getSanityClient(preview).fetch(query)
+  // const data = await getSanityClient(preview).fetch(query)
 
   return data
 }

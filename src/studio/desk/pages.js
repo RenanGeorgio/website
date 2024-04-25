@@ -1,6 +1,6 @@
 import React from 'react'
 import S from '@sanity/desk-tool/structure-builder'
-import sanityClient from 'part:@sanity/base/client'
+// import sanityClient from 'part:@sanity/base/client'
 import { IntentLink, Link } from 'part:@sanity/base/router'
 
 import { Card, Stack, Text } from '@sanity/ui'
@@ -8,6 +8,7 @@ import { Card, Stack, Text } from '@sanity/ui'
 import { House, Browser, ShoppingCart, WarningOctagon } from 'phosphor-react'
 
 import { standardViews } from './previews/standard'
+import { fetchCmsAPI } from '@lib/cms-providers/dato'
 
 const EmptyNotice = ({ title, type, link, linkTitle }) => {
   if (!title || !type || !link || !linkTitle) return null
@@ -42,7 +43,7 @@ const currentHomePage = S.listItem()
   .title('Home Page')
   .icon(House)
   .child(async () => {
-    const data = await sanityClient.fetch(`
+    const data = await fetchCmsAPI(`
       *[_type == "generalSettings"][0]{
         home->{_id}
       }

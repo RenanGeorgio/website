@@ -99,6 +99,7 @@ const ShopifyAction = ({ draft, published }) => {
           }
         })
         .catch((err) => {
+          console.log(err)
           setIsSyncing(false)
 
           toast.push({
