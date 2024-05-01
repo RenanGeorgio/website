@@ -153,15 +153,40 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
 /*  Our Context Wrapper
 /*  ------------------------------ */
 
-const SiteContextProvider = ({ data, children }) => {
-  const { productCounts } = data
+const SiteContextProvider = ({ children }) => {
+  const [context, setContext] = useState({
+    ...initialContext
+  });
+
+  const [initContext, setInitContext] = useState(false);
+
+  useEffect(() => {
+    if (initContext === false) {
+      setInitContext(true);
+    }
+  }, [initContext, context, setContext]);
+
+  return (
+    <SiteContext.Provider
+      value={{
+        context,
+        setContext,
+      }}
+    >
+      {children}
+    </SiteContext.Provider>
+  )
+}
+
+const ShopContextProvider = ({ data, children }) => {
+  const { productCounts } = data;
 
   const [context, setContext] = useState({
     ...initialContext,
     ...{ productCounts },
-  })
+  });
 
-  const [initContext, setInitContext] = useState(false)
+  const [initContext, setInitContext] = useState(false);
 
   useEffect(() => {
     // Shopify checkout not build yet
@@ -209,7 +234,7 @@ const SiteContextProvider = ({ data, children }) => {
       initializeCheckout()
       setInitContext(true)
     }
-  }, [initContext, context, setContext, context.shopifyClient?.checkout])
+  }, [initContext, context, setContext, context.shopifyClient?.checkout]);
 
   return (
     <SiteContext.Provider
@@ -225,7 +250,7 @@ const SiteContextProvider = ({ data, children }) => {
 
 // Access our global store states
 function useSiteContext() {
-  const { context } = useContext(SiteContext)
+  const { context } = useContext(SiteContext);
   return context
 }
 
@@ -445,6 +470,7 @@ function useProductCount() {
 
 export {
   SiteContextProvider,
+  ShopContextProvider,
   useSiteContext,
   useTogglePageTransition,
   useToggleMegaNav,
