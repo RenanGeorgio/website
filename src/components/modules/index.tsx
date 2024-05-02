@@ -23,6 +23,9 @@ export const Module = ({
   activeVariant,
   onVariantChange
 }: Props) => {
+  console.log("data inside module ", data)
+  const testProduct = data?.columns[0].blocks[0].currentType[0].product
+  console.log('testProduct', testProduct)
   const ModuleType = {
     grid: Grid,
     hero: Hero,
@@ -33,12 +36,17 @@ export const Module = ({
   }[data?._type] ?? <></>
 
   return (
-    <ModuleType
-      index={index}
-      data={data}
-      product={product}
-      activeVariant={activeVariant}
-      onVariantChange={onVariantChange}
-    />
+    <>
+      {data?.map((column: Obj, key: number | string) => (
+        <ModuleType
+          index={key}
+          key={key}
+          data={data}
+          product={testProduct}
+          activeVariant={activeVariant}
+          onVariantChange={onVariantChange}
+        />
+      ))}
+    </>
   )
 }

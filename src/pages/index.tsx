@@ -9,28 +9,31 @@ import { getStaticPageSchema } from '@lib/cms-providers/dato'
 
 interface Props {
   data: {
-    siteInfo?: Obj
-    page?: Obj
+    currentSite?: Obj
+    allPages?: Obj
   }
   children?: React.ReactNode
 }
 
 function Home({ data }: Props) {
   console.log("home data", data)
-  const { currentSite, page } = data
-  if (!page) {
+  const { currentSite, allPages } = data
+  console.log(allPages, 'page')
+
+  if (!allPages) {
     return (
       // @ts-ignore
       <Error
         title={`"Home Page" is not set in Sanity, or the page data is missing`}
-        statusCode="Data Error"
+        statusCode={404}
       />
     )
   }
 
   console.log(currentSite, 'siteInfo')
+  console.log("page index 0", allPages[0])
   return (
-    <Layout site={currentSite} page={page}>
+    <Layout site={currentSite} page={allPages}>
       <Container>
         <Intro />
         {page?.modules?.map((module: Obj, key: number | string) => (
@@ -62,13 +65,57 @@ export async function getStaticProps({ preview, previewData }: any) {
     //   }
     // `,
 
-    `  page {
-      id
-      pageType
-      slug
-      ishome
+    ` 
+    allPages {
       isshop
+      ishome
+      modules {
+        columns {
+          blocks {
+            currentType {
+              ... on ProductCardRecord {
+                id
+                key
+                product {
+                  slug
+                  title
+                  publishdate
+                  price
+                  description {
+                    id
+                    photo {
+                      mimetype
+                      hotspot
+                      customratio
+                      currentId
+                      lqip {
+                        url
+                        title
+                        key
+                        isbutton
+                      }
+                    }
+                  }
+                  instock
+                  klaviyoaccountid
+                  lowstock
+                  surfaceoption
+                  usegallery
+                  variants {
+                    variant {
+                      instock
+                      lowstock
+                      price
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
+    }
     `,
     {
       active: preview,

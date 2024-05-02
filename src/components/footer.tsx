@@ -17,7 +17,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">
       <div className="footer--grid">
-        {blocks.map((block, key) => (
+        {blocks?.map((block, key) => (
           <div key={key} className="footer--block">
             {block.title && <p className="is-h3">{block.title}</p>}
 

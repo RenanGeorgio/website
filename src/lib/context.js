@@ -155,7 +155,6 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
 
 const SiteContextProvider = ({ data, children }) => {
   console.log('data contextttttttttttttttttttttttt', data)
-  debugger
   const { productCount } = data
   console.log('productCounts', productCount)
   const [context, setContext] = useState({

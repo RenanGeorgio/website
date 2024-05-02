@@ -389,6 +389,7 @@ currentSite {
   footer {
     blocks {
       block
+      id
     }
   }
   gtmid {
