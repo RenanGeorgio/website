@@ -1,4 +1,4 @@
-import ProductCard from '@components/product-card';
+import ProductCard from '@components/shop/product-card';
 import { ProductProp } from '@typograph/types/queries';
 
 interface Props {

@@ -10,13 +10,12 @@ import cx from 'classnames';
 import { isBrowser } from '@lib/helpers';
 import { useSiteContext, useToggleMegaNav } from '@lib/context';
 
-import PromoBar from '@components/promo-bar';
+import PromoBar from '@components/shop/promo-bar';
 import { Menu } from '@components/menu';
 import { MegaNavigation } from '@components/menu';
 import Icon from '@components/icon';
 
 import { CartToggle } from './cart-toggle';
-import { Obj } from '@typograph/types';
 import { SiteParams } from '@typograph/types/queries';
 
 interface Props {
@@ -62,6 +61,7 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup }: Props) => {
     if (onSetup != undefined) {
       onSetup({ height: headerHeight });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerHeight]);
 
   return (

@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import ProductCard from '@components/product-card';
+import ProductCard from '@components/shop/product-card';
 import Freeform from '@components/freeform';
 import { AccordionList } from '@components/accordion';
 import { GridColumn, BlocksProps } from '@typograph/types/queries';

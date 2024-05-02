@@ -2,7 +2,7 @@
 import { useInView } from 'react-cool-inview';
 import { Marqy } from 'marqy';
 import Photo from '@components/photo';
-import ProductCard from '@components/product-card';
+import ProductCard from '@components/shop/product-card';
 import { MarqueeProps } from '@typograph/types/queries';
 
 const Marquee: React.FC<any> = (data: MarqueeProps) => {

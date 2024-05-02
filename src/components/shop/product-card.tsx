@@ -11,7 +11,7 @@ import {
   ProductPrice,
   ProductOption,
   ProductAdd,
-} from '@components/product';
+} from '@components/shop/product';
 import { Obj } from '@typograph/types';
 import { ProductProp } from '@typograph/types/queries';
 

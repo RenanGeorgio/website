@@ -2,6 +2,7 @@ import {
     getAllDocSlugsSchema, 
     getAllRedirectsSchema,
     getStaticPageSchema, 
+    getStaticShopSchema,
     getPageSchema, 
     getProductSchema,
     getCollectionSchema 
@@ -18,8 +19,12 @@ export async function getAllRedirects(): Promise<any[]> {
     return getAllRedirectsSchema();
 }
 
-export async function getStaticPage(pageData: any, preview: Obj): Promise<any> {
-    return getStaticPageSchema(pageData, preview);
+export async function getStaticPage(pageData: any): Promise<any> {
+    return getStaticPageSchema(pageData);
+}
+
+export async function getStaticShopPage(pageData: any, preview: Obj): Promise<any> {
+    return getStaticShopSchema(pageData, preview);
 }
 
 export async function getPage(slug: any, preview: any): Promise<Page> {

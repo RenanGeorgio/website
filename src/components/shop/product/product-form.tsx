@@ -1,4 +1,4 @@
-import { ProductOption } from '@components/product';
+import { ProductOption } from '@components/shop/product';
 import { Obj } from '@typograph/types';
 import { ProductProp, VariantsParams } from '@typograph/types/queries';
 

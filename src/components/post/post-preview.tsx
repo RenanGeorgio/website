@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Avatar from '../avatar';
-import DateFormatter from '../date-formatter';
+import DateFormatter from '../../utils/date-formatter';
 import CoverImage from '../cover-image';
 import { Author } from "@typograph/types";
 

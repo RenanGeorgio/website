@@ -56,6 +56,7 @@ const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props)
         setLockHeight(hasChin);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowHeight, hasChin]);
 
   return (

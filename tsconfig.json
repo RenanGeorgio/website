@@ -29,8 +29,7 @@
       "@typograph/*": ["typograph/*"],
       "@hooks/*": ["hooks/*"],
       "@views/*": ["views/*"],
-      "@data/*": ["data/*"],
-      "@studio/*": ["studio/*"]
+      "@data/*": ["data/*"]
     },
     "incremental": true
   },

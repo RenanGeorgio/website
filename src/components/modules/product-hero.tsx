@@ -1,5 +1,5 @@
 import { BlockContent } from '@components/block';
-import { ProductGallery, ProductPrice, ProductForm, ProductActions } from '@components/product';
+import { ProductGallery, ProductPrice, ProductForm, ProductActions } from '@components/shop/product';
 import { ProductProp, VariantsParams } from '@typograph/types/queries';
 
 interface Props {

@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { useParams, usePrevious, cartesian, sortAsc, sortDesc, clampRange } from '@lib/helpers';
 import { useSiteContext } from '@lib/context';
 import { CollectionFilter, CollectionFilterChips, CollectionSort } from '@components/collection';
-import ProductCard from '@components/product-card';
+import ProductCard from '@components/shop/product-card';
 import { BlockContent } from '@components/block';
 import { CollectionGridProps, ProductProp } from '@typograph/types/queries';
 import { Obj } from '@typograph/types';

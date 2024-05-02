@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ProductCounter, ProductAdd, ProductWaitlist } from '@components/product';
+import { ProductCounter, ProductAdd, ProductWaitlist } from '@components/shop/product';
 import { ProductProp, VariantsParams } from '@typograph/types/queries';
 
 interface Props {

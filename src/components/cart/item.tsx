@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { hasObject } from '@lib/helpers';
 import { useUpdateItem, useRemoveItem, useToggleCart } from '@lib/context';
 import Photo from '@components/photo';
-import { ProductCounter, ProductPrice } from '@components/product';
+import { ProductCounter, ProductPrice } from '@components/shop/product';
 import { ProductProp } from '@typograph/types/queries';
 import { Obj } from '@typograph/types';
 

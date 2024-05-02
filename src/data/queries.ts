@@ -1,10 +1,3 @@
-import { sortTypes } from '@studio/schemas/objects/shop-sort';
-
-// Create our sorting fallback titles from Sanity
-const sortFallbacks = sortTypes
-  .map((type) => `type == "${type.value}" => "${type.title}"`)
-  .join(',')
-
 // Construct our "home" and "error" page GROQ
 export const homeID = `*[_type=="generalSettings"][0].home->_id`
 export const shopID = `*[_type=="generalSettings"][0].shop->_id`
@@ -254,7 +247,7 @@ export const modules = `
       options[]{
         "slug": type,
         "title": coalesce(title, select(
-          ${sortFallbacks}
+          ${null}
         ))
       }
     },

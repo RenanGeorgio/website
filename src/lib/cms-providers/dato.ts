@@ -7,6 +7,22 @@ import { fetchCmsEntityAPI } from './entity/twins';
 
 const API_URL = 'https://graphql.datocms.com/';
 
+const responsiveImageFragment = `
+  fragment responsiveImageFragment on ResponsiveImage {
+  srcSet
+    webpSrcSet
+    sizes
+    src
+    width
+    height
+    aspectRatio
+    alt
+    title
+    bgColor
+    base64
+  }
+`;
+
 async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
 
   const res = await fetch(API_URL, {
@@ -59,7 +75,33 @@ export async function getAllRedirectsSchema(): Promise<any> {
   return data.allRedirects;
 }
 
-export async function getStaticPageSchema(pageData: any, preview: Obj): Promise<any> {
+export async function getStaticPageSchema(pageData: any): Promise<any> {
+  const query: string = gql`
+  {
+    allPages {
+      ishome
+      pageType
+      slug
+      title
+      modules {
+        key
+        id
+      }
+      id
+    }
+  }
+
+  ${responsiveImageFragment}
+  `
+
+  const fetchApi: Obj = fetchCmsEntityAPI();
+  // @ts-ignore
+  const { staticPage }: any = await fetchApi?.request(query);
+  
+  return staticPage;
+}
+
+export async function getStaticShopSchema(pageData: any, preview: Obj): Promise<any> {
   const query: string = gql`
   {
     "page": ${pageData},
