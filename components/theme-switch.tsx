@@ -1,6 +1,6 @@
 import { useTheme } from 'next-themes';
 import { useHasMounted } from '@lib/helpers';
-import Swatch from '@components/swatch';
+import Swatch from './swatch';
 
 const themes = [
   { title: 'Light Mode', name: 'light', color: { hex: '#f4f4f0' } },
