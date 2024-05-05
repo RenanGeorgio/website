@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
 import { m } from 'framer-motion';
 import { isBrowser, isMobileSafari, useWindowSize } from '@lib/helpers';

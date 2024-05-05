@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import * as React from 'react';
 import { AppProps } from 'next/app';
 import Router from 'next/router';
 import { ThemeProvider } from 'next-themes';
@@ -40,14 +40,14 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
   useScrollRestoration(router, pageTransitionSpeed);
 
   // Trigger our loading class
-  useEffect(() => {
+  React.useEffect(() => {
     if (isBrowser) {
       document.documentElement.classList.toggle('is-loading', isPageTransition)
     }
   }, [isPageTransition]);
 
   // Setup page transition loading states
-  useEffect(() => {
+  React.useEffect(() => {
     Router.events.on('routeChangeStart', (_, { shallow }) => {
       // Bail if we're just changing URL parameters
       if (shallow) return
@@ -79,7 +79,7 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     // @ts-ignore
     window.addEventListener('keydown', handleFirstTab);
     return () => {
@@ -89,7 +89,7 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const pageID = useMemo(() => data?.page?.id, [data]);
+  const pageID = React.useMemo(() => data?.page?.id, [data]);
 
   return (
     <LazyMotion features={domAnimation}>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import * as React from 'react';
 import { gql } from 'graphql-request';
 import { Base64 } from 'base64-string';
 import { fetchCmsEntityAPI } from './cms-providers/entity/twins';
@@ -30,7 +30,7 @@ const initialContext = {
 }
 
 // Set context
-const SiteContext = createContext({
+const SiteContext = React.createContext({
   context: initialContext,
   setContext: () => null,
 })
@@ -154,13 +154,13 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
 /*  ------------------------------ */
 
 const SiteContextProvider = ({ children }) => {
-  const [context, setContext] = useState({
+  const [context, setContext] = React.useState({
     ...initialContext
   });
 
-  const [initContext, setInitContext] = useState(false);
+  const [initContext, setInitContext] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (initContext === false) {
       setInitContext(true);
     }
@@ -181,14 +181,14 @@ const SiteContextProvider = ({ children }) => {
 const ShopContextProvider = ({ data, children }) => {
   const { productCounts } = data;
 
-  const [context, setContext] = useState({
+  const [context, setContext] = React.useState({
     ...initialContext,
     ...{ productCounts },
   });
 
-  const [initContext, setInitContext] = useState(false);
+  const [initContext, setInitContext] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Shopify checkout not build yet
     if (initContext === false) {
       const initializeCheckout = async () => {
@@ -250,7 +250,7 @@ const ShopContextProvider = ({ data, children }) => {
 
 // Access our global store states
 function useSiteContext() {
-  const { context } = useContext(SiteContext);
+  const { context } = React.useContext(SiteContext);
   return context
 }
 
@@ -260,7 +260,7 @@ function useTogglePageTransition() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     context: { isPageTransition },
     setContext,
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   async function togglePageTransition(state) {
     setContext((prevState) => {
@@ -275,7 +275,7 @@ function useToggleMegaNav() {
   const {
     context: { meganav },
     setContext,
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   async function toggleMegaNav(state, id = null) {
     setContext((prevState) => {
@@ -299,7 +299,7 @@ function useToggleMegaNav() {
 function useCartCount() {
   const {
     context: { checkout },
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   let count = 0
 
@@ -315,7 +315,7 @@ function useCartCount() {
 function useCartTotals() {
   const {
     context: { checkout },
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   const subTotal = checkout.subTotal ? checkout.subTotal.amount * 100 : false
   return {
@@ -327,7 +327,7 @@ function useCartTotals() {
 function useCartItems() {
   const {
     context: { checkout },
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   return checkout.lineItems
 }
@@ -337,7 +337,7 @@ function useAddItem() {
   const {
     context: { checkout, shopifyClient },
     setContext,
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   async function addItem(variantID, quantity, attributes) {
     // Bail if no ID or quantity given
@@ -377,7 +377,7 @@ function useUpdateItem() {
   const {
     context: { checkout, shopifyClient },
     setContext,
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   async function updateItem(itemID, quantity) {
     // Bail if no ID or quantity given
@@ -403,7 +403,7 @@ function useRemoveItem() {
   const {
     context: { checkout, shopifyClient },
     setContext,
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   async function removeItem(itemID) {
     // Bail if no ID given
@@ -428,7 +428,7 @@ function useRemoveItem() {
 function useCheckout() {
   const {
     context: { checkout },
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   return checkout.webUrl
 }
@@ -438,7 +438,7 @@ function useToggleCart() {
   const {
     context: { isCartOpen },
     setContext,
-  } = useContext(SiteContext);
+  } = React.useContext(SiteContext);
 
   async function toggleCart(state) {
     setContext((prevState) => {
@@ -458,7 +458,7 @@ function useToggleCart() {
 function useProductCount() {
   const {
     context: { productCounts },
-  } = useContext(SiteContext)
+  } = React.useContext(SiteContext)
 
   function productCount(collection) {
     const collectionItem = productCounts.find((c) => c.slug === collection)

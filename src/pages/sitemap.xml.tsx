@@ -1,3 +1,4 @@
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { createGzip } from 'zlib';

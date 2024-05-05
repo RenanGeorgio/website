@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Error from 'next/error';
 import { getStaticPage } from '@data/cms-api';
 import Layout from '@components/layout';

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import * as React from 'react';
 import { AppProps } from 'next/app';
 import type { AppInitialProps } from 'next/app';
 import { ShopContextProvider } from '@lib/context';
@@ -17,11 +17,11 @@ const Store: React.FC<Props> = ({ Component, router, pageProps, site, page }: Pr
   // @ts-ignore
   const { data }: AppProps<AppInitialProps> = pageProps as any;
 
-  useEffect(() => {
+  React.useEffect(() => {
     pageProps['data'] = data;
   },[data, pageProps]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (data != undefined) {
       data['site'] = site;
       data['page'] = page;

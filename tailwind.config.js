@@ -49,6 +49,36 @@ module.exports = {
       lg: '1200px',
       xl: '1600px',
     },
+    colors: {
+      inherit: 'inherit',
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#000000',
+      white: '#FFFFFF',
+      pageBG: 'var(--pageBG)',
+      pageText: 'var(--pageText)',
+    },
+    fontSize: new Array(201)
+      .fill()
+      .map((_, i) => i)
+      .reduce((acc, val) => {
+        acc[val] = `${val / 10}rem`
+        return acc
+      }, {}),
+    lineHeight: new Array(161)
+      .fill()
+      .map((_, i) => i)
+      .reduce((acc, val) => {
+        acc[val] = val / 100
+        return acc
+      }, {}),
+    spacing: new Array(351)
+      .fill()
+      .map((_, i) => i)
+      .reduce((acc, val) => {
+        acc[val] = `${val / 10}rem`
+        return acc
+      }, {}),
     opacity: new Array(21)
       .fill()
       .map((_, i) => i * 5)
@@ -67,48 +97,6 @@ module.exports = {
       fontFamily: {
         inherit: 'inherit',
       },
-      colors: {
-        inherit: 'inherit',
-        transparent: 'transparent',
-        current: 'currentColor',
-        black: '#000000',
-        white: '#FFFFFF',
-        pageBG: 'var(--pageBG)',
-        pageText: 'var(--pageText)',
-        "accent-1": "#FAFAFA",
-        "accent-2": "#EAEAEA",
-        "accent-7": "#333",
-        success: "#0070f3",
-        cyan: "#79FFE1",
-      },
-      spacing: new Array(351)
-        .fill()
-        .map((_, i) => i)
-        .reduce((acc, val) => {
-          acc[val] = `${val / 10}rem`
-          return acc
-        }, {}),
-      letterSpacing: {
-        tighter: "-.04em",
-      },
-      lineHeight: new Array(161)
-        .fill()
-        .map((_, i) => i)
-        .reduce((acc, val) => {
-          acc[val] = val / 100
-          return acc
-        }, {}),
-      fontSize: new Array(201)
-        .fill()
-        .map((_, i) => i)
-        .reduce((acc, val) => {
-          acc[val] = `${val / 10}rem`
-          return acc
-        }, {}),
-      boxShadow: {
-        sm: "0 5px 10px rgba(0, 0, 0, 0.12)",
-        md: "0 8px 30px rgba(0, 0, 0, 0.12)",
-      },
       maxWidth: {
         xs: '20rem',
         sm: '30rem',
@@ -122,11 +110,8 @@ module.exports = {
         '6xl': '115rem',
         '7xl': '130rem',
         prose: '100ch',
-      }
+      },
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
-};
+}

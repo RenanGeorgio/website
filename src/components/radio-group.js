@@ -1,13 +1,13 @@
-import React, { createContext, useContext } from 'react';
+import * as React from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 
 // Create radio contexts
-const RadioGroupContext = createContext()
-const RadioItemContext = createContext()
+const RadioGroupContext = React.createContext()
+const RadioItemContext = React.createContext()
 
 // Export radio context hooks
-export const useRadioGroupContext = () => useContext(RadioGroupContext)
-export const useRadioItemContext = () => useContext(RadioItemContext)
+export const useRadioGroupContext = () => React.useContext(RadioGroupContext)
+export const useRadioItemContext = () => React.useContext(RadioItemContext)
 
 export default function RadioGroup({
   value,
