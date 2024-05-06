@@ -1,20 +1,30 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es5",
     "module": "esnext",
     "jsx": "preserve",
-    "strict": false,
+    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext", "es2020"],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "paths": {
+      "@components/*": ["components/*", "components/*/index", "components/index"],
+      "@lib/*": ["lib/*"],
+      "@styles/*": ["styles/*"],
+      "@typograph/*": ["typograph/*"],
+      "@hooks/*": ["hooks/*"],
+      "@views/*": ["views/*"],
+      "@data/*": ["data/*"]
+    },
     "incremental": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts",  "global.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
 }
