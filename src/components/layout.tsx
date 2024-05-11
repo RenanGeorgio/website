@@ -1,102 +1,82 @@
-import React, { useEffect, useState } from 'react';
-import Script from 'next/script';
-import { m } from 'framer-motion';
-import { isBrowser, isMobileSafari, useWindowSize } from '@lib/helpers';
-import { pageTransitionSpeed } from '@lib/animate';
-import { SiteParams, CookieConsent } from '@typograph/types/queries';
-import { Obj } from '@typograph/types';
-
-import CookieBar from './cookie-bar'
-import Header from './header'
-import Alert from './alert';
+import React from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import cn from 'classnames';
+import { SkipNavContent } from '@reach/skip-nav';
+import { NAVIGATION } from '@assets/constants';
+import Logo from './icons/icon-logo';
+import MobileMenu from './mobile-menu';
 import Footer from './footer';
-import Meta from "./meta";
+import DemoButton from './hms/demo-cta';
+import RoomCta from './hms/demo-cta/room-cta';
+import { hmsConfig } from './hms/config';
 
-interface Props {
-  site: SiteParams;
-  page: Obj;
-  schema?: any;
-  preview?: boolean;
-  children?: React.ReactNode;
+import styles from './layout.module.css';
+
+type Props = {
+  children: React.ReactNode;
+  className?: string;
+  hideNav?: boolean;
+  layoutStyles?: any;
+  isLive?: boolean;
 };
 
-const pageTransitionAnim = {
-  show: {
-    opacity: 1,
-    transition: {
-      duration: pageTransitionSpeed / 1000,
-      delay: 0.2,
-      ease: 'linear',
-      when: 'beforeChildren',
-    },
-  },
-  hide: {
-    opacity: 0,
-    transition: {
-      duration: pageTransitionSpeed / 1000,
-      ease: 'linear',
-      when: 'beforeChildren',
-    },
-  },
-}
-
-const Layout: React.FC<any> = ({ site, page, schema, preview, children }: Props): JSX.Element => {
-  const { height: windowHeight } = useWindowSize();
-  const [lockHeight, setLockHeight] = useState<boolean>(false);
-  const hasChin: boolean | undefined = isMobileSafari();
-
-  // set header height
-  const [headerHeight, setHeaderHeight] = useState<number | string | null>(null);
-
-  useEffect(() => {
-    if ((isBrowser && !lockHeight) || !hasChin) {
-      document.body.style.setProperty('--vh', `${windowHeight * 0.01}px`);
-
-      if (hasChin != undefined) {
-        setLockHeight(hasChin);
-      }
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [windowHeight, hasChin]);
-
+export default function Layout({
+  children,
+  className,
+  hideNav,
+  layoutStyles,
+  isLive = false
+}: Props) {
+  const router = useRouter();
+  const activeRoute = router.asPath;
+  const disableCta = ['/schedule', '/speakers', '/expo', '/jobs'];
   return (
     <>
-      <Meta site={site} page={page} schema={schema} />
-      {site.gtmID && (
-        <Script
-          id="gtm"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','${site.gtmID}');`,
-          }}
-        />
-      )}
-      <m.div 
-        className="min-h-screen"
-        key={page.id}
-        initial="hide"
-        animate="show"
-        exit="hide"
-        variants={pageTransitionAnim}
-        // @ts-ignore
-        style={headerHeight ? { '--headerHeight': `${headerHeight}px` } : null}
-      >
-        <Alert preview={preview} />
-        {/*@ts-ignore*/}
-        <CookieBar data={site?.cookieConsent as CookieConsent} />
-        <Header
-          data={site?.header}
-          isTransparent={page.hasTransparentHeader}
-          onSetup={(height: number | string) => setHeaderHeight(height)}
-        />
-        <main id="content">{children}</main>
-      </m.div>
-      <Footer data={site?.footer} />
+      <div className={styles.background}>
+        {!hideNav && (
+          <header className={cn(styles.header)}>
+            <div className={styles['header-logos']}>
+              <MobileMenu key={router.asPath} />
+              <Link href="/">
+                {/* eslint-disable-next-line */}
+                <a className={styles.logo}>
+                  <Logo />
+                </a>
+              </Link>
+            </div>
+            <div className={styles.tabs}>
+              {NAVIGATION.map(({ name, route }) => (
+                <a
+                  key={name}
+                  href={route}
+                  className={cn(styles.tab, {
+                    [styles['tab-active']]: activeRoute.startsWith(route)
+                  })}
+                >
+                  {name}
+                </a>
+              ))}
+            </div>
+
+            {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
+            activeRoute === '/' ? (
+              <div className={cn(styles['header-right'])}>
+                {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
+              </div>
+            ) : (
+              <div />
+            )}
+          </header>
+        )}
+        <div className={styles.page}>
+          <main className={styles.main} style={layoutStyles}>
+            <SkipNavContent />
+            <div className={cn(styles.full, className)}>{children}</div>
+          </main>
+          {!activeRoute.startsWith('/stage') && <Footer />}
+        </div>
+      </div>
     </>
   );
-};
-
-export default Layout;
+}

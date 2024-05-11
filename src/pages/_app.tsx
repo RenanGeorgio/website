@@ -11,7 +11,7 @@ import { pageTransitionSpeed } from '@lib/animate';
 import { useSiteContext, useTogglePageTransition } from '@lib/context';
 import NProgress from '@components/nprogress';
 import ResizeHandler from '@components/resize-handler';
-import { Obj } from '@typograph/types';
+import { Obj } from '@types';
 
 import '@styles/global.css';
 import '@styles/nprogress.css';

@@ -5,7 +5,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { fadeAnim } from '@lib/animate';
 import { BlockContent } from '@components/block'; // TROCAR
-import Icon from '@components/icon';
+import { Icon } from '@components/icons';
 
 const Newsletter = ({ data = {} }) => {
   // Extract our module data
@@ -199,7 +199,7 @@ const Newsletter = ({ data = {} }) => {
         )}
       </AnimatePresence>
     </form>
-  )
+  );
 }
 
 export default Newsletter

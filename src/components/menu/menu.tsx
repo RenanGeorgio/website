@@ -3,8 +3,7 @@ import { getStaticRoute, getActive } from '@lib/routes';
 import MegaDropdownButton from './mega-dropdown-button';
 import Dropdown from './dropdown';
 import CustomLink from '@components/link';
-import { Obj } from '@typograph/types';
-import { Link } from '@typograph/types/queries';
+import { Obj, Link } from '@types';
 
 interface Props {
   items: Obj[];
@@ -65,7 +64,7 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }: Props) =
         }
       })}
     </ul>
-  )
+  );
 }
 
 export default Menu;

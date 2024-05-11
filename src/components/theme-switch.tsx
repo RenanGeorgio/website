@@ -37,7 +37,7 @@ const ThemeSwitch = () => {
         <div className="theme-switch--label">{currentTheme.title}</div>
       </button>
     </div>
-  )
+  );
 }
 
 export default ThemeSwitch

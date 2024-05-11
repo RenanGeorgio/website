@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const pageTransitionSpeed = 300
 
 const fadeAnim = {

@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL, HOME_TWITTER_IMAGE_URL } from '@lib/constants';
-import { Obj } from '@typograph/types';
+import { useRouter } from 'next/router';
+import { CMS_NAME, SITE_URL, HOME_OG_IMAGE_URL, HOME_TWITTER_IMAGE_URL, TWITTER_USER_NAME } from '@assets/constants';
+import { Obj } from '@types';
 
 interface Props {
   site: Obj;
@@ -20,6 +21,9 @@ function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
 }
 
 const Meta = ({ site, page, schema }: Props) => {
+  const router = useRouter();
+  const url = `${SITE_URL}${router.asPath}`;
+
   const siteTitle = site.title;
 
   const siteFavicon = site.seo?.favicon || '/favicon/safari-pinned-tab.svg';
@@ -59,6 +63,7 @@ const Meta = ({ site, page, schema }: Props) => {
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="format-detection" content="telephone=no" />
+      <title>{metaTitle}</title>
 
       <link rel="manifest" href="/manifest.json" />
 
@@ -89,8 +94,8 @@ const Meta = ({ site, page, schema }: Props) => {
       <link rel="preconnect" href="https://hull-demo.myshopify.com" />
       <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
 
-      <title>{metaTitle}</title>
       {metaDesc && <meta name="description" content={fullMetaDesc} />}
+      <meta property="og:url" content={url} />
 
       {shareTitle && (
         <>
@@ -99,7 +104,7 @@ const Meta = ({ site, page, schema }: Props) => {
         </>
       )}
 
-      {shareDesc && (
+      {shareDesc && ( 
         <>
           <meta property="og:description" content={shareDesc} />
           <meta name="twitter:description" content={shareDesc} />
@@ -114,6 +119,7 @@ const Meta = ({ site, page, schema }: Props) => {
       )}
 
       <meta property="og:type" content="website" />
+      <meta name="twitter:site" content={`@${TWITTER_USER_NAME}`} />
       <meta name="twitter:card" content="summary_large_image" />
 
       {siteTitle && <meta property="og:site_name" content={siteTitle} />}

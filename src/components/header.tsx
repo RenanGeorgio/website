@@ -1,20 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { m } from 'framer-motion';
 import FocusTrap from 'focus-trap-react';
 import { useInView } from 'react-cool-inview';
 import { useRect } from '@reach/rect';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import cx from 'classnames';
-
 import { isBrowser } from '@lib/helpers';
 import { useSiteContext, useToggleMegaNav } from '@lib/context';
-
 import { Menu } from '@components/menu';
 import { MegaNavigation } from '@components/menu';
-import Icon from '@components/icon';
+import { Icon } from '@components/icons';
+import { SiteParams } from '@interfaces';
 
-import { SiteParams } from '@typograph/types/queries';
 import styles from './header.module.css';
 
 interface Props {
@@ -27,7 +25,7 @@ interface Props {
 
 const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description }: Props) => {
   // @ts-ignore
-  const { promo, menuDesktopLeft, menuDesktopRight, menuMobilePrimary, menuMobileSecondary } = data;
+  const { menuDesktopLeft, menuDesktopRight, menuMobilePrimary, menuMobileSecondary } = data;
 
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);

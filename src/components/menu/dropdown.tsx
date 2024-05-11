@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { getStaticRoute, getActive } from '@lib/routes';
 import CustomLink from '@components/link';
-import { Obj } from '@typograph/types';
+import { Obj } from '@types';
 
 interface Props {
   title: string;

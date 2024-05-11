@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import cx from 'classnames';
 import { getStaticRoute, getDynamicRoute } from '@lib/routes';
 import { useProductCount } from '@lib/context';
-import { Link } from '@typograph/types/queries';
+import { Link } from '@types';
 
 interface Props {
   tabIndex?: number;

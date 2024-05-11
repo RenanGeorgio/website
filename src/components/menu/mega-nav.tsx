@@ -9,7 +9,7 @@ import { isBrowser } from '@lib/helpers';
 import { swipeAnim } from '@lib/animate';
 import { useSiteContext, useToggleMegaNav } from '@lib/context';
 import Menu from './menu';
-import { Obj } from '@typograph/types';
+import { Obj } from '@types';
 
 interface Props {
   items: Obj[] | [];
@@ -96,7 +96,7 @@ const MegaNavigation = ({ items, headerHeight }: Props) => {
         onClick={() => toggleMegaNav(false)}
       />
     </>
-  )
+  );
 }
 
 export default MegaNavigation

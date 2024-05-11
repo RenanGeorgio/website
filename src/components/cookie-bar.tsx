@@ -3,8 +3,8 @@ import { AnimatePresence, m } from 'framer-motion';
 import FocusTrap from 'focus-trap-react';
 import { useHasMounted } from '@lib/helpers';
 import CustomLink from '@components/link';
-import { useAcceptCookies } from '@hooks/useAcceptCookies';
-import { CookieConsent } from '@typograph/types/queries';
+import { useAcceptCookies } from '@hooks/use-accept-cookies';
+import { CookieConsent } from '@types';
 
 const barAnim = {
   show: {
@@ -24,7 +24,6 @@ const barAnim = {
   },
 }
 
-// eslint-disable-next-line react/display-name
 const CookieBar = memo((data: CookieConsent) => {
   const { enabled, message, link } = data;
 

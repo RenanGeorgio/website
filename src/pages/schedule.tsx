@@ -1,13 +1,11 @@
 import { GetStaticProps } from 'next';
-
+import { getAllStages } from '@lib/cms-api';
+import { META_DESCRIPTION } from '@assets/constants';
 import Page from '@components/page';
 import Schedule from '@components/schedule';
 import Layout from '@components/layout';
 import Header from '@components/header';
-
-import { getAllStages } from '@lib/cms-api';
-import { Stage } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { Stage } from '@types';
 
 type Props = {
   allStages: Stage[];

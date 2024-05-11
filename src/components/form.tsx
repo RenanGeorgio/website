@@ -1,14 +1,15 @@
 import { useState, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import cn from 'classnames';
 import useConfData from '@lib/hooks/use-conf-data';
-import { useRouter } from 'next/router';
 import FormError from '@lib/form-error';
-import LoadingDots from './loading-dots';
-import styleUtils from './utils.module.css';
-import styles from './form.module.css';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 import { register } from '@lib/user-api';
+import LoadingDots from './loading-dots';
 import Captcha, { useCaptcha } from './captcha';
+
+import styleUtils from './utils.module.css';
+import styles from './form.module.css';
 
 type FormState = 'default' | 'loading' | 'error';
 

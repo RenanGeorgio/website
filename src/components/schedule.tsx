@@ -1,7 +1,8 @@
 import cn from 'classnames';
-import { Stage, Talk } from '@lib/types';
-import styles from './schedule.module.css';
 import TalkCard from './talk-card';
+import { Stage, Talk } from '@types';
+
+import styles from './schedule.module.css';
 
 function StageRow({ stage }: { stage: Stage }) {
   // Group talks by the time block

@@ -1,5 +1,6 @@
-import px from '@lib/to-pixels';
 import cn from 'classnames';
+import px from '@lib/to-pixels';
+
 import styles from './loading-dots.module.css';
 
 interface Props {

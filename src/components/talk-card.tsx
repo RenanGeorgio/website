@@ -1,9 +1,10 @@
+import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { parseISO, format, isBefore, isAfter } from 'date-fns';
-import { Talk } from '@lib/types';
+import { Talk } from '@types';
+
 import styles from './talk-card.module.css';
 
 type Props = {

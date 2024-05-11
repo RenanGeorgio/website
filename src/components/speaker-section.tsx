@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames';
-import GithubIcon from '@components/icons/icon-github';
-import { Speaker } from '@lib/types';
+import { IconGithub } from '@components/icons';
+import { Speaker } from '@types';
+
 import styles from './speaker-section.module.css';
 
 const TwitterIcon = () => (
@@ -83,11 +84,11 @@ export default function SpeakerSection({ speaker }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <GithubIcon color="#D8D8D8" size={24} />
+                <IconGithub color="#D8D8D8" size={24} />
               </a>
             ) : (
               <span className={cn(styles.githubIcon, styles.disabled)}>
-                <GithubIcon color="#D8D8D8" size={24} />
+                <IconGithub color="#D8D8D8" size={24} />
               </span>
             )}
           </div>

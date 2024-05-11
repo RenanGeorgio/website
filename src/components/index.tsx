@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
-import Layout from './layout';
+import Layout from './page';
 import ConfContainer from './conf-container';
 import Hero from './hero';
 import Form from './form';

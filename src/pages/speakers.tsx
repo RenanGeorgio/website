@@ -1,13 +1,11 @@
 import { GetStaticProps } from 'next';
-
+import { getAllSpeakers } from '@lib/cms-api';
+import { META_DESCRIPTION } from '@assets/constants';
 import Page from '@components/page';
 import SpeakersGrid from '@components/speakers-grid';
 import Layout from '@components/layout';
 import Header from '@components/header';
-
-import { getAllSpeakers } from '@lib/cms-api';
-import { Speaker } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { Speaker } from '@types';
 
 type Props = {
   speakers: Speaker[];
