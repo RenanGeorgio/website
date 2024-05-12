@@ -2,7 +2,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { createGzip } from 'zlib';
-import { getAllDocSlugs } from '@data/cms-api';
+import { getAllPages } from '@lib/cms-api';
 
 const Sitemap = () => {
   return (
@@ -17,12 +17,7 @@ export default Sitemap
 let sitemap: Buffer | null = null
 
 const addUrls = async (smStream: SitemapStream) => {
-  const allPages = await getAllDocSlugs('page')
-  const allCollections = await getAllDocSlugs('collection')
-
-  allCollections.map((collection: any) => {
-    smStream.write({ url: `/shop/${collection.slug}`, changefreq: 'weekly', priority: 0.8 })
-  })
+  const allPages = await getAllPages();
   
   allPages.map((page: any) => {
     smStream.write({ url: `/${page.slug}`, changefreq: 'weekly', priority: 0.7 })

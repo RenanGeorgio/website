@@ -25,7 +25,7 @@ async function fetchCmsAPI(query: string, { variables }: { variables?: Record<st
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${API_TOKEN}`
+      Authorization: `Bearer ${process.env.DATOCMS_READ_ONLY_API_TOKEN}`
     },
     body: JSON.stringify({
       query,

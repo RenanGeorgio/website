@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { SkipNavContent } from '@reach/skip-nav';
 import { NAVIGATION } from '@assets/constants';
 import Logo from './icons/icon-logo';
-import MobileMenu from './mobile-menu';
+//import MobileMenu from './mobile-menu';
 import Footer from './footer';
 import DemoButton from './hms/demo-cta';
 import RoomCta from './hms/demo-cta/room-cta';
@@ -37,7 +37,7 @@ export default function Layout({
         {!hideNav && (
           <header className={cn(styles.header)}>
             <div className={styles['header-logos']}>
-              <MobileMenu key={router.asPath} />
+              
               <Link href="/">
                 {/* eslint-disable-next-line */}
                 <a className={styles.logo}>

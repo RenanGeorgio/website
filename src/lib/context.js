@@ -7,9 +7,6 @@ import { fetchCmsEntityAPI } from './cms-providers/entity/twins';
 // get our API clients (shopify)
 import shopify from '@lib/shopify';
 
-// get our global image GROQ
-import { queries } from './cms-providers/dato';
-
 // Set our initial context states
 const initialContext = {
   isPageTransition: false,
@@ -61,9 +58,6 @@ const fetchVariant = async (id) => {
     "photos": {
       "cart": *[_type == "product" && productID == ^.productID][0].cartPhotos[]{
         forOption,
-        "default": cartPhoto{
-          ${queries.imageMeta}
-        },
       }
     },
     options[]{

@@ -125,6 +125,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
     <SSRProvider>
       <OverlayProvider>
         <ThemeProvider enableSystem={false} disableTransitionOnChange>
+          {/* @ts-ignore */}
           <HMSRoomProvider>
             <Site Component={Component} router={router} pageProps={pageProps} />
             <ResizeHandler />

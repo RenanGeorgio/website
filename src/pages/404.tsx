@@ -1,8 +1,6 @@
 // @ts-nocheck
 import React from 'react';
 import Error from 'next/error';
-import { getStaticPage } from '@data/cms-api';
-import { queries } from '@lib/cms-providers/dato';
 import Layout from '@components/layout';
 import { Module } from '@components/modules';
 
@@ -33,33 +31,11 @@ const NotFoundPage = ({ data }: any) => {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await, @typescript-eslint/no-unused-vars
 export async function getStaticProps({ preview, previewData }) {
-  const pageData = await getStaticPage(
-    `
-    *[_type == "page" && _id == ${queries.errorID}] | order(_updatedAt desc)[0]{
-      "id": _id,
-      hasTransparentHeader,
-      modules[]{
-        defined(_ref) => { ...@->content[0] {
-          ${queries.modules}
-        }},
-        !defined(_ref) => {
-          ${queries.modules},
-        }
-      },
-      title,
-      seo
-    }
-  `,
-    {
-      active: preview,
-      token: previewData?.token,
-    }
-  )
-
   return {
     props: {
-      data: pageData,
+      data: null,
     },
   }
 }

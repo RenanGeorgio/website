@@ -55,7 +55,7 @@ const Newsletter = ({ data = {} }) => {
       }),
     })
       .then((res) => res.json())
-      .then((res) => {
+      .then((_res) => {
         setSubmitting(false)
         setSuccess(true)
       })
