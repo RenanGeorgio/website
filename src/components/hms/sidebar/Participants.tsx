@@ -15,7 +15,7 @@ const Participants = () => {
         <>
           <div>
             <p>Moderator ({backstagePeers.length})</p>
-            {backstagePeers.map(p => (
+            {backstagePeers?.map(p => (
               <div key={p.id} className="flex items-center my-4">
                 <Avatar name={p.name} />
                 <div className="grow ml-4">
@@ -33,7 +33,7 @@ const Participants = () => {
       {stagePeers.length > 0 ? (
         <div>
           <p className="flex items-center">Speaker ({stagePeers.length})</p>
-          {stagePeers.map(p => (
+          {stagePeers?.map(p => (
             <div key={p.id} className="flex items-center my-4">
               <Avatar name={p.name} />
               <div className="grow ml-4">
@@ -49,7 +49,7 @@ const Participants = () => {
       {inviteePeers.length > 0 ? (
         <div>
           <p className="flex items-center">Guest Speakers ({inviteePeers.length})</p>
-          {inviteePeers.map(p => (
+          {inviteePeers?.map(p => (
             <div key={p.id} className="flex items-center my-4">
               <Avatar name={p.name} />
               <div className="grow ml-4">
@@ -66,7 +66,7 @@ const Participants = () => {
       {viewerPeers.length > 0 ? (
         <div>
           <p className="flex items-center">Viewers ({viewerPeers.length})</p>
-          {viewerPeers.map(p => (
+          {viewerPeers?.map(p => (
             <div key={p.id} className="flex items-center my-4">
               <Avatar name={p.name} />
               <div className="grow ml-4">{p.name} </div>

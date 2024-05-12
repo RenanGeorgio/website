@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const speakers = await getAllSpeakers();
-  const slugs = speakers.map((s: Speaker) => ({ params: { slug: s.slug } }));
+  const slugs = speakers?.map((s: Speaker) => ({ params: { slug: s.slug } }));
 
   return {
     paths: slugs,

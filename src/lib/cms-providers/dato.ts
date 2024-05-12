@@ -153,12 +153,30 @@ export async function getAllJobs(): Promise<Job[]> {
 
 export async function getAllPagesWithSlug(): Promise<any[]> {
   const data = await fetchCmsAPI(`
-    {
-      allPages {
-        slug
-      }
-    }
-  `);
+     {
+       allStages(first: 100, orderBy: order_ASC) {
+         name
+         slug
+         stream
+         discord
+         isLive
+         roomId
+         schedule {
+           title
+           start
+           end
+           speaker {
+             name
+             slug
+             image {
+               url(imgixParams: {fm: jpg, fit: crop, w: 120, h: 120})
+               blurDataURL: blurUpThumb
+             }
+           }
+         }
+       }
+     }
+   `);
 
-  return data?.allPages;
+  return data.allStages;
 }

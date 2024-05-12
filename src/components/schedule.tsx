@@ -17,9 +17,9 @@ function StageRow({ stage }: { stage: Stage }) {
         <span>{stage.name}</span>
       </h3>
       <div className={cn(styles.talks, styles[stage.slug])}>
-        {Object.keys(timeBlocks).map((startTime: string) => (
+        {Object.keys(timeBlocks)?.map((startTime: string) => (
           <div key={startTime}>
-            {timeBlocks[startTime].map((talk: Talk, index: number) => (
+            {timeBlocks[startTime]?.map((talk: Talk, index: number) => (
               <TalkCard key={talk.title} talk={talk} showTime={index === 0} />
             ))}
           </div>
@@ -37,7 +37,7 @@ export default function Schedule({ allStages }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles['row-wrapper']}>
-        {allStages.map(stage => (
+        {allStages?.map(stage => (
           <StageRow key={stage.slug} stage={stage} />
         ))}
       </div>

@@ -221,7 +221,7 @@ const GuestPreview: React.FC<{ roleChange: (b: boolean) => void }> = ({ roleChan
                 <div className={wrapperClass}>
                   <span className={textClass}>Video</span>
                   <Select onChange={e => handleVideoInput(e.target.value)} value={vI}>
-                    {videoInput.map((device: MediaDeviceInfo) => (
+                    {videoInput?.map((device: MediaDeviceInfo) => (
                       <option value={device.deviceId} key={device.deviceId}>
                         {device.label}
                       </option>
@@ -233,7 +233,7 @@ const GuestPreview: React.FC<{ roleChange: (b: boolean) => void }> = ({ roleChan
                 <div className={wrapperClass}>
                   <span className={textClass}>Microphone</span>
                   <Select onChange={e => handleAudioInput(e.target.value)} value={aI}>
-                    {audioInput.map((device: MediaDeviceInfo) => (
+                    {audioInput?.map((device: MediaDeviceInfo) => (
                       <option value={device.deviceId} key={device.deviceId}>
                         {device.label}
                       </option>
@@ -245,7 +245,7 @@ const GuestPreview: React.FC<{ roleChange: (b: boolean) => void }> = ({ roleChan
                 <div className={wrapperClass}>
                   <span className={textClass}>Speaker</span>
                   <Select onChange={e => handleAudioOutput(e.target.value)} value={aO}>
-                    {audioOutput.map((device: MediaDeviceInfo) => (
+                    {audioOutput?.map((device: MediaDeviceInfo) => (
                       <option value={device.deviceId} key={device.deviceId}>
                         {device.label}
                       </option>

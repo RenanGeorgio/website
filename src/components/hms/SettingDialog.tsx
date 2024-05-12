@@ -46,7 +46,7 @@ const SettingDialog = ({ children }: Props) => {
               }
               value={selectedDeviceIDs.videoInput}
             >
-              {videoInput.map((device: MediaDeviceInfo) => (
+              {videoInput?.map((device: MediaDeviceInfo) => (
                 <option value={device.deviceId} key={device.deviceId}>
                   {device.label}
                 </option>
@@ -66,7 +66,7 @@ const SettingDialog = ({ children }: Props) => {
               }
               value={selectedDeviceIDs.audioInput}
             >
-              {audioInput.map((device: MediaDeviceInfo) => (
+              {audioInput?.map((device: MediaDeviceInfo) => (
                 <option value={device.deviceId} key={device.deviceId}>
                   {device.label}
                 </option>
@@ -86,7 +86,7 @@ const SettingDialog = ({ children }: Props) => {
               }
               value={selectedDeviceIDs.audioOutput}
             >
-              {audioOutput.map((device: MediaDeviceInfo) => (
+              {audioOutput?.map((device: MediaDeviceInfo) => (
                 <option value={device.deviceId} key={device.deviceId}>
                   {device.label}
                 </option>

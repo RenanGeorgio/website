@@ -51,7 +51,7 @@ const MegaNavigation = ({ items, headerHeight }: Props) => {
       >
         {/* @ts-ignore */}
         <div ref={!meganav.isOpen ? activeNav : null} className="mega-nav" onKeyDown={(e) => handleKeyDown(e)}>
-          {dropdowns.map((dropdown, key) => {
+          {dropdowns?.map((dropdown, key) => {
             const isActive =meganav.isOpen && meganav.activeID === dropdown._key
             return (
               // @ts-ignore

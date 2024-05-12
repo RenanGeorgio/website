@@ -2,12 +2,9 @@ import { useEffect, useRef  } from 'react';
 import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 import { META_DESCRIPTION } from '@assets/constants';
-import { getAllPages } from '@lib/cms-api';
 import Page from '@components/page';
 import ConfContent from '@components/index';
-import Layout from '@components/layout';
 import Container from '@components/container';
-import Intro from '@components/intro';
 import { Obj } from '@types';
 
 interface Props {
@@ -22,13 +19,6 @@ function Home(data: Props) {
 
   const currentSite = useRef(site);
   const currentPage = useRef(page);
-
-  if (!page) {
-    return (
-      // @ts-ignore
-      <Error title={`"Home Page" is not set, or the page data is missing`} statusCode="Data Error" />
-    )
-  }
 
   const meta = {
     title: 'Demo - Virtual Event Starter Kit',
@@ -58,28 +48,15 @@ function Home(data: Props) {
 
   return (
     <Page site={currentSite.current} page={currentPage.current} fullViewport>
-      <Layout>
-        <SkipNavContent />
-        <Container>
-          <Intro />
-          <ConfContent
-            defaultUserData={defaultUserData}
-            defaultPageState={'registration'}
-          />
-        </Container>
-      </Layout>
+      <SkipNavContent />
+      <Container>
+        <ConfContent
+          defaultUserData={defaultUserData}
+          defaultPageState={'registration'}
+        />
+      </Container>
     </Page>
   );
-}
-
-export async function getStaticProps() {
-  const pageData: any = await (getAllPages()) || [];
-
-  return {
-    props: {
-      data: pageData,
-    },
-  }
 }
 
 export default Home

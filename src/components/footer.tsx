@@ -35,10 +35,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
     <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">
       <div className="footer--grid">
         <Container>
-          <h3 className="text-4xl lg:text-[2.5rem] font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            Statically Generated with Next.js.
-          </h3>
-          {blocks.map((block, key) => (
+          {blocks?.map((block, key) => (
             <div key={key} className="footer--block">
               {block.title && <p className="is-h3">{block.title}</p>}
 
@@ -50,7 +47,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
 
               {block.social && (
                 <div className="menu-social">
-                  {block.social.map((link: Obj, key: string | number) => {
+                  {block.social?.map((link: Obj, key: string | number) => {
                     return (
                       <a
                         key={key}
@@ -82,9 +79,9 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                   </div>
                 </div>
               )}
+              <div className={styles['footer-separator']} />
             </div>
           ))}
-          <div className={styles['footer-separator']} />
           <div className={styles['footer-legal']}>
             <div className={styles['footer-center-group']}>
             

@@ -25,7 +25,7 @@ export default function ScheduleSidebar({ allStages }: Props) {
       <p>{SHORT_DATE}</p>
 
       <div className={styles.talks}>
-        {currentStage?.schedule.map(talk => (
+        {currentStage?.schedule?.map(talk => (
           <TalkCard key={talk.title} talk={talk} showTime />
         ))}
       </div>

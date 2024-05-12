@@ -117,7 +117,7 @@ const setCheckoutState = async (checkout, setContext, openCart) => {
 
   // get real lineItems data
   const lineItems = await Promise.all(
-    checkout.lineItems.map(async (item) => {
+    checkout.lineItems?.map(async (item) => {
       const variantID = item.variant.id.split(shopifyVariantGID)[1]
       const variant = await fetchVariant(variantID)
 

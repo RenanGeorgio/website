@@ -6,8 +6,6 @@ import { isBrowser, isMobileSafari, useWindowSize } from '@lib/helpers';
 import { pageTransitionSpeed } from '@lib/animate';
 import CookieBar from './cookie-bar'
 import Header from './header'
-import Alert from './alert';
-import Footer from './footer';
 import Meta from './meta';
 import { Obj, CookieConsent } from '@types';
 import { SiteParams } from '@interfaces';
@@ -85,7 +83,6 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
         // @ts-ignore
         style={headerHeight ? { '--headerHeight': `${headerHeight}px` } : null}
       >
-        <Alert preview={preview} />
         {/*@ts-ignore*/}
         <CookieBar data={site?.cookieConsent as CookieConsent} />
         <Header
@@ -95,7 +92,6 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
         />
         <main id="content">{children}</main>
       </m.div>
-      <Footer data={site?.footer} />
     </div>
   );
 };

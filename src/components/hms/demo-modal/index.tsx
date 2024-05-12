@@ -43,7 +43,7 @@ const DemoModal = () => {
         perspective. Join in one click or share access with anyone else.
       </p>
       <div>
-        {data.map(m => (
+        {data?.map(m => (
           <div
             className="flex md:flex-row flex-col justify-between py-4"
             style={{ borderBottom: '1px solid #323232' }}

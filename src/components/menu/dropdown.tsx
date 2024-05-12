@@ -48,7 +48,7 @@ const Dropdown = ({ id, title, items, onClick }: Props) => {
         transition={{ duration: 0.5, ease: [0.19, 1.0, 0.22, 1.0] }}
       >
         <ul className="dropdown--nav">
-          {items.map((item, key) => {
+          {items?.map((item, key) => {
             const isStatic = getStaticRoute(item.page?.type)
             const isActive = getActive(isStatic, item.page?.slug, router)
 

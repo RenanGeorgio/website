@@ -85,7 +85,7 @@ const NonActiveSpeakerView: React.FC<{ peers: HMSPeer[] }> = ({ peers }) => {
     <div ref={ref} className="w-full h-full flex flex-wrap place-content-center items-center">
       {pagesWithTiles &&
         pagesWithTiles.length > 0 &&
-        pagesWithTiles[0].map((p, _) => (
+        pagesWithTiles[0]?.map((p, _) => (
           <VideoTile
             key={p.peer.id}
             width={p.width}
@@ -129,7 +129,7 @@ const ActiveTile: React.FC<{ activePeer: HMSPeer }> = ({ activePeer }) => {
     >
       {pagesWithTiles &&
         pagesWithTiles.length > 0 &&
-        pagesWithTiles[0].map((p, _) => (
+        pagesWithTiles[0]?.map((p, _) => (
           <VideoTile width={p.width} height={p.height} trackId={p.peer.videoTrack || ''} />
         ))}
     </div>
@@ -160,7 +160,7 @@ const AllSpeakers: React.FC<{ allPeers: HMSPeer[] }> = ({ allPeers }) => {
     >
       {pagesWithTiles &&
         pagesWithTiles.length > 0 &&
-        pagesWithTiles[page < pagesWithTiles.length ? page : 0].map((p, _) => (
+        pagesWithTiles[page < pagesWithTiles.length ? page : 0]?.map((p, _) => (
           <VideoTile width={p.width} height={p.height} trackId={p.peer.videoTrack || ''} />
         ))}
       {pagesWithTiles.length > 1 ? (

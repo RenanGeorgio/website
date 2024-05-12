@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { m } from 'framer-motion';
 import FocusTrap from 'focus-trap-react';
 import { useInView } from 'react-cool-inview';
@@ -10,7 +8,6 @@ import { isBrowser } from '@lib/helpers';
 import { useSiteContext, useToggleMegaNav } from '@lib/context';
 import { Menu } from '@components/menu';
 import { MegaNavigation } from '@components/menu';
-import { Icon } from '@components/icons';
 import { SiteParams } from '@interfaces';
 
 import styles from './header.module.css';
@@ -41,7 +38,6 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
 
   const headerRef: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement | undefined>(undefined);
   const headerRect: any = useRect(headerRef);
-  const router = useRouter();
 
   // setup menu toggle event
   const toggleMobileNav = (state: boolean) => {
@@ -83,9 +79,6 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
 
   return (
     <>
-      <a href="#content" className="skip-link">
-        Skip to Content
-      </a>
       <>
         <h1 className={styles.hero}>{hero}</h1>
         <p className={styles.description}>{description}</p>
@@ -100,24 +93,6 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
         <div ref={headerRef as React.MutableRefObject<HTMLDivElement>} className="header--outer">
           <div className="header--inner">
             <div className="header--content">
-              <div className="logo">
-                {router.pathname === '/' ? (
-                  <button
-                    className="logo--link"
-                    aria-label="Go Home"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    <Icon name="Logo" id="header" viewBox="0 0 215 150" />
-                  </button>
-                ) : (
-                  <Link href="/" className="hover:underline" scroll={false}>
-                    <a className="logo--link" aria-label="Go Home">
-                      <Icon name="Logo" id="header" viewBox="0 0 215 150" />
-                    </a>
-                  </Link>
-                )}
-              </div>
-
               <nav className="main-navigation" role="navigation">
                 {/* Mobile Header Menu */}
                 <div id="mobile-nav" className="main-navigation--mobile">

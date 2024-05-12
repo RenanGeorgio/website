@@ -49,7 +49,7 @@ const ActiveSpeaker = () => {
       <div ref={ref} className="flex justify-center  w-full h-full">
         {pagesWithTiles &&
           pagesWithTiles.length > 0 &&
-          pagesWithTiles[0].map((p, _) => (
+          pagesWithTiles[0]?.map((p, _) => (
             <VideoTile width={p.width} height={p.height} trackId={p.peer.videoTrack || ''} />
           ))}
       </div>

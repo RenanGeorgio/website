@@ -52,7 +52,7 @@ const CookieBar = memo((data: CookieConsent) => {
             <div className="cookie-bar--content is-inverted">
               <div className="cookie-bar--message">
                 <p>
-                  {message.split('\n').map((text: string, i: number) => {
+                  {message.split('\n')?.map((text: string, i: number) => {
                     // using React.fragment to parse line breaks
                     return (
                       <Fragment key={i}>

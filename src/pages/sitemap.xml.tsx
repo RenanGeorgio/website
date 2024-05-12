@@ -19,7 +19,7 @@ let sitemap: Buffer | null = null
 const addUrls = async (smStream: SitemapStream) => {
   const allPages = await getAllPages();
   
-  allPages.map((page: any) => {
+  allPages?.map((page: any) => {
     smStream.write({ url: `/${page.slug}`, changefreq: 'weekly', priority: 0.7 })
   })
 }
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
   try {
     smStream.write({ url: '/', changefreq: 'daily', priority: 1.0 })
     smStream.write({ url: '/shop', changefreq: 'daily', priority: 0.9 })
-    await addUrls(smStream)
+    //await addUrls(smStream)
     smStream.end()
     
     const resp = await streamToPromise(pipeline);

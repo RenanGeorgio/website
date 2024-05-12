@@ -12,8 +12,10 @@ import RoomCta from './hms/demo-cta/room-cta';
 import { hmsConfig } from './hms/config';
 
 import styles from './layout.module.css';
+import { SiteParams } from '@interfaces';
 
 type Props = {
+  site: SiteParams;
   children: React.ReactNode;
   className?: string;
   hideNav?: boolean;
@@ -22,6 +24,7 @@ type Props = {
 };
 
 export default function Layout({
+  site,
   children,
   className,
   hideNav,
@@ -37,16 +40,25 @@ export default function Layout({
         {!hideNav && (
           <header className={cn(styles.header)}>
             <div className={styles['header-logos']}>
-              
-              <Link href="/">
-                {/* eslint-disable-next-line */}
-                <a className={styles.logo}>
+              {router.pathname === '/' ? (
+                <button
+                  className="logo--link"
+                  aria-label="Go Home"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   <Logo />
-                </a>
-              </Link>
+                </button>
+              ) : (
+                <Link href="/" className="hover:underline" scroll={false}>
+                  {/* eslint-disable-next-line */}
+                  <a className={styles.logo} aria-label="Go Home">
+                    <Logo />
+                  </a>
+                </Link>
+              )}
             </div>
             <div className={styles.tabs}>
-              {NAVIGATION.map(({ name, route }) => (
+              {NAVIGATION?.map(({ name, route }) => (
                 <a
                   key={name}
                   href={route}
@@ -74,7 +86,7 @@ export default function Layout({
             <SkipNavContent />
             <div className={cn(styles.full, className)}>{children}</div>
           </main>
-          {!activeRoute.startsWith('/stage') && <Footer />}
+          <Footer data={site?.footer} />
         </div>
       </div>
     </>

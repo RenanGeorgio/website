@@ -25,7 +25,7 @@ const Chat = () => {
     <>
       <div id="chat-feed" className="h-full overflow-y-scroll p-4">
         {msgs.length > 0 ? (
-          msgs.map(m => (
+          msgs?.map(m => (
             <div key={m.id} className="flex items-start w-full mb-5 relative">
               <Avatar name={m.sender === localPeer.id ? localPeer.name : m.senderName} />
               <div className="flex flex-col flex-grow">

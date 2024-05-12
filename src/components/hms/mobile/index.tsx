@@ -63,7 +63,7 @@ const MobileHeader = () => {
       </div>
       <div className="h-[80%] w-[1px] bg-gray-700 mx-4" />
       <div className="w-full flex overflow-x-scroll">
-        {stagePeers.map(l => (
+        {stagePeers?.map(l => (
           <div key={l.id} className="flex flex-col justify-center items-center space-y-2 mx-2">
             <Avatar customSize={40} name={l.name} />
             <span className="text-xs">{l.name}</span>

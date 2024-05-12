@@ -50,7 +50,7 @@ export default function Form({ sharePage }: Props) {
 
           if (sharePage) {
             const queryString = Object.keys(params)
-              .map(
+              ?.map(
                 key =>
                   `${encodeURIComponent(key)}=${encodeURIComponent(
                     params[key as keyof typeof params] || ''

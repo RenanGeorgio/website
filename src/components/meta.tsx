@@ -13,7 +13,7 @@ interface Props {
 function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
   let newString = value;
 
-  templateTags.map((v) => {
+  templateTags?.map((v) => {
     newString = newString?.replace(new RegExp(v.tag, 'g'), v.value)
   });
 

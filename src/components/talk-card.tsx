@@ -45,7 +45,7 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
             </h4>
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>
-                {speaker.map(s => (
+                {speaker?.map(s => (
                   <div key={s.name} className={styles['avatar-wrapper']}>
                     <Image
                       loading="lazy"
