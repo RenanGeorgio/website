@@ -2,7 +2,6 @@
 import React from 'react';
 import Error from 'next/error';
 import Layout from '@components/layout';
-import { Module } from '@components/modules';
 
 const NotFoundPage = ({ data }: any) => {
   const { site, menus, page } = data;
@@ -24,8 +23,8 @@ const NotFoundPage = ({ data }: any) => {
         seo: page.seo,
       }}
     >
-      {page.modules?.map((module, key) => (
-        <Module key={key} index={key} data={module} />
+      {page.modules?.map((_module, _key) => (
+        {/*<Module key={key} index={key} data={module} />*/}
       ))}
     </Layout>
   );
@@ -35,7 +34,7 @@ const NotFoundPage = ({ data }: any) => {
 export async function getStaticProps({ preview, previewData }) {
   return {
     props: {
-      data: null,
+      data: {},
     },
   }
 }

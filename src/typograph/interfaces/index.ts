@@ -1,5 +1,5 @@
 import { Field, ImageField, LinkField, SiteInfo } from '@sitecore-jss/sitecore-jss-nextjs';
-import { CookieConsent, Crop, GTMParams, ImageElementProps, MenuHeader, Obj, Promo, Url, VariantBase, galleryPhotos, listingPhotos, mimeTypeObj } from '@types';
+import { CookieConsent, Crop, GTMParams, ImageElementProps, MenuProp, Obj, Promo, Url, VariantBase, galleryPhotos, listingPhotos, mimeTypeObj } from '@types';
 
 interface VariantsParams extends VariantBase {
   variant: {
@@ -15,7 +15,7 @@ interface VariantsParams extends VariantBase {
         value?: any; 
     }[];
     seo?: any;
-  }
+  } 
 };
 
 export interface SiteParams extends SiteInfo { 
@@ -32,18 +32,10 @@ export interface SiteParams extends SiteInfo {
   cookieConsent?: CookieConsent;
   header?: {
     promo?: Promo;
-    menuDesktopLeft?: {
-      items?: MenuHeader[];
-    };
-    menuDesktopRight?: {
-      items?: MenuHeader[];
-    };
-    menuMobilePrimary?: {
-      items?: MenuHeader[];
-    };
-    menuMobileSecondary?: {
-      items?: MenuHeader[];
-    };
+    menuDesktopLeft?: MenuProp;
+    menuDesktopRight?: MenuProp;
+    menuMobilePrimary?: MenuProp;
+    menuMobileSecondary?: MenuProp;
   };
   footer?: {
     blocks: Obj[];

@@ -57,7 +57,7 @@ export default function Form({ sharePage }: Props) {
                   )}`
               )
               .join('&');
-            await router.replace(`/?${queryString}`, '/');
+            await router?.replace(`/?${queryString}`, '/');
           } else {
             setUserData(params);
             setPageState('ticket');

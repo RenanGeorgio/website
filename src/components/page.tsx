@@ -63,7 +63,7 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
   return (
     <div className={cn('page-container', { full: fullViewport })}>
       <Meta site={site} page={page} schema={schema} />
-      {site.gtmID && (
+      {site?.gtmID && (
         <Script
           id="gtm"
           dangerouslySetInnerHTML={{
@@ -71,13 +71,13 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','${site.gtmID}');`,
+      })(window,document,'script','dataLayer','${site?.gtmID}');`,
           }}
         />
       )}
       <m.div 
         className="min-h-screen"
-        key={page.id}
+        key={page?.id}
         initial="hide"
         animate="show"
         exit="hide"
@@ -90,7 +90,7 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
         <CookieBar data={site?.cookieConsent as CookieConsent} />
         <Header
           data={site?.header}
-          isTransparent={page.hasTransparentHeader}
+          isTransparent={page?.hasTransparentHeader}
           onSetup={(height: number | string) => setHeaderHeight(height)}
         />
         <main id="content">{children}</main>

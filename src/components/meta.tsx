@@ -14,7 +14,7 @@ function replaceTemplateTags(value: string, templateTags: Obj[] = []) {
   let newString = value;
 
   templateTags.map((v) => {
-    newString = newString.replace(new RegExp(v.tag, 'g'), v.value)
+    newString = newString?.replace(new RegExp(v.tag, 'g'), v.value)
   });
 
   return newString;
@@ -24,16 +24,16 @@ const Meta = ({ site, page, schema }: Props) => {
   const router = useRouter();
   const url = `${SITE_URL}${router.asPath}`;
 
-  const siteTitle = site.title;
+  const siteTitle = site?.title;
 
-  const siteFavicon = site.seo?.favicon || '/favicon/safari-pinned-tab.svg';
-  const siteFaviconLegacy = site.seo?.faviconLegacy || '/favicon/favicon.ico';
-  const siteTouchIcon = site.seo?.touchIcon;
+  const siteFavicon = site?.seo?.favicon || '/favicon/safari-pinned-tab.svg';
+  const siteFaviconLegacy = site?.seo?.faviconLegacy || '/favicon/favicon.ico';
+  const siteTouchIcon = site?.seo?.touchIcon;
 
   const templateTags = [
     {
       tag: '{{page_title}}',
-      value: page.title,
+      value: page?.title,
     },
     {
       tag: '{{site_title}}',
@@ -42,20 +42,20 @@ const Meta = ({ site, page, schema }: Props) => {
   ]
 
   const metaTitle = replaceTemplateTags(
-    page.seo?.metaTitle || site.seo?.metaTitle,
+    page?.seo?.metaTitle || site?.seo?.metaTitle,
     templateTags
   );
 
-  const metaDesc = page.seo?.metaDesc || site.seo?.metaDesc;
+  const metaDesc = page?.seo?.metaDesc || site?.seo?.metaDesc;
   const fullMetaDesc = `${metaDesc}: A statically generated blog example using Next.js and ${CMS_NAME}.`;
 
   const shareTitle = replaceTemplateTags(
-    page.seo?.shareTitle || site.seo?.shareTitle,
+    page?.seo?.shareTitle || site?.seo?.shareTitle,
     templateTags
   );
 
-  const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc;
-  const shareGraphic = page.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset;
+  const shareDesc = page?.seo?.shareDesc || site?.seo?.shareDesc;
+  const shareGraphic = page?.seo?.shareGraphic?.asset || site?.seo?.shareGraphic?.asset;
 
   return (
     <Head>

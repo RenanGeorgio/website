@@ -14,6 +14,7 @@ import { Icon } from '@components/icons';
 import { SiteParams } from '@interfaces';
 
 import styles from './header.module.css';
+import { MenuProp } from '@types';
 
 interface Props {
   data?: SiteParams["header"];
@@ -23,13 +24,18 @@ interface Props {
   description?: React.ReactNode;
 };
 
-const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description }: Props) => {
-  // @ts-ignore
-  const { menuDesktopLeft, menuDesktopRight, menuMobilePrimary, menuMobileSecondary } = data;
+type MenuType = {
+  menuDesktopLeft?: MenuProp; 
+  menuDesktopRight?: MenuProp;
+  menuMobilePrimary?: MenuProp; 
+  menuMobileSecondary?: MenuProp;
+}
 
+const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description }: Props) => {
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const [headerHeight, setHeaderHeight] = useState<string | number | undefined>(undefined);
+  const [menuData, setMenuData] = useState<MenuType | undefined>(undefined);
 
   const { observe, inView: observerIsVisible } = useInView();
 
@@ -62,6 +68,18 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerHeight]);
+
+  useEffect(() => {
+    if (data != undefined) {
+      setMenuData({
+        menuDesktopLeft: data?.menuDesktopLeft ? data?.menuDesktopLeft : undefined,
+        menuDesktopRight: data?.menuDesktopRight ? data?.menuDesktopRight : undefined,
+        menuMobilePrimary: data?.menuMobilePrimary ? data?.menuMobilePrimary : undefined, 
+        menuMobileSecondary: data?.menuMobileSecondary ? data?.menuMobileSecondary : undefined
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   return (
     <>
@@ -134,18 +152,18 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
                       >
                         <div className="menu-mobile--inner">
                           <div className="menu-mobile--primary">
-                            {menuMobilePrimary?.items && (
+                            {menuData?.menuMobilePrimary?.items && (
                               <Menu
-                                items={menuMobilePrimary.items}
+                                items={menuData?.menuMobilePrimary.items}
                                 onClick={() => toggleMobileNav(false)}
                               />
                             )}
                           </div>
 
                           <div className="menu-mobile--secondary">
-                            {menuMobileSecondary?.items && (
+                            {menuData?.menuMobileSecondary?.items && (
                               <Menu
-                                items={menuMobileSecondary.items}
+                                items={menuData?.menuMobileSecondary.items}
                                 onClick={() => toggleMobileNav(false)}
                               />
                             )}
@@ -166,9 +184,9 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
                 {/* Desktop Header Menu */}
                 <div className="main-navigation--desktop">
                   <div className="menu-left">
-                    {menuDesktopLeft?.items && (
+                    {menuData?.menuDesktopLeft?.items && (
                       <Menu
-                        items={menuDesktopLeft.items}
+                        items={menuData?.menuDesktopLeft.items}
                         onClick={() => toggleMegaNav(false)}
                         useMegaNav
                       />
@@ -176,9 +194,9 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
                   </div>
 
                   <div className="menu-right">
-                    {menuDesktopRight?.items && (
+                    {menuData?.menuDesktopRight?.items && (
                       <Menu
-                        items={menuDesktopRight.items}
+                        items={menuData?.menuDesktopRight.items}
                         onClick={() => toggleMegaNav(false)}
                         useMegaNav
                       />
@@ -197,8 +215,8 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
 
           <MegaNavigation
             items={[
-              ...(menuDesktopLeft?.items || []),
-              ...(menuDesktopRight?.items || []),
+              ...(menuData?.menuDesktopLeft?.items || []),
+              ...(menuData?.menuDesktopRight?.items || []),
             ]}
             // @ts-ignore
             headerHeight={isTransparent && observerIsVisible ? headerHeight : undefined}

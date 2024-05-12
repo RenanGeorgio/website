@@ -125,10 +125,10 @@ const Icon = ({ id='', name, color, viewBox='0 0 100 100', className }: Props) =
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox={viewBox}
-      aria-labelledby={`${name.replace(/\s/g, '').toLowerCase()}-${id}`}
+      aria-labelledby={`${name?.replace(/\s/g, '').toLowerCase()}-${id}`}
       className={className || 'icon'}
     >
-      <title id={`${name.replace(/\s/g, '').toLowerCase()}-${id}`}>
+      <title id={`${name?.replace(/\s/g, '').toLowerCase()}-${id}`}>
         {name}
       </title>
       {getIcon(name, color)}

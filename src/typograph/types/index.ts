@@ -11,6 +11,10 @@ export type mimeTypeObj = {
   [mimeType: string]: string[]
 };
 
+export type MenuProp = {
+  items?: MenuHeader[];
+};
+
 export type LoadingValue = (typeof VALID_LOADING_VALUES)[number]
 
 export type LoaderValue = (typeof VALID_LOADERS)[number]

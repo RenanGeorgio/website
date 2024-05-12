@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { m, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 import { fadeAnim } from '@lib/animate';
-import { BlockContent } from '@components/block'; // TROCAR
 import { Icon } from '@components/icons';
 
 const Newsletter = ({ data = {} }) => {
@@ -152,7 +151,7 @@ const Newsletter = ({ data = {} }) => {
                   className="control--label for-checkbox mx-auto sm:mx-0"
                 >
                   <Icon name="Checkmark" />
-                  {terms && <BlockContent blocks={terms} />}
+                  {terms && <div>{terms}</div>}
                 </label>
               </div>
             )}
@@ -170,7 +169,7 @@ const Newsletter = ({ data = {} }) => {
           >
             <div className="form--success-content">
               {successMsg ? (
-                <BlockContent blocks={successMsg} />
+                <div>{successMsg}</div>
               ) : (
                 <h2>Success!</h2>
               )}
@@ -188,7 +187,7 @@ const Newsletter = ({ data = {} }) => {
             className="form--error"
           >
             <div className="form--error-content">
-              {errorMsg ? <BlockContent blocks={errorMsg} /> : <h2>Error!</h2>}
+              {errorMsg ? <div>{errorMsg}</div> : <h2>Error!</h2>}
               <p className="form--error-reset">
                 <button className="btn" onClick={(e) => resetForm(e)}>
                   try again

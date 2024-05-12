@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { SSRProvider, OverlayProvider } from 'react-aria';
+//import { SSRProvider, OverlayProvider } from 'react-aria';
 import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import { ThemeProvider } from 'next-themes';
@@ -16,7 +16,7 @@ import { Obj } from '@types';
 import '@styles/global.css';
 import '@styles/nprogress.css';
 import '@styles/chrome-bug.css';
-import "../styles/index.css"; // VEM DO ORIGINAL
+//import "../styles/index.css";
 
 //import '@styles/tailwind.css';
 //import '@styles/app.css';
@@ -122,17 +122,13 @@ export default function App({ Component, pageProps, router }: AppProps) {
   }, []);
 
   return (
-    <SSRProvider>
-      <OverlayProvider>
-        <ThemeProvider enableSystem={false} disableTransitionOnChange>
-          {/* @ts-ignore */}
-          <HMSRoomProvider>
-            <Site Component={Component} router={router} pageProps={pageProps} />
-            <ResizeHandler />
-            <NProgress />
-          </HMSRoomProvider>
-        </ThemeProvider>
-      </OverlayProvider>
-    </SSRProvider>
+    <ThemeProvider enableSystem={false} disableTransitionOnChange>
+      {/* @ts-ignore */}
+      <HMSRoomProvider>
+        <Site Component={Component} router={router} pageProps={pageProps} />
+        <ResizeHandler />
+        <NProgress />
+      </HMSRoomProvider>
+    </ThemeProvider>
   );
 }
