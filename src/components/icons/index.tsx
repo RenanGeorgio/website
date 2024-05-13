@@ -17,6 +17,7 @@ import PlatformLogo from './icon-platform';
 import RemoveUserIcon from './icon-remove-user';
 import IconTwitter from './icon-twitter';
 import UsersIcon from './icon-users';
+import IconCompany from './icon-company';
 
 interface Props { 
   id?: string | number; 
@@ -156,5 +157,6 @@ export {
   PlatformLogo,
   RemoveUserIcon,
   IconTwitter,
-  UsersIcon
+  UsersIcon,
+  IconCompany
 }

@@ -1,10 +1,24 @@
 import cn from 'classnames';
+import Player from './player/player';
+import PlayerCSS from './player/player-css';
 import { BRAND_NAME, DATE, SITE_DESCRIPTION } from '@assets/constants';
 
 import styleUtils from './utils.module.css';
 import styles from './hero.module.css';
 
 export default function Hero() {
+  const videoJsOptions = {
+    techOrder: ["youtube"],
+    autoplay: false,
+    controls: true,
+    sources: [
+      {
+        src: "https://www.youtube.com/watch?v=IxQB14xVas0",
+        type: "video/youtube",
+      },
+    ],
+  };
+
   return (
     <div className={styles.wrapper}>
       <h2
@@ -32,6 +46,8 @@ export default function Hero() {
         {SITE_DESCRIPTION}
       </h2>
       <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
+        {/*<Player {...videoJsOptions} />
+        <PlayerCSS />*/}
         <p>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>

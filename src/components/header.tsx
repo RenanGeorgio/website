@@ -79,10 +79,6 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
 
   return (
     <>
-      <>
-        <h1 className={styles.hero}>{hero}</h1>
-        <p className={styles.description}>{description}</p>
-      </>
       <header
         className={cx('header', {
           'is-overlay': isTransparent,
@@ -90,6 +86,8 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
           'has-bg': !observerIsVisible,
         })}
       >
+        <h1 className={styles.hero}>{hero}</h1>
+        <p className={styles.description}>{description}</p>
         <div ref={headerRef as React.MutableRefObject<HTMLDivElement>} className="header--outer">
           <div className="header--inner">
             <div className="header--content">

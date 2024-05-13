@@ -10,7 +10,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development next dev",
+    "dev": "cross-env NODE_ENV=development next dev & npx next-video sync -w",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc"
@@ -37,6 +37,7 @@
     "js-cookie": "^3.0.5",
     "next": "12.3.1",
     "next-themes": "^0.2.1",
+    "next-video": "^1.0.6",
     "nprogress": "0.2.0",
     "query-string": "^9.0.0",
     "react": "18.2.0",
@@ -50,7 +51,9 @@
     "shopify-buy": "^2.21.1",
     "sitemap": "^7.1.1",
     "smoothscroll-polyfill": "0.4.4",
-    "validator": "13.5.2"
+    "validator": "13.5.2",
+    "video.js": "^8.12.0",
+    "videojs-youtube": "^3.0.1"
   },
   "devDependencies": {
     "@sitecore-jss/sitecore-jss-nextjs": "^21.6.2",
@@ -66,6 +69,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/smoothscroll-polyfill": "0.3.1",
     "@types/validator": "13.1.1",
+    "@types/video.js": "^7.3.58",
     "@typescript-eslint/eslint-plugin": "4.10.0",
     "@typescript-eslint/parser": "4.10.0",
     "autoprefixer": "^10.4.7",

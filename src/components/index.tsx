@@ -6,6 +6,8 @@ import Hero from './hero';
 import Form from './form';
 import LearnMore from './learn-more';
 
+import 'video.js/dist/video-js.css';
+
 type Props = {
   defaultUserData: UserData;
   sharePage?: boolean;

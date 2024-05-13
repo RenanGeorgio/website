@@ -4,7 +4,7 @@ import Link from 'next/link';
 import cn from 'classnames';
 import { SkipNavContent } from '@reach/skip-nav';
 import { NAVIGATION } from '@assets/constants';
-import Logo from './icons/icon-logo';
+import { IconCompany } from '@components/icons';
 //import MobileMenu from './mobile-menu';
 import Footer from './footer';
 import DemoButton from './hms/demo-cta';
@@ -15,7 +15,7 @@ import styles from './layout.module.css';
 import { SiteParams } from '@interfaces';
 
 type Props = {
-  site: SiteParams;
+  site?: SiteParams;
   children: React.ReactNode;
   className?: string;
   hideNav?: boolean;
@@ -46,13 +46,13 @@ export default function Layout({
                   aria-label="Go Home"
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  <Logo />
+                  <IconCompany />
                 </button>
               ) : (
                 <Link href="/" className="hover:underline" scroll={false}>
                   {/* eslint-disable-next-line */}
                   <a className={styles.logo} aria-label="Go Home">
-                    <Logo />
+                    <IconCompany />
                   </a>
                 </Link>
               )}
