@@ -4,11 +4,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "accent-1": "#FAFAFA",
-        "accent-2": "#EAEAEA",
-        "accent-7": "#333",
-        success: "#0070f3",
-        cyan: "#79FFE1",
+        foreground: 'var(--foreground)',
+        gray: {
+          100: 'var(--accents-1)',
+          200: 'var(--accents-2)',
+          300: 'var(--accents-3)',
+          400: 'var(--accents-4)',
+          500: 'var(--accents-5)',
+          600: 'var(--accents-6)',
+          700: 'var(--accents-7)',
+          800: 'var(--accents-8)'
+        },
+        'gray-main': 'var(--gray)',
+        'gray-base': 'var(--gray1)',
+        secondary: 'var(--secondary-color)',
+        sidebar: 'var(--sidebar)',
+        brand: {
+          100: 'var(--brand-lighter)',
+          200: 'var(--brand-light)',
+          300: 'var(--brand)',
+          400: 'var(--brand-dark)'
+        }
       },
       spacing: {
         28: "7rem",
@@ -20,16 +36,21 @@ module.exports = {
         tight: 1.2,
       },
       fontSize: {
-        "5xl": "2.5rem",
-        "6xl": "2.75rem",
-        "7xl": "4.5rem",
-        "8xl": "6.25rem",
+        xxs: '10px',
+        xs: 'var(--text-xs)',
+        sm: 'var(--text-sm)',
+        md: 'var(--text-md)',
+        lg: 'var(--text-lg)',
+        xl: 'var(--text-xl)'
+      },
+      minWidth: {
+        btn: '160px'
       },
       boxShadow: {
         sm: "0 5px 10px rgba(0, 0, 0, 0.12)",
         md: "0 8px 30px rgba(0, 0, 0, 0.12)",
-      },
-    },
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };
