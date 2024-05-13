@@ -1,18 +1,19 @@
+import { GET_HOME_VIDEO } from '@assets/constants';
 import BackgroundVideo from 'next-video/background-video';
 
-export async function VideoComponent() {
-  const src = await getVideoSrc();
+export function VideoComponent() {
+  const src = GET_HOME_VIDEO;
  
   return (
     <video width="320" height="240" controls preload="none" aria-label="Video player">
-      <source src={url} type="video/mp4" />
+      <source src={src} type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   );
 }
 
-export async function BackgroundVideoComponent() {
-  const src = await getVideoSrc();
+export function BackgroundVideoComponent() {
+  const src = GET_HOME_VIDEO;
  
   return (
     <>
