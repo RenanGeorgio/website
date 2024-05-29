@@ -8,7 +8,7 @@ import {
   Text,
   useColorModeValue as mode,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+//import Link from 'next/link';
 //import { links } from './_data';
 import { ChevronRightIcon } from '@components/icons';
 

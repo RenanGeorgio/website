@@ -12,7 +12,7 @@ import {
   Box,
   Link,
 } from '@chakra-ui/react';
-import { MobileMenu } from './MobileMenu';
+//import { MobileMenu } from './MobileMenu';
 import { ResourcesMenu } from './ResourcesMenu';
 import { ChevronDownIcon, CloseIcon } from '@assets/icons';
 import { HamburgerIcon, IconLogo } from '@components/icons';
@@ -60,7 +60,7 @@ export const Header = () => {
             colorScheme="gray"
             onClick={onMobileMenuToggle}
           />
-          <MobileMenu isOpen={isMobileMenuOpen} />
+         
         </Box>
         <HStack as="nav" spacing={4} display={['none', 'none', 'flex']}>
           <Flex>
