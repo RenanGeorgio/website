@@ -3,7 +3,7 @@ import { Stack, Heading } from '@chakra-ui/react';
 import { Header } from '@components/common/Header/Header';
 import { SocialMetaTags } from '@components/common/SocialMetaTags';
 
-const PrivacyPolicies = () => {
+export default function PrivacyPolicies() {
   return (
     <div className="flex flex-col items-center w-full overflow-x-hidden ">
       <Header />
@@ -221,5 +221,3 @@ const PrivacyPolicies = () => {
     </div>
   );
 }
-
-export default PrivacyPolicies;

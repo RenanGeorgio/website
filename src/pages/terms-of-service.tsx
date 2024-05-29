@@ -3,7 +3,7 @@ import { Header } from '@components/common/Header/Header';
 import { SocialMetaTags } from '@components/common/SocialMetaTags';
 import { TextLink } from '@components/common/TextLink';
 
-const ServiceTerms = () => {
+export default function ServiceTerms() {
   return (
     <div className="flex flex-col items-center w-full overflow-x-hidden ">
       <SocialMetaTags currentUrl={`https://www.typebot.io/terms-of-service`} />
@@ -139,5 +139,3 @@ const ServiceTerms = () => {
     </div>
   );
 }
-
-export default ServiceTerms;
