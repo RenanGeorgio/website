@@ -3,6 +3,7 @@ import { useEffect, useMemo } from 'react';
 import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import { ThemeProvider } from 'next-themes';
+import { ChakraProvider } from '@chakra-ui/react';
 import { LazyMotion, domAnimation, AnimatePresence } from 'framer-motion';
 import { HMSRoomProvider } from '@100mslive/react-sdk';
 import { SiteContextProvider } from '@lib/context';
@@ -16,6 +17,7 @@ import { Obj } from '@types';
 import '@styles/global.css';
 import '@styles/nprogress.css';
 import '@styles/chrome-bug.css';
+import { theme } from '@lib/chakraTheme';
 //import "../styles/index.css";
 
 //import '@styles/tailwind.css';
@@ -109,7 +111,9 @@ const Site: React.FC<AppProps> = ({ Component, pageProps, router }: AppProps) =>
             document.body.classList.remove('overflow-hidden')
           }}
         >
-          <AnyComponent key={pageID} {...pageProps} />
+          <ChakraProvider theme={theme}>
+            <AnyComponent key={pageID} {...pageProps} />
+          </ChakraProvider>
         </AnimatePresence>
       </LazyMotion>
     </SiteContextProvider>
