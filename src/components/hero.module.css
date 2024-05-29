@@ -47,7 +47,7 @@
   font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
   text-align: center;
   /* img size is 50x50 */
-  background: url("../assets/media/warehouse.png") repeat 0 0;
+  background: url("data:image/png;base64,../assets/media/warehouse.png") repeat 0 0;
   -webkit-animation: bg-scrolling-reverse 0.92s infinite;
   /* Safari 4+ */
   -moz-animation: bg-scrolling-reverse 0.92s infinite;
@@ -63,7 +63,6 @@
 }
 
 .wrapper::before {
-  content: "INFINITY";
   font-size: 8rem;
   font-weight: 100;
   font-style: normal;
