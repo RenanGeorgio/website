@@ -33,7 +33,7 @@ export default function Hero() {
       </h2>
       <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
         Saiba como nos da
-        <br className={styleUtils['show-on-desktop']} /> {BRAND_NAME} podemos lhe ajudar
+        <br className={styleUtils['show-on-desktop']} /> podemos lhe ajudar
       </h1>
       <h2
         className={cn(
@@ -48,10 +48,10 @@ export default function Hero() {
       <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
         {/*<Player {...videoJsOptions} />
         <PlayerCSS />*/}
-        <p>{DATE}</p>
+        <p>{BRAND_NAME}</p>
         <div className={styles['description-separator']} />
         <p>
-          <strong>Online</strong>
+          <strong>Produto certo na hora certa</strong>
         </p>
       </div>
     </div>
