@@ -1,7 +1,7 @@
 import { Stack, Heading } from '@chakra-ui/react';
 import { Header } from '@components/common/Header/Header';
 import { SocialMetaTags } from '@components/common/SocialMetaTags';
-import { TextLink } from '@components/common/TextLink';
+//import { TextLink } from '@components/common/TextLink';
 import Layout from '@components/layout';
 
 export default function ServiceTerms() {
@@ -129,7 +129,6 @@ export default function ServiceTerms() {
 
             <p>
               Please read our{' '}
-              <TextLink href={'/privacy-policies'}>Privacy Policy</TextLink>.
             </p>
 
             <Heading>10. Governing Law</Heading>
