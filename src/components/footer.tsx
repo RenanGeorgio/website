@@ -17,12 +17,12 @@ const footerObj: SiteParams["footer"] = {
 export function HostedByDiamondbigger() {
   return (
     <a
-      href="https://vercel.com"
+      href="https://www.diamondbigger.com"
       className={cn(styles['footer-link'], styles['footer-logo'])}
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className={styles['secondary-text']}>Created by </div>
+      <div className={styles['secondary-text']}>Criado por </div>
       <PlatformLogo color="#D8D8D8" />
     </a>
   );
@@ -62,23 +62,19 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 </div>
               )}
 
-              {/* Put our extras in the last block */}
-              {key === 3 && (
-                <div className="footer--extras">
-                  <ThemeSwitch />
-
-                  <div className="footer--disclaimer">
-                    <div className={styles['footer-hostedby']}>
-                      <HostedByDiamondbigger />
-                      <div className={styles['footer-separator']} />
-                    </div>
-                    <div className={styles['footer-copyright']}>
-                      Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
-                      rights reserved.
-                    </div>
+              <div className="footer--extras">
+                <ThemeSwitch />
+                <div className="footer--disclaimer">
+                  <div className={styles['footer-hostedby']}>
+                    <HostedByDiamondbigger />
+                    <div className={styles['footer-separator']} />
+                  </div>
+                  <div className={styles['footer-copyright']}>
+                    Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
+                    rights reserved.
                   </div>
                 </div>
-              )}
+              </div>
               <div className={styles['footer-separator']} />
             </div>
           ))}
