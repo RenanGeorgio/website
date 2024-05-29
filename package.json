@@ -21,6 +21,8 @@
     "@chakra-ui/icon": "3.0.15",
     "@chakra-ui/next-js": "2.2.0",
     "@chakra-ui/react": "2.7.1",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
     "@hcaptcha/react-hcaptcha": "^1.10.1",
     "@radix-ui/react-dialog": "0.1.5",
     "@radix-ui/react-dropdown-menu": "0.1.4",
