@@ -52,15 +52,7 @@ export const Header = () => {
         </Box>
         <HStack as="nav" spacing={4} display={['none', 'none', 'flex']}>
           <Flex>
-            <Button
-              rightIcon={null}
-              onClick={onToggle}
-              variant="ghost"
-              colorScheme="gray"
-              fontWeight={700}
-            >
-              Resources
-            </Button>
+            
           </Flex>
           <Button
             as={Link}
