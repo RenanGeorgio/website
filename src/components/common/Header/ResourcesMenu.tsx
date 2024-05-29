@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { links } from './_data';
-import { ChevronRightIcon } from '@/components/icons';
+import { ChevronRightIcon } from '@components/icons';
 
 type Props = { isOpen: boolean }
 
