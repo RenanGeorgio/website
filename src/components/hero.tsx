@@ -33,7 +33,7 @@ export default function Hero() {
       </h2>
       <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
         Saiba como
-        <br className={styleUtils['show-on-desktop']} /> podemos lhe ajudar
+        <br className={styleUtils['show-on-desktop']} /> podemos ajudar
       </h1>
       <h2
         className={cn(

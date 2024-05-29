@@ -92,7 +92,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Code of Conduct
+                  Codigo de Conduta
                 </a>
               </p>
               {LEGAL_URL && (
