@@ -89,9 +89,9 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
         <h1 className={styles.hero}>{hero}</h1>
         <p className={styles.description}>{description}</p>
         <div ref={headerRef as React.MutableRefObject<HTMLDivElement>}>
-          <div className="header--outer">
-            <div className="header--content">
-              <nav className="main-navigation" role="navigation">
+          <div>
+            <div>
+              <nav role="navigation">
                 {/* Mobile Header Menu */}
                 <FocusTrap active={isMobileNavOpen}>
                   <div>
