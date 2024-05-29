@@ -93,66 +93,64 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
             <div className="header--content">
               <nav className="main-navigation" role="navigation">
                 {/* Mobile Header Menu */}
-                <div id="mobile-nav" className="main-navigation--mobile">
-                  <FocusTrap active={isMobileNavOpen}>
-                    <div>
-                      <button
-                        onClick={() => toggleMobileNav(!isMobileNavOpen)}
-                        className={cx('menu-toggle', {
-                          'is-open': isMobileNavOpen,
-                        })}
-                        aria-expanded={isMobileNavOpen}
-                        aria-controls="mobile-nav"
-                        aria-label="Toggle Menu"
-                      >
-                        <span className="hamburger">
-                          <span className="hamburger--icon"></span>
-                        </span>
-                      </button>
-                      <m.div
-                        initial="hide"
-                        animate={isMobileNavOpen ? 'show' : 'hide'}
-                        variants={{
-                          show: {
-                            x: '0%',
-                          },
-                          hide: {
-                            x: '-100%',
-                          },
-                        }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="menu-mobile"
-                      >
-                        <div className="menu-mobile--inner">
-                          <div className="menu-mobile--primary">
-                            {menuData?.menuMobilePrimary?.items && (
-                              <Menu
-                                items={menuData?.menuMobilePrimary.items}
-                                onClick={() => toggleMobileNav(false)}
-                              />
-                            )}
-                          </div>
-
-                          <div className="menu-mobile--secondary">
-                            {menuData?.menuMobileSecondary?.items && (
-                              <Menu
-                                items={menuData?.menuMobileSecondary.items}
-                                onClick={() => toggleMobileNav(false)}
-                              />
-                            )}
-                          </div>
+                <FocusTrap active={isMobileNavOpen}>
+                  <div>
+                    <button
+                      onClick={() => toggleMobileNav(!isMobileNavOpen)}
+                      className={cx('menu-toggle', {
+                        'is-open': isMobileNavOpen,
+                      })}
+                      aria-expanded={isMobileNavOpen}
+                      aria-controls="mobile-nav"
+                      aria-label="Toggle Menu"
+                    >
+                      <span className="hamburger">
+                        <span className="hamburger--icon"></span>
+                      </span>
+                    </button>
+                    <m.div
+                      initial="hide"
+                      animate={isMobileNavOpen ? 'show' : 'hide'}
+                      variants={{
+                        show: {
+                          x: '0%',
+                        },
+                        hide: {
+                          x: '-100%',
+                        },
+                      }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="menu-mobile"
+                    >
+                      <div className="menu-mobile--inner">
+                        <div className="menu-mobile--primary">
+                          {menuData?.menuMobilePrimary?.items && (
+                            <Menu
+                              items={menuData?.menuMobilePrimary.items}
+                              onClick={() => toggleMobileNav(false)}
+                            />
+                          )}
                         </div>
-                      </m.div>
 
-                      <div
-                        className={cx('menu-mobile--backdrop', {
-                          'is-active': isMobileNavOpen,
-                        })}
-                        onClick={() => toggleMobileNav(false)}
-                      />
-                    </div>
-                  </FocusTrap>
-                </div>
+                        <div className="menu-mobile--secondary">
+                          {menuData?.menuMobileSecondary?.items && (
+                            <Menu
+                              items={menuData?.menuMobileSecondary.items}
+                              onClick={() => toggleMobileNav(false)}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </m.div>
+
+                    <div
+                      className={cx('menu-mobile--backdrop', {
+                        'is-active': isMobileNavOpen,
+                      })}
+                      onClick={() => toggleMobileNav(false)}
+                    />
+                  </div>
+                </FocusTrap>
 
                 {/* Desktop Header Menu */}
                 <div className="main-navigation--desktop">

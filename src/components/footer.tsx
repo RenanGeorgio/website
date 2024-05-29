@@ -61,23 +61,22 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                   })}
                 </div>
               )}
-
-              <div className="footer--extras">
-                <ThemeSwitch />
-                <div className="footer--disclaimer">
-                  <div className={styles['footer-hostedby']}>
-                    <HostedByDiamondbigger />
-                    <div className={styles['footer-separator']} />
-                  </div>
-                  <div className={styles['footer-copyright']}>
-                    Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
-                    rights reserved.
-                  </div>
-                </div>
-              </div>
-              <div className={styles['footer-separator']} />
             </div>
           ))}
+          <div className="footer--extras">
+            <ThemeSwitch />
+            <div className="footer--disclaimer">
+              <div className={styles['footer-hostedby']}>
+                <HostedByDiamondbigger />
+                <div className={styles['footer-separator']} />
+              </div>
+              <div className={styles['footer-copyright']}>
+                Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
+                rights reserved.
+              </div>
+            </div>
+          </div>
+          <div className={styles['footer-separator']} />
           <div className={styles['footer-legal']}>
             <div className={styles['footer-center-group']}>
             
