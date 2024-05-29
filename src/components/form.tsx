@@ -130,7 +130,7 @@ export default function Form({ sharePage }: Props) {
             className={cn(styles.submit, styles.register, styles.error)}
             onClick={onTryAgainClick}
           >
-            Try Again
+            Tentar novamente
           </button>
         </div>
       </div>
@@ -161,7 +161,7 @@ export default function Form({ sharePage }: Props) {
             onChange={e => setEmail(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder="Enter email to register free"
+            placeholder="Insira seu email para se inscrever em nossa plataforma"
             aria-label="Your email address"
             required
           />
@@ -171,7 +171,7 @@ export default function Form({ sharePage }: Props) {
           className={cn(styles.submit, styles.register, styles[formState])}
           disabled={formState === 'loading'}
         >
-          {formState === 'loading' ? <LoadingDots size={4} /> : <>Register</>}
+          {formState === 'loading' ? <LoadingDots size={4} /> : <>Inscrever</>}
         </button>
       </div>
       <Captcha ref={captchaRef} onVerify={handleRegister} />
