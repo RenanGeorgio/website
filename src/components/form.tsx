@@ -161,7 +161,7 @@ export default function Form({ sharePage }: Props) {
             onChange={e => setEmail(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder="Insira seu email para se inscrever em nossa plataforma"
+            placeholder="Insira seu email para se inscrever"
             aria-label="Your email address"
             required
           />
