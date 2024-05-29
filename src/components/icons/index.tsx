@@ -1,6 +1,6 @@
 import IconAvatar from './icon-avatar';
 import BringToStageIcon from './icon-bring-stage';
-import IconCheck from './icon-check';
+import { IconCheck, CheckCircleIcon } from './icon-check';
 import IconCopy from './icon-copy';
 import IconDownload from './icon-download';
 import IconFitScreen from './icon-fit-screen';
@@ -18,6 +18,28 @@ import RemoveUserIcon from './icon-remove-user';
 import IconTwitter from './icon-twitter';
 import UsersIcon from './icon-users';
 import IconCompany from './icon-company';
+import AccessibilityIcon from './icon-accessibility';
+import ArrowRight from './icon-arrow-right';
+import CalculatorIcon from './icon-calculator';
+import CapterraIcon from './icon-capterra';
+import { ChevronDownIcon, ChevronRightIcon } from './icon-chevron';
+import CloseIcon from './icon-close';
+import ConditionIcon from './icon-condition';
+import DoIcon from './icon-do';
+import DocIcon from './icon-doc';
+import DontIcon from './icon-dont';
+import EmailIcon from './icon-email';
+import ExternalLinkIcon from './icon-external-link';
+import FolderIcon from './icon-folder';
+import { HamburgerIcon, featherIconsBaseProps } from './icon-hamburger';
+import HelpCircleIcon from './icon-help-circle';
+import MapIcon from './icon-map';
+import PeopleCircleIcon from './icon-people-circle';
+import PersonAddIcon from './icon-person-add';
+import ProductHuntIcon from './icon-product-hunt';
+import QuoteLeftIcon from './icon-quote-left';
+import RedditIcon from './icon-reddit';
+import ShareIcon from './icon-share';
 
 interface Props { 
   id?: string | number; 
@@ -158,5 +180,30 @@ export {
   RemoveUserIcon,
   IconTwitter,
   UsersIcon,
-  IconCompany
+  IconCompany,
+  AccessibilityIcon,
+  ArrowRight,
+  CalculatorIcon,
+  CapterraIcon,
+  CheckCircleIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  CloseIcon,
+  ConditionIcon,
+  DoIcon,
+  DocIcon,
+  DontIcon,
+  EmailIcon,
+  ExternalLinkIcon,
+  FolderIcon,
+  HamburgerIcon,
+  featherIconsBaseProps,
+  HelpCircleIcon,
+  MapIcon,
+  PeopleCircleIcon,
+  PersonAddIcon,
+  ProductHuntIcon,
+  QuoteLeftIcon,
+  RedditIcon,
+  ShareIcon
 }
