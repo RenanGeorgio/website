@@ -3,7 +3,6 @@ import { getAllStages } from '@lib/cms-api';
 import { META_DESCRIPTION } from '@assets/constants';
 import Page from '@components/page';
 import Schedule from '@components/schedule';
-import Layout from '@components/layout';
 import Header from '@components/header';
 import { Stage } from '@types';
 
@@ -19,10 +18,8 @@ export default function SchedulePage({ allStages }: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout>
-        <Header hero="Schedule" description={meta.description} />
-        <Schedule allStages={allStages} />
-      </Layout>
+      <Header hero="Schedule" description={meta.description} />
+      <Schedule allStages={allStages} />
     </Page>
   );
 }

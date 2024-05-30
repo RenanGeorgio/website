@@ -3,7 +3,6 @@ import { getAllSpeakers } from '@lib/cms-api';
 import { META_DESCRIPTION } from '@assets/constants';
 import Page from '@components/page';
 import SpeakerSection from '@components/speaker-section';
-import Layout from '@components/layout';
 import { Speaker } from '@types';
 
 type Props = {
@@ -18,9 +17,7 @@ export default function SpeakerPage({ speaker }: Props) {
 
   return (
     <Page site={meta}>
-      <Layout>
-        <SpeakerSection speaker={speaker} />
-      </Layout>
+      <SpeakerSection speaker={speaker} />
     </Page>
   );
 }
