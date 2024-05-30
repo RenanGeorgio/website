@@ -51,48 +51,46 @@ const Header: React.FC<any> = ({ onSetup, hero, description, isLive = false }: P
   return (
     <>
       <header className={cn(styles.header)}>
-        <div ref={headerRef as React.MutableRefObject<HTMLDivElement>} className="header--outer">
-          <div className={styles['header-logos']}>
-            {router.pathname === '/' ? (
-              <button
-                className="logo--link"
-                aria-label="Go Home"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                <IconCompany />
-              </button>
-            ) : (
-              <Link href="/" className="hover:underline" scroll={false}>
-                {/* eslint-disable-next-line */}
-                <a className={styles.logo} aria-label="Go Home">
-                  <IconCompany />
-                </a>
-              </Link>
-            )}
-          </div>
-          <div className={styles.tabs}>
-            {NAVIGATION?.map(({ name, route }) => (
-              <a
-                key={name}
-                href={route}
-                className={cn(styles.tab, {
-                  [styles['tab-active']]: activeRoute.startsWith(route)
-                })}
-              >
-                {name}
-              </a>
-            ))}
-          </div>
-
-          {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
-            activeRoute === '/' ? (
-              <div className={cn(styles['header-right'])}>
-                {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
-              </div>
+        <div className={styles['header-logos']}>
+          {router.pathname === '/' ? (
+            <button
+              className="logo--link"
+              aria-label="Go Home"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <IconCompany />
+            </button>
           ) : (
-            <div />
+            <Link href="/" className="hover:underline" scroll={false}>
+              {/* eslint-disable-next-line */}
+              <a className={styles.logo} aria-label="Go Home">
+                <IconCompany />
+              </a>
+            </Link>
           )}
         </div>
+        <div className={styles.tabs}>
+          {NAVIGATION?.map(({ name, route }) => (
+            <a
+              key={name}
+              href={route}
+              className={cn(styles.tab, {
+                [styles['tab-active']]: activeRoute.startsWith(route)
+              })}
+            >
+              {name}
+            </a>
+          ))}
+        </div>
+
+        {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
+          activeRoute === '/' ? (
+            <div className={cn(styles['header-right'])}>
+              {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
+            </div>
+        ) : (
+          <div />
+        )}
       </header>
 
       <span ref={observe} className="header--observer" />

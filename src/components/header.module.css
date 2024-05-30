@@ -1,3 +1,30 @@
+.background {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  min-height: var(--100vh);
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+}
+
+.full {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .hero {
   font-size: 28px;
   line-height: 1;
