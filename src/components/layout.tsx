@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { SkipNavContent } from '@reach/skip-nav';
 import Footer from './footer';
 import { SiteParams } from '@interfaces';
 
 import styles from './layout.module.css';
+import Header from './header';
 
 type Props = {
   site?: SiteParams;
@@ -23,12 +24,17 @@ export default function Layout({
   layoutStyles,
   isLive = false
 }: Props) {
+  const [headerHeight, setHeaderHeight] = useState<number | string | null>(null);
   
   return (
     <>
       <div className={styles.background}>
         {!hideNav && (
-          
+          <Header
+            data={site?.header}
+            isTransparent={site?.hasTransparentHeader}
+            onSetup={(height: number | string) => setHeaderHeight(height)}
+          />
         )}
         <div className={styles.page}>
           <main className={styles.main} style={layoutStyles}>
