@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL } from '@assets/constants';
+import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import ThemeSwitch from '@components/theme-switch';
 import { Menu } from '@components/menu';
@@ -86,7 +86,22 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Legal
+                      Politica de Privacidade
+                    </a>
+                  </p>
+                </>
+              )}
+              {TERMS_URL && (
+                <>
+                  <div className={styles['footer-separator']} />
+                  <p className={styles['footer-paragraph']}>
+                    <a
+                      href={TERMS_URL}
+                      className={styles['footer-link']}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Termos de Serviço
                     </a>
                   </p>
                 </>
@@ -94,7 +109,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </div>
           </div>
           <div className="footer--extras">
-            <ThemeSwitch />
             <div className="footer--disclaimer">
               <div className={styles['footer-hostedby']}>
                 <HostedByDiamondbigger />
