@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 export async function register(email: string, token?: string) {
-  return await fetch('/api/register', {
+  return await fetch('/api/register', { 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

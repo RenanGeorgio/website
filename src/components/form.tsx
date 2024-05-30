@@ -64,7 +64,7 @@ export default function Form({ sharePage }: Props) {
           }
         })
         .catch(async err => {
-          let message = 'Error! Please try again.';
+          let message = 'Erro! Por favor, tente novamente.';
 
           if (err instanceof FormError) {
             const { res } = err;
