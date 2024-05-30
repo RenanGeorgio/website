@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { isBrowser, isMobileSafari, useWindowSize } from '@lib/helpers';
 import { pageTransitionSpeed } from '@lib/animate';
 import CookieBar from './cookie-bar'
-import Header from './header'
+//import Header from './header'
 import Meta from './meta';
 import { Obj, CookieConsent } from '@types';
 import { SiteParams } from '@interfaces';
@@ -85,11 +85,11 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
       >
         {/*@ts-ignore*/}
         <CookieBar data={site?.cookieConsent as CookieConsent} />
-        <Header
+        {/*<Header
           data={site?.header}
           isTransparent={page?.hasTransparentHeader}
           onSetup={(height: number | string) => setHeaderHeight(height)}
-        />
+        />*/}
         <main id="content">{children}</main>
       </m.div>
     </div>
