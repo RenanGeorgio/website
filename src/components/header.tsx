@@ -1,17 +1,18 @@
-import { useState, useRef, useEffect } from 'react';
-import { m } from 'framer-motion';
-import FocusTrap from 'focus-trap-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useInView } from 'react-cool-inview';
 import { useRect } from '@reach/rect';
-import cx from 'classnames';
+import cn from 'classnames';
 import { isBrowser } from '@lib/helpers';
-import { useSiteContext, useToggleMegaNav } from '@lib/context';
-import { Menu } from '@components/menu';
-import { MegaNavigation } from '@components/menu';
+import { NAVIGATION } from '@assets/constants';
+import { IconCompany } from '@components/icons';
+import DemoButton from './hms/demo-cta';
+import RoomCta from './hms/demo-cta/room-cta';
+import { hmsConfig } from './hms/config';
 import { SiteParams } from '@interfaces';
 
 import styles from './header.module.css';
-import { MenuProp } from '@types';
 
 interface Props {
   data?: SiteParams["header"];
@@ -21,36 +22,17 @@ interface Props {
   description?: React.ReactNode;
 };
 
-type MenuType = {
-  menuDesktopLeft?: MenuProp; 
-  menuDesktopRight?: MenuProp;
-  menuMobilePrimary?: MenuProp; 
-  menuMobileSecondary?: MenuProp;
-}
-
 const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description }: Props) => {
-  // setup states
-  const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
+  const router = useRouter();
+  const activeRoute = router.asPath;
+  const disableCta = ['/schedule', '/speakers', '/expo', '/jobs'];
+
   const [headerHeight, setHeaderHeight] = useState<string | number | undefined>(undefined);
-  const [menuData, setMenuData] = useState<MenuType | undefined>(undefined);
 
   const { observe, inView: observerIsVisible } = useInView();
 
   const headerRef: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement | undefined>(undefined);
   const headerRect: any = useRect(headerRef);
-
-  // setup menu toggle event
-  const toggleMobileNav = (state: boolean) => {
-    setMobileNavOpen(state);
-
-    if (isBrowser) {
-      document.body.classList.toggle('overflow-hidden', state);
-    }
-  }
-
-  // context helpers
-  const { meganav } = useSiteContext();
-  const toggleMegaNav = useToggleMegaNav();
 
   useEffect(() => {
     if (headerRect) {
@@ -65,127 +47,50 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerHeight]);
 
-  useEffect(() => {
-    if (data != undefined) {
-      setMenuData({
-        menuDesktopLeft: data?.menuDesktopLeft ? data?.menuDesktopLeft : undefined,
-        menuDesktopRight: data?.menuDesktopRight ? data?.menuDesktopRight : undefined,
-        menuMobilePrimary: data?.menuMobilePrimary ? data?.menuMobilePrimary : undefined, 
-        menuMobileSecondary: data?.menuMobileSecondary ? data?.menuMobileSecondary : undefined
-      });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-
   return (
     <>
-      <header className={cx(styles.header)}>
+      <header className={cn(styles.header)}>
         <div ref={headerRef as React.MutableRefObject<HTMLDivElement>} className="header--outer">
-          <div className="header--inner">
-            <div className="header--content">
-              <nav className="main-navigation" role="navigation">
-                {/* Mobile Header Menu */}
-                <div id="mobile-nav" className="main-navigation--mobile">
-                  <FocusTrap active={isMobileNavOpen}>
-                    <div>
-                      <button
-                        onClick={() => toggleMobileNav(!isMobileNavOpen)}
-                        className={cx('menu-toggle', {
-                          'is-open': isMobileNavOpen,
-                        })}
-                        aria-expanded={isMobileNavOpen}
-                        aria-controls="mobile-nav"
-                        aria-label="Toggle Menu"
-                      >
-                        <span className="hamburger">
-                          <span className="hamburger--icon"></span>
-                        </span>
-                      </button>
-                      <m.div
-                        initial="hide"
-                        animate={isMobileNavOpen ? 'show' : 'hide'}
-                        variants={{
-                          show: {
-                            x: '0%',
-                          },
-                          hide: {
-                            x: '-100%',
-                          },
-                        }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="menu-mobile"
-                      >
-                        <div className="menu-mobile--inner">
-                          <div className="menu-mobile--primary">
-                            {menuData?.menuMobilePrimary?.items && (
-                              <Menu
-                                items={menuData?.menuMobilePrimary.items}
-                                onClick={() => toggleMobileNav(false)}
-                              />
-                            )}
-                          </div>
-
-                          <div className="menu-mobile--secondary">
-                            {menuData?.menuMobileSecondary?.items && (
-                              <Menu
-                                items={menuData?.menuMobileSecondary.items}
-                                onClick={() => toggleMobileNav(false)}
-                              />
-                            )}
-                          </div>
-                        </div>
-                      </m.div>
-
-                      <div
-                        className={cx('menu-mobile--backdrop', {
-                          'is-active': isMobileNavOpen,
-                        })}
-                        onClick={() => toggleMobileNav(false)}
-                      />
-                    </div>
-                  </FocusTrap>
-                </div>
-
-                {/* Desktop Header Menu */}
-                <div className="main-navigation--desktop">
-                  <div className="menu-left">
-                    {menuData?.menuDesktopLeft?.items && (
-                      <Menu
-                        items={menuData?.menuDesktopLeft.items}
-                        onClick={() => toggleMegaNav(false)}
-                        useMegaNav
-                      />
-                    )}
-                  </div>
-
-                  <div className="menu-right">
-                    {menuData?.menuDesktopRight?.items && (
-                      <Menu
-                        items={menuData?.menuDesktopRight.items}
-                        onClick={() => toggleMegaNav(false)}
-                        useMegaNav
-                      />
-                    )}
-                  </div>
-                </div>
-              </nav>
-            </div>
-
-            <div
-              className={cx('header--border', {
-                'is-hidden': meganav.isOpen,
-              })}
-            />
+          <div className={styles['header-logos']}>
+            {router.pathname === '/' ? (
+              <button
+                className="logo--link"
+                aria-label="Go Home"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <IconCompany />
+              </button>
+            ) : (
+              <Link href="/" className="hover:underline" scroll={false}>
+                {/* eslint-disable-next-line */}
+                <a className={styles.logo} aria-label="Go Home">
+                  <IconCompany />
+                </a>
+              </Link>
+            )}
+          </div>
+          <div className={styles.tabs}>
+            {NAVIGATION?.map(({ name, route }) => (
+              <a
+                key={name}
+                href={route}
+                className={cn(styles.tab, {
+                  [styles['tab-active']]: activeRoute.startsWith(route)
+                })}
+              >
+                {name}
+              </a>
+            ))}
           </div>
 
-          <MegaNavigation
-            items={[
-              ...(menuData?.menuDesktopLeft?.items || []),
-              ...(menuData?.menuDesktopRight?.items || []),
-            ]}
-            // @ts-ignore
-            headerHeight={isTransparent && observerIsVisible ? headerHeight : undefined}
-          />
+          {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
+            activeRoute === '/' ? (
+              <div className={cn(styles['header-right'])}>
+                {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
+              </div>
+          ) : (
+            <div />
+          )}
         </div>
       </header>
 
