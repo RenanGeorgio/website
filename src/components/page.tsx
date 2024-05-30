@@ -9,6 +9,7 @@ import CookieBar from './cookie-bar'
 import Meta from './meta';
 import { Obj, CookieConsent } from '@types';
 import { SiteParams } from '@interfaces';
+import Layout from './layout';
 
 interface Props {
   site: SiteParams;
@@ -90,7 +91,9 @@ const Page: React.FC<any> = ({ site, page, schema, preview, children, fullViewpo
           isTransparent={page?.hasTransparentHeader}
           onSetup={(height: number | string) => setHeaderHeight(height)}
         />*/}
-        <main id="content">{children}</main>
+        <Layout>
+          <main id="content">{children}</main>
+        </Layout>
       </m.div>
     </div>
   );
