@@ -30,11 +30,7 @@ export default function Layout({
     <>
       <div className={styles.background}>
         {!hideNav && (
-          <Header
-            data={site?.header}
-            isTransparent={site?.hasTransparentHeader}
-            onSetup={(height: number | string) => setHeaderHeight(height)}
-          />
+          <Header />
         )}
         <div className={styles.page}>
           <main className={styles.main} style={layoutStyles}>

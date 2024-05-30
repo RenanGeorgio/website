@@ -23,7 +23,7 @@ interface Props {
   description?: React.ReactNode;
 };
 
-const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description, isLive = false }: Props) => {
+const Header: React.FC<any> = ({ onSetup, hero, description, isLive = false }: Props) => {
   const router = useRouter();
   const activeRoute = router.asPath;
   const disableCta = ['/schedule', '/speakers', '/expo', '/jobs'];
