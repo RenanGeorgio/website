@@ -96,7 +96,6 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
                 <div id="mobile-nav" className="main-navigation--mobile">
                   <FocusTrap active={isMobileNavOpen}>
                     <div>
-                      
                       <m.div
                         initial="hide"
                         animate={isMobileNavOpen ? 'show' : 'hide'}
