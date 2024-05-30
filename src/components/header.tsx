@@ -79,15 +79,7 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
 
   return (
     <>
-      <header
-        className={cx('header', {
-          'is-overlay': isTransparent,
-          'is-white': isTransparent && !meganav.isOpen && observerIsVisible,
-          'has-bg': !observerIsVisible,
-        })}
-      >
-        <h1 className={styles.hero}>{hero}</h1>
-        <p className={styles.description}>{description}</p>
+      <header className={cx(styles.header)}>
         <div ref={headerRef as React.MutableRefObject<HTMLDivElement>} className="header--outer">
           <div className="header--inner">
             <div className="header--content">
@@ -96,6 +88,19 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
                 <div id="mobile-nav" className="main-navigation--mobile">
                   <FocusTrap active={isMobileNavOpen}>
                     <div>
+                      <button
+                        onClick={() => toggleMobileNav(!isMobileNavOpen)}
+                        className={cx('menu-toggle', {
+                          'is-open': isMobileNavOpen,
+                        })}
+                        aria-expanded={isMobileNavOpen}
+                        aria-controls="mobile-nav"
+                        aria-label="Toggle Menu"
+                      >
+                        <span className="hamburger">
+                          <span className="hamburger--icon"></span>
+                        </span>
+                      </button>
                       <m.div
                         initial="hide"
                         animate={isMobileNavOpen ? 'show' : 'hide'}
@@ -186,7 +191,7 @@ const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, descriptio
 
       <span ref={observe} className="header--observer" />
     </>
-  )
+  );
 }
 
 export default Header
