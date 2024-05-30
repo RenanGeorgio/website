@@ -19,10 +19,11 @@ interface Props {
   isTransparent?: boolean;
   onSetup?: (height?: any) => void;
   hero?: React.ReactNode;
+  isLive?: boolean;
   description?: React.ReactNode;
 };
 
-const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description }: Props) => {
+const Header: React.FC<any> = ({ data , isTransparent, onSetup, hero, description, isLive = false }: Props) => {
   const router = useRouter();
   const activeRoute = router.asPath;
   const disableCta = ['/schedule', '/speakers', '/expo', '/jobs'];
