@@ -93,7 +93,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
               )}
             </div>
           </div>
-          <div className={styles['footer-separator']} />
           <div className="footer--extras">
             <ThemeSwitch />
             <div className="footer--disclaimer">
