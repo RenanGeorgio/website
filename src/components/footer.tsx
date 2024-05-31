@@ -3,9 +3,8 @@ import cn from 'classnames';
 import { Heading, Stack } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
-import ThemeSwitch from '@components/theme-switch';
 import { Menu } from '@components/menu';
-import { Icon, IconCompany, PlatformLogo } from '@components/icons';
+import { Icon, IconCompany } from '@components/icons';
 import Container from './container';
 import { Obj } from '@types';
 import { SiteParams } from '@interfaces';
@@ -113,13 +112,11 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 </>
               )}
             </div>
-          </div>
-          <div className="footer--extras">
             <div className={styles['footer-center-group']}>
               <p className={styles['footer-paragraph']}>
-                <a>
-                  <TextLink href="/about">Sobre</TextLink>
-                </a>
+                <TextLink href="/about">
+                  <a>Sobre</a>
+                </TextLink>
               </p>
               <div className={styles['footer-separator']} />
               <p className={styles['footer-paragraph']}>
@@ -128,6 +125,8 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 </a>
               </p>
             </div>
+          </div>
+          <div className="footer--extras">
             <div className="footer--disclaimer">
               <div className={styles['footer-hostedby']}>
                 <HostedByDiamondbigger />

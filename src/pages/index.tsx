@@ -47,7 +47,7 @@ function Home(data: Props) {
   },[]);
 
   return (
-    <Page site={currentSite.current} page={currentPage.current} fullViewport>
+    <Page site={currentSite.current} page={currentPage.current}>
       <SkipNavContent />
       <Container>
         <ConfContent
