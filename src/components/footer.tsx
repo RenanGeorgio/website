@@ -69,7 +69,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </div>
           ))}
           
-          <HStack>
+          <HStack spacing='24px'>
             <VStack align={'flex-start'}>
               <div className={styles['footer-legal']}>
                 <div className={styles['footer-center-group']}>
