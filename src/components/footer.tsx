@@ -112,11 +112,16 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </div>
           </div>
           <div className="footer--extras">
-            <Stack align={'flex-start'}>
+            <div className={styles['footer-center-group']}>
               <ListHeader>Empresa</ListHeader>
-              <TextLink href="/about">Sobre</TextLink>
-              <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
-            </Stack>
+              <p className={styles['footer-paragraph']}>
+                <TextLink href="/about">Sobre</TextLink>
+              </p>
+              <div className={styles['footer-separator']} />
+              <p className={styles['footer-paragraph']}>
+                <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+              </p>
+            </div>
             <div className="footer--disclaimer">
               <div className={styles['footer-hostedby']}>
                 <HostedByDiamondbigger />
