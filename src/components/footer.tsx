@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Heading, Stack, Container, SimpleGrid } from '@chakra-ui/react';
+import { Heading, Stack, SimpleGrid } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
@@ -10,6 +10,7 @@ import { SiteParams } from '@interfaces';
 
 import styles from './footer.module.css';
 import { TextLink } from './common/TextLink';
+import Container from './container';
 
 const footerObj: SiteParams["footer"] = {
   blocks: [] as Obj[]
@@ -38,7 +39,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">
       <div className="footer--grid">
-        <Container as={Stack} maxW={'1000px'} py={10}>
+        <Container>
           {blocks?.map((block, key) => (
             <div key={key} className="footer--block">
               {block.title && <p className="is-h3">{block.title}</p>}
