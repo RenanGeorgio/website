@@ -1,4 +1,6 @@
+import React from 'react';
 import cn from 'classnames';
+import { Heading, Stack } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import ThemeSwitch from '@components/theme-switch';
@@ -109,6 +111,11 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </div>
           </div>
           <div className="footer--extras">
+            <Stack align={'flex-start'}>
+              <ListHeader>Empresa</ListHeader>
+              <TextLink href="/about">Sobre</TextLink>
+              <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+            </Stack>
             <div className="footer--disclaimer">
               <div className={styles['footer-hostedby']}>
                 <HostedByDiamondbigger />
@@ -124,6 +131,14 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
       </div>
     </footer>
   );
-};
+}
+
+const ListHeader = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Heading fontWeight={'500'} fontSize={'lg'} mb={2}>
+      {children}
+    </Heading>
+  );
+}
 
 export default Footer;
