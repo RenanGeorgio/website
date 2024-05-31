@@ -71,19 +71,8 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           <div className={styles['footer-legal']}>
             <div className={styles['footer-center-group']}>
               <Stack align={'flex-start'}>
-                <p className={styles['footer-paragraph']}>
-                  <a
-                    href={CODE_OF_CONDUCT}
-                    className={styles['footer-link']}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Codigo de Conduta
-                  </a>
-                </p>
                 {LEGAL_URL && (
                   <>
-                    <div className={styles['footer-separator']} />
                     <p className={styles['footer-paragraph']}>
                       <a
                         href={LEGAL_URL}
@@ -98,7 +87,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 )}
                 {TERMS_URL && (
                   <>
-                    <div className={styles['footer-separator']} />
                     <p className={styles['footer-paragraph']}>
                       <a
                         href={TERMS_URL}
@@ -111,6 +99,16 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                     </p>
                   </>
                 )}
+                <p className={styles['footer-paragraph']}>
+                  <a
+                    href={CODE_OF_CONDUCT}
+                    className={styles['footer-link']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Codigo de Conduta
+                  </a>
+                </p>
               </Stack>
             </div>
             <div className={styles['footer-center-group']}>
@@ -123,12 +121,26 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
               </p>
             </div>
           </div>
+          <Stack align={'flex-start'}>
+            <div className={styles['footer-hostedby']}>
+              <HostedByDiamondbigger />
+            </div>
+            <Heading as="p" fontSize="lg">
+              (27) 3325-7208
+            </Heading>
+            <Heading as="p" fontSize="lg">
+              contato@ignai.com.br
+            </Heading>
+            <Heading as="p" fontSize="lg">
+              Rua Olympio R, 116 - Jabour 
+              Vitória - ES
+            </Heading>
+            <Heading as="p" fontSize="lg">
+              contato@ignai.com.br
+            </Heading>
+          </Stack>
           <div className="footer--extras">
             <div className="footer--disclaimer">
-              <div className={styles['footer-hostedby']}>
-                <HostedByDiamondbigger />
-                <div className={styles['footer-separator']} />
-              </div>
               <div className={styles['footer-copyright']}>
                 Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
                 rights reserved.
