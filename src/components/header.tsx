@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useInView } from 'react-cool-inview';
 import { useRect } from '@reach/rect';
 import cn from 'classnames';
+import { Button, Link as ChakraLink } from '@chakra-ui/react';
 import { isBrowser } from '@lib/helpers';
 import { NAVIGATION } from '@assets/constants';
 import { IconCompany } from '@components/icons';
@@ -86,7 +87,14 @@ const Header: React.FC<any> = ({ onSetup, hero, description, isLive = false }: P
 
         {!disableCta.includes(activeRoute) || activeRoute === '/' ? (
           <div className={cn(styles['header-right'])}>
-            <HeaderButton />
+            <Button
+              as={ChakraLink}
+              href="mailto:contato@diamondbigger.com"
+              colorScheme="orange"
+              fontWeight={700}
+            >
+              Entrar em contato
+            </Button>
             {/*{activeRoute === '/' ? <DemoButton /> : <RoomCta />}*/}
           </div>
         ) : (
