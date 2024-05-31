@@ -11,6 +11,7 @@ import { Obj } from '@types';
 import { SiteParams } from '@interfaces';
 
 import styles from './footer.module.css';
+import { TextLink } from './common/TextLink';
 
 const footerObj: SiteParams["footer"] = {
   blocks: [] as Obj[]
