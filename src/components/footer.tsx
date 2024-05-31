@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Heading, Stack, Container } from '@chakra-ui/react';
+import { Heading, Stack, Container, SimpleGrid } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
@@ -67,72 +67,74 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
               )}
             </div>
           ))}
-          <div className={styles['footer-legal']}>
-            <div className={styles['footer-center-group']}>
-            
-              <p className={styles['footer-paragraph']}>
-                <a
-                  href={CODE_OF_CONDUCT}
-                  className={styles['footer-link']}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Codigo de Conduta
-                </a>
-              </p>
-              {LEGAL_URL && (
-                <>
-                  <div className={styles['footer-separator']} />
-                  <p className={styles['footer-paragraph']}>
-                    <a
-                      href={LEGAL_URL}
-                      className={styles['footer-link']}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Politica de Privacidade
-                    </a>
-                  </p>
-                </>
-              )}
-              {TERMS_URL && (
-                <>
-                  <div className={styles['footer-separator']} />
-                  <p className={styles['footer-paragraph']}>
-                    <a
-                      href={TERMS_URL}
-                      className={styles['footer-link']}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Termos de Serviço
-                    </a>
-                  </p>
-                </>
-              )}
-            </div>
-            <div className={styles['footer-center-group']}>
-              <p className={styles['footer-paragraph']}>
-                <TextLink href="/about">Sobre</TextLink>
-              </p>
-              <div className={styles['footer-separator']} />
-              <p className={styles['footer-paragraph']}>
-                <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
-              </p>
-            </div>
-          </div>
-          <div className="footer--extras">
-            <div className="footer--disclaimer">
-              <div className={styles['footer-hostedby']}>
-                <HostedByDiamondbigger />
+          <SimpleGrid columns={[1, 2, 4]} spacing={8} px={2}>
+            <div className={styles['footer-legal']}>
+              <div className={styles['footer-center-group']}>
+              
+                <p className={styles['footer-paragraph']}>
+                  <a
+                    href={CODE_OF_CONDUCT}
+                    className={styles['footer-link']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Codigo de Conduta
+                  </a>
+                </p>
+                {LEGAL_URL && (
+                  <>
+                    <div className={styles['footer-separator']} />
+                    <p className={styles['footer-paragraph']}>
+                      <a
+                        href={LEGAL_URL}
+                        className={styles['footer-link']}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Politica de Privacidade
+                      </a>
+                    </p>
+                  </>
+                )}
+                {TERMS_URL && (
+                  <>
+                    <div className={styles['footer-separator']} />
+                    <p className={styles['footer-paragraph']}>
+                      <a
+                        href={TERMS_URL}
+                        className={styles['footer-link']}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Termos de Serviço
+                      </a>
+                    </p>
+                  </>
+                )}
+              </div>
+              <div className={styles['footer-center-group']}>
+                <p className={styles['footer-paragraph']}>
+                  <TextLink href="/about">Sobre</TextLink>
+                </p>
                 <div className={styles['footer-separator']} />
-              </div>
-              <div className={styles['footer-copyright']}>
-                Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
-                rights reserved.
+                <p className={styles['footer-paragraph']}>
+                  <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+                </p>
               </div>
             </div>
-          </div>
+            <div className="footer--extras">
+              <div className="footer--disclaimer">
+                <div className={styles['footer-hostedby']}>
+                  <HostedByDiamondbigger />
+                  <div className={styles['footer-separator']} />
+                </div>
+                <div className={styles['footer-copyright']}>
+                  Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
+                  rights reserved.
+                </div>
+              </div>
+            </div>
+          </SimpleGrid>
         </Container>
       </div>
     </footer>
