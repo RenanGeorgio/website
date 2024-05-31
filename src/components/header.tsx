@@ -5,16 +5,11 @@ import { useInView } from 'react-cool-inview';
 import { useRect } from '@reach/rect';
 import cn from 'classnames';
 import { Button, Link as ChakraLink } from '@chakra-ui/react';
-import { isBrowser } from '@lib/helpers';
 import { NAVIGATION } from '@assets/constants';
 import { IconCompany } from '@components/icons';
-import DemoButton from './hms/demo-cta';
-import RoomCta from './hms/demo-cta/room-cta';
-import { hmsConfig } from './hms/config';
 import { SiteParams } from '@interfaces';
 
 import styles from './header.module.css';
-import HeaderButton from './header-button';
 
 interface Props {
   data?: SiteParams["header"];
@@ -90,7 +85,8 @@ const Header: React.FC<any> = ({ onSetup, hero, description, isLive = false }: P
             <Button
               as={ChakraLink}
               href="mailto:contato@diamondbigger.com"
-              colorScheme="orange"
+              colorScheme="yellow"
+              variant="outline"
               fontWeight={700}
             >
               Entrar em contato
