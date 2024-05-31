@@ -13,6 +13,7 @@ import { hmsConfig } from './hms/config';
 import { SiteParams } from '@interfaces';
 
 import styles from './header.module.css';
+import HeaderButton from './header-button';
 
 interface Props {
   data?: SiteParams["header"];
@@ -83,11 +84,11 @@ const Header: React.FC<any> = ({ onSetup, hero, description, isLive = false }: P
           ))}
         </div>
 
-        {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
-          activeRoute === '/' ? (
-            <div className={cn(styles['header-right'])}>
-              {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
-            </div>
+        {!disableCta.includes(activeRoute) || activeRoute === '/' ? (
+          <div className={cn(styles['header-right'])}>
+            <HeaderButton />
+            {/*{activeRoute === '/' ? <DemoButton /> : <RoomCta />}*/}
+          </div>
         ) : (
           <div />
         )}
