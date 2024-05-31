@@ -71,7 +71,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           
           <div className={styles['footer-legal']}>
             <div className={styles['footer-center-group']}>
-              <Stack align={'flex-start'}>
+              <VStack align={'flex-start'}>
                 {LEGAL_URL && (
                   <>
                     <p className={styles['footer-paragraph']}>
@@ -110,17 +110,19 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                     Codigo de Conduta
                   </a>
                 </p>
-              </Stack>
+              </VStack>
             </div>
-            <div className={styles['footer-center-group']}>
-              <p className={styles['footer-paragraph']}>
-                <TextLink href="/about">Sobre</TextLink>
-              </p>
-              <div className={styles['footer-separator']} />
-              <p className={styles['footer-paragraph']}>
-                <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
-              </p>
-            </div>
+            <VStack align={'flex-start'}>
+              <div className={styles['footer-center-group']}>
+                <p className={styles['footer-paragraph']}>
+                  <TextLink href="/about">Sobre</TextLink>
+                </p>
+                <div className={styles['footer-separator']} />
+                <p className={styles['footer-paragraph']}>
+                  <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+                </p>
+              </div>
+            </VStack>
           </div>
           <VStack align={'flex-start'}>
             <div className={styles['footer-hostedby']}>
