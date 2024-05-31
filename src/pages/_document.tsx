@@ -13,7 +13,7 @@ class CustomDocument extends Document {
       <Html lang="pt-br">
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <link rel="icon" type="image/png" href="/favicon.png" />
+          <link rel="icon" type="image/png" href="/favicon/favicon.ico" />
           <link
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Indie+Flower:wght@400&display=swap"
             rel="stylesheet"

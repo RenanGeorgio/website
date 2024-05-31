@@ -1,11 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
-import { Heading, Stack } from '@chakra-ui/react';
+import { Heading, Stack, Container } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
 import { Icon, IconCompany } from '@components/icons';
-import Container from './container';
 import { Obj } from '@types';
 import { SiteParams } from '@interfaces';
 
@@ -39,7 +38,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200" role="contentinfo">
       <div className="footer--grid">
-        <Container>
+        <Container as={Stack} maxW={'1000px'} py={10}>
           {blocks?.map((block, key) => (
             <div key={key} className="footer--block">
               {block.title && <p className="is-h3">{block.title}</p>}
