@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Heading, VStack, SimpleGrid } from '@chakra-ui/react';
+import { Heading, VStack, HStack } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
@@ -69,49 +69,51 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </div>
           ))}
           
-          <div className={styles['footer-legal']}>
-            <div className={styles['footer-center-group']}>
-              <VStack align={'flex-start'}>
-                {LEGAL_URL && (
-                  <>
-                    <p className={styles['footer-paragraph']}>
-                      <a
-                        href={LEGAL_URL}
-                        className={styles['footer-link']}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Politica de Privacidade
-                      </a>
-                    </p>
-                  </>
-                )}
-                {TERMS_URL && (
-                  <>
-                    <p className={styles['footer-paragraph']}>
-                      <a
-                        href={TERMS_URL}
-                        className={styles['footer-link']}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Termos de Serviço
-                      </a>
-                    </p>
-                  </>
-                )}
-                <p className={styles['footer-paragraph']}>
-                  <a
-                    href={CODE_OF_CONDUCT}
-                    className={styles['footer-link']}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Codigo de Conduta
-                  </a>
-                </p>
-              </VStack>
-            </div>
+          <HStack>
+            <VStack align={'flex-start'}>
+              <div className={styles['footer-legal']}>
+                <div className={styles['footer-center-group']}>
+                  {LEGAL_URL && (
+                    <>
+                      <p className={styles['footer-paragraph']}>
+                        <a
+                          href={LEGAL_URL}
+                          className={styles['footer-link']}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Politica de Privacidade
+                        </a>
+                      </p>
+                    </>
+                  )}
+                  {TERMS_URL && (
+                    <>
+                      <p className={styles['footer-paragraph']}>
+                        <a
+                          href={TERMS_URL}
+                          className={styles['footer-link']}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Termos de Serviço
+                        </a>
+                      </p>
+                    </>
+                  )}
+                  <p className={styles['footer-paragraph']}>
+                    <a
+                      href={CODE_OF_CONDUCT}
+                      className={styles['footer-link']}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Codigo de Conduta
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </VStack>
             <VStack align={'flex-start'}>
               <div className={styles['footer-center-group']}>
                 <p className={styles['footer-paragraph']}>
@@ -123,24 +125,24 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 </p>
               </div>
             </VStack>
-          </div>
-          <VStack align={'flex-start'}>
-            <div className={styles['footer-hostedby']}>
-              <HostedByDiamondbigger />
-            </div>
-            <Heading as="p" fontSize="lg">
-              (27) 3325-7208
-            </Heading>
-            <Heading as="p" fontSize="lg">
-              contato@ignai.com.br
-            </Heading>
-            <Heading as="p" fontSize="lg">
-              Rua Olympio R, 116 - Jabour 
-            </Heading>
-            <Heading as="p" fontSize="lg">
-              Vitória - ES
-            </Heading>
-          </VStack>
+            <VStack align={'flex-start'}>
+              <div className={styles['footer-hostedby']}>
+                <HostedByDiamondbigger />
+              </div>
+              <Heading as="p" fontSize="lg">
+                (27) 3325-7208
+              </Heading>
+              <Heading as="p" fontSize="lg">
+                contato@ignai.com.br
+              </Heading>
+              <Heading as="p" fontSize="lg">
+                Rua Olympio R, 116 - Jabour 
+              </Heading>
+              <Heading as="p" fontSize="lg">
+                Vitória - ES
+              </Heading>
+            </VStack>
+          </HStack>
           <div className="footer--extras">
             <div className="footer--disclaimer">
               <div className={styles['footer-copyright']}>
