@@ -19,7 +19,6 @@ class CustomDocument extends Document {
             rel="stylesheet"
           />
           <noscript>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link href="/styles/aos-noscript.css" rel="stylesheet" />
           </noscript>
         </Head>
