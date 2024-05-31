@@ -70,47 +70,48 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           
           <div className={styles['footer-legal']}>
             <div className={styles['footer-center-group']}>
-            
-              <p className={styles['footer-paragraph']}>
-                <a
-                  href={CODE_OF_CONDUCT}
-                  className={styles['footer-link']}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Codigo de Conduta
-                </a>
-              </p>
-              {LEGAL_URL && (
-                <>
-                  <div className={styles['footer-separator']} />
-                  <p className={styles['footer-paragraph']}>
-                    <a
-                      href={LEGAL_URL}
-                      className={styles['footer-link']}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Politica de Privacidade
-                    </a>
-                  </p>
-                </>
-              )}
-              {TERMS_URL && (
-                <>
-                  <div className={styles['footer-separator']} />
-                  <p className={styles['footer-paragraph']}>
-                    <a
-                      href={TERMS_URL}
-                      className={styles['footer-link']}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Termos de Serviço
-                    </a>
-                  </p>
-                </>
-              )}
+              <Stack align={'flex-start'}>
+                <p className={styles['footer-paragraph']}>
+                  <a
+                    href={CODE_OF_CONDUCT}
+                    className={styles['footer-link']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Codigo de Conduta
+                  </a>
+                </p>
+                {LEGAL_URL && (
+                  <>
+                    <div className={styles['footer-separator']} />
+                    <p className={styles['footer-paragraph']}>
+                      <a
+                        href={LEGAL_URL}
+                        className={styles['footer-link']}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Politica de Privacidade
+                      </a>
+                    </p>
+                  </>
+                )}
+                {TERMS_URL && (
+                  <>
+                    <div className={styles['footer-separator']} />
+                    <p className={styles['footer-paragraph']}>
+                      <a
+                        href={TERMS_URL}
+                        className={styles['footer-link']}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Termos de Serviço
+                      </a>
+                    </p>
+                  </>
+                )}
+              </Stack>
             </div>
             <div className={styles['footer-center-group']}>
               <p className={styles['footer-paragraph']}>
