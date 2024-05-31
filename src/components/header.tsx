@@ -51,7 +51,7 @@ const Header: React.FC<any> = ({ onSetup, hero, description, isLive = false }: P
         <div className={styles['header-logos']}>
           {router.pathname === '/' ? (
             <button
-              className="logo--link"
+              className={styles.logo}
               aria-label="Go Home"
               onClick={() => window.scrollTo(0, 0)}
             >
