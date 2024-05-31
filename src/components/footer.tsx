@@ -5,7 +5,7 @@ import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } fr
 import Newsletter from '@components/newsletter';
 import ThemeSwitch from '@components/theme-switch';
 import { Menu } from '@components/menu';
-import { Icon, PlatformLogo } from '@components/icons';
+import { Icon, IconCompany, PlatformLogo } from '@components/icons';
 import Container from './container';
 import { Obj } from '@types';
 import { SiteParams } from '@interfaces';
@@ -26,7 +26,10 @@ export function HostedByDiamondbigger() {
       rel="noopener noreferrer"
     >
       <div className={styles['secondary-text']}>Criado por </div>
-      <PlatformLogo color="#D8D8D8" />
+      <IconCompany />
+      <p>
+        DiamondBigger Supply Chain
+      </p>
     </a>
   );
 }
@@ -113,9 +116,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           </div>
           <div className="footer--extras">
             <div className={styles['footer-center-group']}>
-              <p className={styles['footer-paragraph']}>
-                <ListHeader>Empresa:</ListHeader>
-              </p>
               <p className={styles['footer-paragraph']}>
                 <a>
                   <TextLink href="/about">Sobre</TextLink>
