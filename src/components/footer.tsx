@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Heading, Stack, SimpleGrid } from '@chakra-ui/react';
+import { Heading, VStack, SimpleGrid } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
@@ -122,7 +122,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
               </p>
             </div>
           </div>
-          <Stack align={'flex-start'}>
+          <VStack align={'flex-start'}>
             <div className={styles['footer-hostedby']}>
               <HostedByDiamondbigger />
             </div>
@@ -134,12 +134,11 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </Heading>
             <Heading as="p" fontSize="lg">
               Rua Olympio R, 116 - Jabour 
-              Vitória - ES
             </Heading>
             <Heading as="p" fontSize="lg">
-              contato@ignai.com.br
+              Vitória - ES
             </Heading>
-          </Stack>
+          </VStack>
           <div className="footer--extras">
             <div className="footer--disclaimer">
               <div className={styles['footer-copyright']}>
