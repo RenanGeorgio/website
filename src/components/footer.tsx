@@ -68,8 +68,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
               )}
             </div>
           ))}
-          
-          
           <Box w="full">
             <Chakrainer as={Stack} maxW='full' py={10}>
               <SimpleGrid columns={4} px={2}>
@@ -82,14 +80,13 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                       </Heading>
                     </HStack>
                     
-                    <ListHeader>(27) 3325-7208</ListHeader>
-                    <ListHeader>contato@ignai.com.br</ListHeader>              
-                    <ListHeader>Rua Olympio R, 116 - Jabour</ListHeader>                
-                    <ListHeader>Vitória - ES</ListHeader>
+                    <ListHeader>(27) 4042-9995</ListHeader>
+                    <ListHeader>contato@diamondbigger.com</ListHeader>              
+                    <ListHeader>Rodovia do Sol, Loja 04 - Ponta da Fruta</ListHeader>                
+                    <ListHeader>Vila Velha - ES</ListHeader>
                     
                   </VStack>
                 </Stack>
-
                 <Stack align={'flex-start'}>
                   <ListHeader>Veja:</ListHeader>
                   <TextLink href="/about">Sobre</TextLink>
@@ -97,8 +94,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                   <TextLink href={'/terms-of-service'}>Termos de Uso</TextLink>
                   <TextLink href={'/privacy-policies'}>Política de Privacidade</TextLink>
                   <TextLink href={CODE_OF_CONDUCT}>Codigo de Conduta</TextLink>
-                </Stack>
-            
+                </Stack>     
                 <Stack align={'flex-start'}>
                   <ListHeader>Redes sociais:</ListHeader>
                   <TextLink href={LINKEDING_PAGE} isExternal>
@@ -111,12 +107,11 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                     Facebook
                   </TextLink> 
                 </Stack>
-
                 <Stack align={'flex-end'}>
                   <ListHeader>Uma empresa do Grupo Diamondbigger</ListHeader>
-                  <Text>CNPJ: 37.828.054/0001-50</Text>
+                  <Text>CNPJ: 43.561.771/0001-60</Text>
+                  <HostedByDiamondbigger />
                 </Stack>
-     
               </SimpleGrid>
             </Chakrainer>
           </Box>  
