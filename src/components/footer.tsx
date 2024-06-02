@@ -80,18 +80,14 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                     <Heading as="p" fontSize="lg">
                       DiamondBigger Supply Chain
                     </Heading>
+                    <HostedByDiamondbigger /> 
                   </HStack>
                   
                   <VStack align={'flex-start'}>
                     <ListHeader>(27) 3325-7208</ListHeader>
-                    <ListHeader>contato@ignai.com.br</ListHeader>   
-                    <HostedByDiamondbigger />            
+                    <ListHeader>contato@ignai.com.br</ListHeader>              
                     <ListHeader>Rua Olympio R, 116 - Jabour</ListHeader>                
                     <ListHeader>Vitória - ES</ListHeader>
-  
-                    <div className={styles['footer-hostedby']}>
-                      <HostedByDiamondbigger />
-                    </div>
                   </VStack>
                 </VStack>
             </Stack>
