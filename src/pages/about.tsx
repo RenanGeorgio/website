@@ -21,82 +21,80 @@ export default function AboutPage() {
           textAlign="justify"
         >
           <Flex w="full">
-            <Heading as="h1">Why Typebot?</Heading>
+            <Heading as="h1">Sobre a DiamondBigger:</Heading>
           </Flex>
           <Text>
-            I&apos;m Baptiste, 28 years old. I&apos;m a software product engineer.
-            I am passionated about great user experiences and beautiful
-            interfaces.
+            Bem-vindo à DiamondBigger Supply Chain, sua parceira de confiança 
+            em otimização logística e gestão da cadeia de suprimentos. Somos 
+            especialistas em transformar operações logísticas complexas em sistemas 
+            eficientes e ágeis, utilizando a mais avançada tecnologia de inteligência 
+            artificial.
           </Text>
           <Text>
-            This is why I&apos;ve started working on Typebot, 3 years ago. It is
-            my attempt on a great chatbot builder.
+            Em um mundo onde a rapidez e a precisão são essenciais, nossa missão é 
+            capacitar empresas a alcançarem excelência operacional e competitividade 
+            no mercado. Com uma equipe de especialistas altamente qualificados e uma 
+            abordagem inovadora, desenvolvemos soluções personalizadas que atendem às 
+            necessidades específicas de cada cliente.{''}
           </Text>
+          <Text>Nossa Abordagem:</Text>
           <Text>
-            In France, people don&apos;t like chatbots. They always think about it
-            as the guard before getting the chance to talk to a human. You ask a
-            question to a robot and it tries to understand what you&apos;re saying
-            and help, but it does not a great job at this. (now, it is maybe not
-            that accurate since the rise of LLMs)
+            Utilizamos inteligência artificial e machine learning para analisar vastas 
+            quantidades de dados e identificar padrões que otimizam todas as etapas da 
+            cadeia de suprimentos. Nossos serviços abrangem:
           </Text>
-          <Text>But I think we undervalue the potential of chatbots.</Text>
-          <Text>
-            You chat with friends, colleagues and family on messaging platform
-            daily. You are used and you like this chat experience. That&apos;s why
-            businesses need to leverage this, it&apos;s a place where conversion
-            is high.
-          </Text>
-          <Text>
-            In an ideal world, a user should be able to chat with a human from a
-            company and have an instant answer. The problem is that it is
-            synchronous, time-consuming and it requires a huge customer support
-            team working 24/7. It doesn&apos;t scale at all. Waiting for an answer
-            from a human impacts the customer experience.
-          </Text>
-          <Text>
-            Chatbots are a solution. You can chat with your customers, at scale.
-          </Text>
-          <Text>
-            But, when built incorrectly, chatbots can be detrimental to your user
-            experience. Most solutions out there focus on customer support. It can
-            be so much more.
-          </Text>
-          <Text>A great chatbot should:</Text>
           <List listStyleType="initial">
-            <ListItem>Provide a customised experience to the user</ListItem>
             <ListItem>
-              Have a great user interface and beautiful animations
+              Gestão de Inventário: 
+              Monitoramento em tempo real para manter níveis de estoque ideais, reduzindo custos e evitando rupturas.
             </ListItem>
-            <ListItem>Feel native to the business brand</ListItem>
-            <ListItem>Provide what the user is looking for</ListItem>
+            <ListItem>
+              Previsão de Demanda: 
+              Modelos preditivos avançados que ajudam a planejar com precisão as necessidades futuras, minimizando desperdícios.
+            </ListItem>
+            <ListItem>
+              Otimização de Transporte: 
+              Roteirização inteligente que reduz tempos de entrega e custos operacionais, melhorando a eficiência do transporte.
+            </ListItem>
+            <ListItem>
+              Automação de Armazéns: 
+              Implementação de sistemas automatizados para as atividades de put-away e picking, aumentando a produtividade e a precisão.
+            </ListItem>
           </List>
           <Text>
-            A chatbot is not necessarily tied to customer support. It can also do:
+            Por que Escolher a DiamondBigger?
           </Text>
           <List listStyleType="initial">
-            <ListItem>Lead generation and qualification</ListItem>
-            <ListItem>Quizzes</ListItem>
-            <ListItem>Surveys</ListItem>
-            <ListItem>User onboarding</ListItem>
-            <ListItem>Product presentation</ListItem>
-            <ListItem>Registrations (newsletter, waiting list)</ListItem>
+            <ListItem>
+              Tecnologia de Ponta: 
+              Integramos as mais recentes inovações em IA e big data para oferecer soluções de alta performance.
+            </ListItem>
+            <ListItem>
+              Experiência e Conhecimento: 
+              Nossa equipe é composta por profissionais com vasta experiência em logística e supply chain, prontos para enfrentar qualquer desafio.
+            </ListItem>
+            <ListItem>
+              Soluções Personalizadas: 
+              Entendemos que cada negócio é único. Por isso, adaptamos nossas soluções para atender às suas necessidades específicas.
+            </ListItem>
+            <ListItem>
+              Resultados Comprovados: 
+              Ajudamos empresas de diversos setores a reduzir custos, aumentar a eficiência e melhorar a satisfação dos clientes.
+            </ListItem>
           </List>
+          <Text>Compromisso com a Excelência</Text>
           <Text>
-            To build that kind of chatbots, you need a tool that gives you enough
-            freedom to closely tie it to your business logic. The build experience
-            should be a reliable and fun experience. You also need a space where
-            you can analyse your results so that you can incrementally improve
-            your bots.
+            Na DiamondBigger, nosso compromisso é entregar resultados tangíveis que impulsionem o 
+            sucesso dos nossos clientes. Estamos constantemente inovando e aprimorando nossas soluções 
+            para manter nossa posição na vanguarda da tecnologia logística.
           </Text>
-          <Text>This is what Typebot provides.</Text>
           <Text>
-            I&apos;ve built this tool by focusing on user empowering. Typebot is
-            extremely flexible and provides the building blocks to create great
-            chat experiences. Often times, the more freedom you give to the user,
-            the less intuitive the tool become. I try not to fall into that trap
-            with Typebot by providing the best defaults for each option. I also
-            try to help you learn master the tool with good templates and video
-            tutorials.
+            Explore nosso site para saber mais sobre como podemos transformar sua operação logística e 
+            proporcionar uma vantagem competitiva duradoura. Entre em contato conosco hoje mesmo para 
+            descobrir como podemos ajudar sua empresa a alcançar novos patamares de eficiência e sucesso.{''}
+          </Text>
+          <Text>
+            DiamondBigger Supply Chain – A revolução da logística e supply chain começa aqui.
           </Text>
         </Stack>
       </div>
