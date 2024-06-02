@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Heading, VStack, HStack, Box, Container as Chakrainer, SimpleGrid, Stack } from '@chakra-ui/react';
+import { Heading, VStack, HStack, Box, Container as Chakrainer, SimpleGrid, Stack, Text } from '@chakra-ui/react';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL, LINKEDING_PAGE, INSTAGRAM_PAGE, FACEBOOK_PAGE } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
