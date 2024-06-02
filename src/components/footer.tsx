@@ -71,7 +71,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           
           
           <Box w="full">
-            <Chakrainer as={Stack} maxW={'1000px'} py={10}>
+            <Chakrainer as={Stack} maxW='full' py={10}>
               <SimpleGrid columns={[1, 2, 4]} spacing={8} px={2}>
               <Stack spacing={6}>
                 <HStack>
