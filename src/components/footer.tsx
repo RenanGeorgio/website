@@ -69,80 +69,80 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             </div>
           ))}
           
-          <HStack spacing='24px'>
-            <VStack align={'flex-start'}>
-              <div className={styles['footer-legal']}>
-                <div className={styles['footer-center-group']}>
-                  {LEGAL_URL && (
-                    <>
-                      <p className={styles['footer-paragraph']}>
-                        <a
-                          href={LEGAL_URL}
-                          className={styles['footer-link']}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Politica de Privacidade
-                        </a>
-                      </p>
-                    </>
-                  )}
-                  {TERMS_URL && (
-                    <>
-                      <p className={styles['footer-paragraph']}>
-                        <a
-                          href={TERMS_URL}
-                          className={styles['footer-link']}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Termos de Serviço
-                        </a>
-                      </p>
-                    </>
-                  )}
+          
+          
+          <div className={styles['footer-legal']}>
+            <div className={styles['footer-center-group']}>
+              {LEGAL_URL && (
+                <>
                   <p className={styles['footer-paragraph']}>
                     <a
-                      href={CODE_OF_CONDUCT}
+                      href={LEGAL_URL}
                       className={styles['footer-link']}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Codigo de Conduta
+                      Politica de Privacidade
                     </a>
                   </p>
-                </div>
-              </div>
-            </VStack>
-            <VStack align={'flex-start'}>
-              <div className={styles['footer-center-group']}>
-                <p className={styles['footer-paragraph']}>
-                  <TextLink href="/about">Sobre</TextLink>
-                </p>
-                <div className={styles['footer-separator']} />
-                <p className={styles['footer-paragraph']}>
-                  <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
-                </p>
-              </div>
-            </VStack>
-            <VStack align={'flex-start'}>
-              <div className={styles['footer-hostedby']}>
-                <HostedByDiamondbigger />
-              </div>
-              <Heading as="p" fontSize="lg">
-                (27) 3325-7208
-              </Heading>
-              <Heading as="p" fontSize="lg">
-                contato@ignai.com.br
-              </Heading>
-              <Heading as="p" fontSize="lg">
-                Rua Olympio R, 116 - Jabour 
-              </Heading>
-              <Heading as="p" fontSize="lg">
-                Vitória - ES
-              </Heading>
-            </VStack>
-          </HStack>
+                </>
+              )}
+              {TERMS_URL && (
+                <>
+                  <p className={styles['footer-paragraph']}>
+                    <a
+                      href={TERMS_URL}
+                      className={styles['footer-link']}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Termos de Serviço
+                    </a>
+                  </p>
+                </>
+              )}
+              <p className={styles['footer-paragraph']}>
+                <a
+                  href={CODE_OF_CONDUCT}
+                  className={styles['footer-link']}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Codigo de Conduta
+                </a>
+              </p>
+            </div>
+          </div>
+          
+          
+            <div className={styles['footer-center-group']}>
+              <p className={styles['footer-paragraph']}>
+                <TextLink href="/about">Sobre</TextLink>
+              </p>
+              <div className={styles['footer-separator']} />
+              <p className={styles['footer-paragraph']}>
+                <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+              </p>
+            </div>
+          
+          
+          <div className={styles['footer-hostedby']}>
+            <HostedByDiamondbigger />
+          </div>
+          <Heading as="p" fontSize="lg">
+            (27) 3325-7208
+          </Heading>
+          <Heading as="p" fontSize="lg">
+            contato@ignai.com.br
+          </Heading>
+          <Heading as="p" fontSize="lg">
+            Rua Olympio R, 116 - Jabour 
+          </Heading>
+          <Heading as="p" fontSize="lg">
+            Vitória - ES
+          </Heading>
+          
+         
           <div className="footer--extras">
             <div className="footer--disclaimer">
               <div className={styles['footer-copyright']}>
