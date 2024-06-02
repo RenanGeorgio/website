@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { Heading, VStack, HStack, Box, Container as Chakrainer, SimpleGrid, Stack, Text } from '@chakra-ui/react';
-import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL, LINKEDING_PAGE, INSTAGRAM_PAGE, FACEBOOK_PAGE } from '@assets/constants';
+import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LINKEDING_PAGE, INSTAGRAM_PAGE, FACEBOOK_PAGE } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
 import { Icon, IconCompany } from '@components/icons';
@@ -72,7 +72,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           
           <Box w="full">
             <Chakrainer as={Stack} maxW='full' py={10}>
-              <SimpleGrid columns={[1, 2, 4]} spacing={8} px={2}>
+              <SimpleGrid columns={4} px={2}>
                 <Stack spacing={6}>
                   <VStack align={'flex-start'}>
                     <HStack>
@@ -81,12 +81,12 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                         DiamondBigger Supply Chain
                       </Heading>
                     </HStack>
-                    <VStack align={'flex-start'}>
-                      <ListHeader>(27) 3325-7208</ListHeader>
-                      <ListHeader>contato@ignai.com.br</ListHeader>              
-                      <ListHeader>Rua Olympio R, 116 - Jabour</ListHeader>                
-                      <ListHeader>Vitória - ES</ListHeader>
-                    </VStack>
+                    
+                    <ListHeader>(27) 3325-7208</ListHeader>
+                    <ListHeader>contato@ignai.com.br</ListHeader>              
+                    <ListHeader>Rua Olympio R, 116 - Jabour</ListHeader>                
+                    <ListHeader>Vitória - ES</ListHeader>
+                    
                   </VStack>
                 </Stack>
 
@@ -119,10 +119,8 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
      
               </SimpleGrid>
             </Chakrainer>
-          </Box>
-         
+          </Box>  
           <div className="footer--extras">
-            <HostedByDiamondbigger /> 
             <div className="footer--disclaimer">
               <div className={styles['footer-copyright']}>
                 Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
