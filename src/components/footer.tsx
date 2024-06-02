@@ -78,13 +78,11 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                       <Heading as="p" fontSize="sm">
                         DiamondBigger Supply Chain
                       </Heading>
-                    </HStack>
-                    
+                    </HStack>    
                     <ListHeader>(27) 4042-9995</ListHeader>
                     <ListHeader>contato@diamondbigger.com</ListHeader>              
                     <ListHeader>Rodovia do Sol, Loja 04 - Ponta da Fruta</ListHeader>                
-                    <ListHeader>Vila Velha - ES</ListHeader>
-                    
+                    <ListHeader>Vila Velha - ES</ListHeader>    
                   </VStack>
                 </Stack>
                 <Stack align={'flex-start'}>
@@ -110,7 +108,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 <Stack align={'flex-end'}>
                   <ListHeader>Uma empresa do Grupo Diamondbigger</ListHeader>
                   <Text>CNPJ: 43.561.771/0001-60</Text>
-                  <HostedByDiamondbigger />
                 </Stack>
               </SimpleGrid>
             </Chakrainer>
