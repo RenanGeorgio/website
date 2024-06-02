@@ -3,7 +3,7 @@ export const CMS_NAME = "Markdown";
 export const HOME_OG_IMAGE_URL = "https://og-image.vercel.app/Next.js%20Blog%20Starter%20Example.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg";
 export const SITE_URL = 'https://www.diamondbigger.com';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
-export const TWITTER_USER_NAME = 'vercel';
+export const TWITTER_USER_NAME = 'diamondbigger';
 export const BRAND_NAME = 'DiamondBigger';
 export const SITE_NAME_MULTILINE = ['ACME', 'Conf'];
 export const SITE_NAME = 'Grupo DiamondBigger Supply Chain';
@@ -16,6 +16,10 @@ export const FULL_DATE = 'Jan 1st 9am Pacific Time (GMT-7)';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
+export const LINKEDING_PAGE = '';
+export const FACEBOOK_PAGE = '';
+export const INSTAGRAM_PAGE = '';
+
 // Remove process.env.NEXT_PUBLIC_... below and replace them with
 // strings containing your own privacy policy URL and copyright holder name
 export const LEGAL_URL = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL;
@@ -26,7 +30,7 @@ export const HOME_TWITTER_IMAGE_URL = ''
 export const GET_HOME_VIDEO = ''
 
 export const CODE_OF_CONDUCT = 'https://supplyfy.notion.site/C-digo-de-Conduta-17744c84406c459fb9cdd1acc6de7f1a';
-export const REPO = 'https://github.com/vercel/virtual-event-starter-kit';
+export const REPO = '';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   /*{

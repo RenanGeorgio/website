@@ -4,7 +4,7 @@ import { Heading, VStack, HStack, Box, Container as Chakrainer, SimpleGrid, Stac
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
-import { Icon, IconCompany } from '@components/icons';
+import { Icon, IconCompany, IconLinkedin } from '@components/icons';
 import { Obj } from '@types';
 import { SiteParams } from '@interfaces';
 
@@ -99,22 +99,24 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
               <TextLink href={CODE_OF_CONDUCT}>Codigo de Conduta</TextLink>
             </Stack>
           
-          <Stack align={'flex-start'}>
-            <ListHeader>Community</ListHeader>
-            <TextLink href={'/pricing'} isExternal>
-              Discord
-            </TextLink>
-            <TextLink href={'/pricing'} isExternal>
-              GitHub repository
-            </TextLink>
-            <TextLink href={'/pricing'} isExternal>
-              Twitter
-            </TextLink>
-            <TextLink href={'/pricing'} isExternal>
-              LinkedIn
-            </TextLink>
-            <TextLink href="/oss-friends">OSS Friends</TextLink>
-          </Stack>
+            <Stack align={'flex-start'}>
+              <ListHeader>Redes sociais:</ListHeader>
+              <TextLink href={'/pricing'} isExternal>
+                <a>
+                  <HStack>
+                    <IconLinkedin width={'24px'} />
+                    LinkedIn
+                  </HStack>
+                </a>
+              </TextLink>
+              <TextLink href={'/pricing'} isExternal>
+                Instagram
+              </TextLink>
+              <TextLink href={'/pricing'} isExternal>
+                Facebook
+              </TextLink>
+              
+            </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Company</ListHeader>
             <TextLink href="/about">About</TextLink>
