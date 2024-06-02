@@ -1,6 +1,5 @@
 import React from 'react';
 import { Stack, Text, Flex, Heading, List, ListItem } from '@chakra-ui/react';
-import { SocialMetaTags } from '@components/common/SocialMetaTags';
 import Page from '@components/page';
 import { META_DESCRIPTION } from '@assets/constants';
 
@@ -13,7 +12,6 @@ export default function AboutPage() {
   return (
     <Page meta={meta}>
       <div className="flex flex-col items-center w-full overflow-x-hidden ">
-        <SocialMetaTags currentUrl={`https://www.diamondbigger.com/about`} />
         <Stack
           spacing={10}
           mx="auto"

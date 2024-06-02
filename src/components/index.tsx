@@ -4,6 +4,7 @@ import ConfContainer from './conf-container';
 import Hero from './hero';
 import Form from './form';
 import LearnMore from './learn-more';
+import { Integrations } from './integrations';
 
 import 'video.js/dist/video-js.css';
 
@@ -34,6 +35,7 @@ export default function Conf({
           <Hero />
           <Form />
           {/*<LearnMore />*/}
+          <Integrations />
         </>
       </ConfContainer>
     </ConfDataContext.Provider>
