@@ -74,12 +74,32 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             <Chakrainer as={Stack} maxW='full' py={10}>
               <SimpleGrid columns={[1, 2, 4]} spacing={8} px={2}>
               <Stack spacing={6}>
-                <HStack>
-                  <IconCompany />
-                  <Heading as="p" fontSize="lg">
-                   Ignai-bot.io
-                  </Heading>
-                </HStack>
+                <VStack>
+                  <HStack>
+                    <IconCompany />
+                    <Heading as="p" fontSize="lg">
+                      DiamondBigger Supply Chain
+                    </Heading>
+                  </HStack>
+                  
+                  <VStack>
+                    <Heading as="p" fontSize="lg">
+                      (27) 3325-7208
+                    </Heading>
+                    <Heading as="p" fontSize="lg">
+                      contato@ignai.com.br
+                    </Heading>
+                    <Heading as="p" fontSize="lg">
+                      Rua Olympio R, 116 - Jabour 
+                    </Heading>
+                    <Heading as="p" fontSize="lg">
+                      Vitória - ES
+                    </Heading>
+                    <div className={styles['footer-hostedby']}>
+                      <HostedByDiamondbigger />
+                    </div>
+                  </VStack>
+                </VStack>
             </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Product</ListHeader>
@@ -182,21 +202,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                 </div>
                 
                 
-                <div className={styles['footer-hostedby']}>
-                  <HostedByDiamondbigger />
-                </div>
-                <Heading as="p" fontSize="lg">
-                  (27) 3325-7208
-                </Heading>
-                <Heading as="p" fontSize="lg">
-                  contato@ignai.com.br
-                </Heading>
-                <Heading as="p" fontSize="lg">
-                  Rua Olympio R, 116 - Jabour 
-                </Heading>
-                <Heading as="p" fontSize="lg">
-                  Vitória - ES
-                </Heading>
+                
               </SimpleGrid>
             </Chakrainer>
           </Box>
