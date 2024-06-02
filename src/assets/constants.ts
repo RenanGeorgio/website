@@ -16,9 +16,9 @@ export const FULL_DATE = 'Jan 1st 9am Pacific Time (GMT-7)';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
-export const LINKEDING_PAGE = '';
-export const FACEBOOK_PAGE = '';
-export const INSTAGRAM_PAGE = '';
+export const INSTAGRAM_PAGE = 'https://www.instagram.com/diamondbigger_';
+export const FACEBOOK_PAGE = 'https://www.facebook.com/DiamondBigger';
+export const LINKEDING_PAGE = 'https://www.linkedin.com/company/diamondbigger';
 
 // Remove process.env.NEXT_PUBLIC_... below and replace them with
 // strings containing your own privacy policy URL and copyright holder name

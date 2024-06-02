@@ -1,10 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
 import { Heading, VStack, HStack, Box, Container as Chakrainer, SimpleGrid, Stack } from '@chakra-ui/react';
-import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL } from '@assets/constants';
+import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, TERMS_URL, LINKEDING_PAGE, INSTAGRAM_PAGE, FACEBOOK_PAGE } from '@assets/constants';
 import Newsletter from '@components/newsletter';
 import { Menu } from '@components/menu';
-import { Icon, IconCompany, IconLinkedin } from '@components/icons';
+import { Icon, IconCompany } from '@components/icons';
 import { Obj } from '@types';
 import { SiteParams } from '@interfaces';
 
@@ -73,61 +73,50 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           <Box w="full">
             <Chakrainer as={Stack} maxW='full' py={10}>
               <SimpleGrid columns={[1, 2, 4]} spacing={8} px={2}>
-              <Stack spacing={6}>
-                <VStack align={'flex-start'}>
-                  <HStack>
-                    <IconCompany />
-                    <Heading as="p" fontSize="lg">
-                      DiamondBigger Supply Chain
-                    </Heading>
-                  </HStack>
+                <Stack spacing={6}>
                   <VStack align={'flex-start'}>
-                    <ListHeader>(27) 3325-7208</ListHeader>
-                    <ListHeader>contato@ignai.com.br</ListHeader>              
-                    <ListHeader>Rua Olympio R, 116 - Jabour</ListHeader>                
-                    <ListHeader>Vitória - ES</ListHeader>
+                    <HStack>
+                      <IconCompany />
+                      <Heading as="p" fontSize="sm">
+                        DiamondBigger Supply Chain
+                      </Heading>
+                    </HStack>
+                    <VStack align={'flex-start'}>
+                      <ListHeader>(27) 3325-7208</ListHeader>
+                      <ListHeader>contato@ignai.com.br</ListHeader>              
+                      <ListHeader>Rua Olympio R, 116 - Jabour</ListHeader>                
+                      <ListHeader>Vitória - ES</ListHeader>
+                    </VStack>
                   </VStack>
-                </VStack>
-            </Stack>
+                </Stack>
 
-            <Stack align={'flex-start'}>
-              <ListHeader>Veja:</ListHeader>
-              <TextLink href="/about">Sobre</TextLink>
-              <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
-              <TextLink href={'/terms-of-service'}>Termos de Uso</TextLink>
-              <TextLink href={'/privacy-policies'}>Política de Privacidade</TextLink>
-              <TextLink href={CODE_OF_CONDUCT}>Codigo de Conduta</TextLink>
-            </Stack>
-          
-            <Stack align={'flex-start'}>
-              <ListHeader>Redes sociais:</ListHeader>
-              <TextLink href={'/pricing'} isExternal>
-                <a>
-                  <HStack>
-                    <IconLinkedin width={'24px'} />
+                <Stack align={'flex-start'}>
+                  <ListHeader>Veja:</ListHeader>
+                  <TextLink href="/about">Sobre</TextLink>
+                  <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+                  <TextLink href={'/terms-of-service'}>Termos de Uso</TextLink>
+                  <TextLink href={'/privacy-policies'}>Política de Privacidade</TextLink>
+                  <TextLink href={CODE_OF_CONDUCT}>Codigo de Conduta</TextLink>
+                </Stack>
+            
+                <Stack align={'flex-start'}>
+                  <ListHeader>Redes sociais:</ListHeader>
+                  <TextLink href={LINKEDING_PAGE} isExternal>
                     LinkedIn
-                  </HStack>
-                </a>
-              </TextLink>
-              <TextLink href={'/pricing'} isExternal>
-                Instagram
-              </TextLink>
-              <TextLink href={'/pricing'} isExternal>
-                Facebook
-              </TextLink>
-              
-            </Stack>
-          <Stack align={'flex-start'}>
-            <ListHeader>Company</ListHeader>
-            <TextLink href="/about">About</TextLink>
-            <TextLink href="mailto:support@typebot.io">Contact</TextLink>
-            <TextLink href={'/terms-of-service'}>Terms of Service</TextLink>
-            <TextLink href={'/privacy-policies'}>Privacy Policy</TextLink>
-          </Stack>
+                  </TextLink>
+                  <TextLink href={INSTAGRAM_PAGE} isExternal>
+                    Instagram
+                  </TextLink>
+                  <TextLink href={FACEBOOK_PAGE} isExternal>
+                    Facebook
+                  </TextLink> 
+                </Stack>
 
-                
-                
-                
+                <Stack align={'flex-start'}>
+                  <ListHeader>Uma empresa do Grupo Diamondbigger</ListHeader>
+                  <Text>CNPJ: 37.828.054/0001-50</Text>
+                </Stack>
+     
               </SimpleGrid>
             </Chakrainer>
           </Box>
