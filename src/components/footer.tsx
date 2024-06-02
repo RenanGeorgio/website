@@ -112,7 +112,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                   </TextLink> 
                 </Stack>
 
-                <Stack align={'flex-start'}>
+                <Stack align={'flex-end'}>
                   <ListHeader>Uma empresa do Grupo Diamondbigger</ListHeader>
                   <Text>CNPJ: 37.828.054/0001-50</Text>
                 </Stack>
