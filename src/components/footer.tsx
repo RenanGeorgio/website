@@ -74,15 +74,13 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             <Chakrainer as={Stack} maxW='full' py={10}>
               <SimpleGrid columns={[1, 2, 4]} spacing={8} px={2}>
               <Stack spacing={6}>
-                <VStack>
+                <VStack align={'flex-start'}>
                   <HStack>
                     <IconCompany />
                     <Heading as="p" fontSize="lg">
                       DiamondBigger Supply Chain
                     </Heading>
-                    <HostedByDiamondbigger /> 
                   </HStack>
-                  
                   <VStack align={'flex-start'}>
                     <ListHeader>(27) 3325-7208</ListHeader>
                     <ListHeader>contato@ignai.com.br</ListHeader>              
@@ -91,19 +89,16 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
                   </VStack>
                 </VStack>
             </Stack>
-          <Stack align={'flex-start'}>
-            <ListHeader>Product</ListHeader>
-            <TextLink href={'/pricing'} isExternal>
-              Status
-            </TextLink>
-            <TextLink href={'/pricing'} isExternal>
-              Documentation
-            </TextLink>
-            <TextLink href={'/pricing'} isExternal>
-              Roadmap
-            </TextLink>
-            <TextLink href={'/pricing'}>Pricing</TextLink>
-          </Stack>
+
+            <Stack align={'flex-start'}>
+              <ListHeader>Veja:</ListHeader>
+              <TextLink href="/about">Sobre</TextLink>
+              <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
+              <TextLink href={'/terms-of-service'}>Termos de Uso</TextLink>
+              <TextLink href={'/privacy-policies'}>Política de Privacidade</TextLink>
+              <TextLink href={CODE_OF_CONDUCT}>Codigo de Conduta</TextLink>
+            </Stack>
+          
           <Stack align={'flex-start'}>
             <ListHeader>Community</ListHeader>
             <TextLink href={'/pricing'} isExternal>
@@ -128,68 +123,6 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
             <TextLink href={'/privacy-policies'}>Privacy Policy</TextLink>
           </Stack>
 
-
-
-
-
-
-
-
-
-
-                <div className={styles['footer-legal']}>
-                  <div className={styles['footer-center-group']}>
-                    {LEGAL_URL && (
-                      <>
-                        <p className={styles['footer-paragraph']}>
-                          <a
-                            href={LEGAL_URL}
-                            className={styles['footer-link']}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Politica de Privacidade
-                          </a>
-                        </p>
-                      </>
-                    )}
-                    {TERMS_URL && (
-                      <>
-                        <p className={styles['footer-paragraph']}>
-                          <a
-                            href={TERMS_URL}
-                            className={styles['footer-link']}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Termos de Serviço
-                          </a>
-                        </p>
-                      </>
-                    )}
-                    <p className={styles['footer-paragraph']}>
-                      <a
-                        href={CODE_OF_CONDUCT}
-                        className={styles['footer-link']}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Codigo de Conduta
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                
-                
-                <div className={styles['footer-center-group']}>
-                  <p className={styles['footer-paragraph']}>
-                    <TextLink href="/about">Sobre</TextLink>
-                  </p>
-                  <div className={styles['footer-separator']} />
-                  <p className={styles['footer-paragraph']}>
-                    <TextLink href="mailto:contato@diamondbigger.com">Contatar</TextLink>
-                  </p>
-                </div>
                 
                 
                 
@@ -198,6 +131,7 @@ const Footer: React.FC<any> = (data: typeof footerObj): JSX.Element => {
           </Box>
          
           <div className="footer--extras">
+            <HostedByDiamondbigger /> 
             <div className="footer--disclaimer">
               <div className={styles['footer-copyright']}>
                 Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
