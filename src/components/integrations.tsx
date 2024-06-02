@@ -48,7 +48,7 @@ export const Integrations = () => (
           left="0"
           w="33%"
           h="full"
-          bgGradient="linear(to-r, rgba(23,25,35,1), rgba(23,25,35,0))"
+          bgGradient="linear(to-r, rgba(2,7,10,1), rgba(2,7,10,0))"
           pointerEvents="none"
           zIndex={100}
         />
