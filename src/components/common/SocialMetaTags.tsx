@@ -5,7 +5,7 @@ export const SocialMetaTags = ({
   title = 'DiamondBigger Supply Chain',
   description = 'Produto certo, na hora certa',
   currentUrl,
-  imagePreviewUrl = 'https://www.diamondbigger.com/assets/preview.png',
+  imagePreviewUrl = 'https://www.diamondbigger.com/assets/images/preview.png',
 }: {
   title?: string
   description?: string

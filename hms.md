@@ -41,11 +41,11 @@ We have added some helper constants to quickly toggle some critical values, open
 
 By default the aspect ratio is 1.8 : 1 which displays video tiles in the shown proportion:
 
-![Aspect ratio 1](/media/ar-1.png)
+![Aspect ratio 1](/assets/media/ar-1.png)
 
 So if you set the aspect ratio to 1:1 you will get the following result
 
-![Aspect ratio 2](/media/ar-2.png)
+![Aspect ratio 2](/assets/media/ar-2.png)
 
 By default, if there is more than one user on stage it switches to Active speaker mode. If you want the Active speaker mode turned on when there are more than 4 speakers you can set `activeSpeakerThreshold` to 4. 
 
@@ -53,13 +53,13 @@ By default, if there is more than one user on stage it switches to Active speake
 
 You can also use activespeakerthreshold value as a hack to toggle b/w carousel mode and active speaker mode. For example, suppose there are only 2 speakers, by default there would be 1 active speaker tile and other one at the bottom this is how it will look like:
 
-![Active speaker 1](/media/as-1.png)
+![Active speaker 1](/assets/media/as-1.png)
 
 If you set `activeSpeakerThreshold` as 2 then they would come side by side instead of splitting into active/ carousel mode.
 
 To avoid switching into carousel mode you set the `activeSpeakerThreshold` value according to your need.
 
-![Active speaker 2](/media/as-2.png)
+![Active speaker 2](/assets/media/as-2.png)
 
 - Toggling pre-recorded vs live stages
 
@@ -69,7 +69,7 @@ There are four different stages included in the seed data. Feel free to add or r
 - `isLive`(default setting):  This makes your stage Live. If you just want to stream a Youtube URL turn this off and add YT url in the `Stream` field.
 - `roomId`: Contains 100ms's `roomId` associated with the specific stage. This is pre-populated, so we advice you not to change the parameters for this field unless you know what you're doing. 
 
-![CMS](/media/cms.png)
+![CMS](/assets/media/cms.png)
 
 You might have seen a list of speakers just below the Active Speaker videotile. If you think 5 videos is too many to be fit in that space you can toggle it by changing the value of `maxTileCountSpeakers` according to your need. We recommend keeping it below 6 for an optimum experience.
 

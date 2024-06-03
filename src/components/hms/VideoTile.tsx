@@ -78,7 +78,7 @@ const PeerName: React.FC<{ name: string }> = ({ name }) => {
 };
 
 const HmsWatermark = () => {
-  return <img src="/hms-coachmark.svg" className="absolute right-3 top-3" />;
+  return <img src="/assets/images/hms-coachmark.svg" className="absolute right-3 top-3" />;
 };
 
 export const AudioLevel: React.FC<{ audioTrack: HMSPeer['audioTrack'] }> = ({ audioTrack }) => {

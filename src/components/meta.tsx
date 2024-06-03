@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { CMS_NAME, SITE_URL, HOME_OG_IMAGE_URL, HOME_TWITTER_IMAGE_URL, TWITTER_USER_NAME } from '@assets/constants';
+import { SITE_URL, HOME_OG_IMAGE_URL, HOME_TWITTER_IMAGE_URL, TWITTER_USER_NAME } from '@assets/constants';
 import { Obj } from '@types';
 
 interface Props {
@@ -26,8 +26,8 @@ const Meta = ({ site, page, schema }: Props) => {
 
   const siteTitle = site?.title;
 
-  const siteFavicon = site?.seo?.favicon || '/favicon/safari-pinned-tab.svg';
-  const siteFaviconLegacy = site?.seo?.faviconLegacy || '/favicon/favicon.ico';
+  const siteFavicon = site?.seo?.favicon || '/assets/images/safari-pinned-tab.svg';
+  const siteFaviconLegacy = site?.seo?.faviconLegacy || '/assets/favicon.ico';
   const siteTouchIcon = site?.seo?.touchIcon;
 
   const templateTags = [
@@ -47,7 +47,7 @@ const Meta = ({ site, page, schema }: Props) => {
   );
 
   const metaDesc = page?.seo?.metaDesc || site?.seo?.metaDesc;
-  const fullMetaDesc = `${metaDesc}: A statically generated blog example using Next.js and ${CMS_NAME}.`;
+  const fullMetaDesc = `${metaDesc}: Website do grupo DiamondBigger Supply Chain - A revolução da logística e supply chain começa aqui.`;
 
   const shareTitle = replaceTemplateTags(
     page?.seo?.shareTitle || site?.seo?.shareTitle,
@@ -78,15 +78,15 @@ const Meta = ({ site, page, schema }: Props) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
+          href="/assets/apple-touch-icon.png"
         />
       )}
 
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
 
       <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+      <meta name="msapplication-config" content="/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
 
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
@@ -132,6 +132,6 @@ const Meta = ({ site, page, schema }: Props) => {
       )}
     </Head>
   );
-};
+}
 
 export default Meta;

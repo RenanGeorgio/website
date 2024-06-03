@@ -33,8 +33,8 @@ export default function Conf({
       <ConfContainer>
         <>
           <Hero />
-          <Form />
-          {/*<LearnMore />*/}
+          {/*<Form />
+          <LearnMore />*/}
           <Integrations />
         </>
       </ConfContainer>

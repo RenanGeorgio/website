@@ -1,14 +1,13 @@
-export const EXAMPLE_PATH = "blog-starter";
+export const EXAMPLE_PATH = "";
 export const CMS_NAME = "Markdown";
 export const HOME_OG_IMAGE_URL = "https://og-image.vercel.app/Next.js%20Blog%20Starter%20Example.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg";
 export const SITE_URL = 'https://www.diamondbigger.com';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'diamondbigger';
 export const BRAND_NAME = 'DiamondBigger';
-export const SITE_NAME_MULTILINE = ['ACME', 'Conf'];
+export const SITE_NAME_MULTILINE = ['DiamondBigger', 'Supply Chain'];
 export const SITE_NAME = 'Grupo DiamondBigger Supply Chain';
-export const META_DESCRIPTION =
-  'This is an open source demo that Next.js developers can clone, deploy, and fully customize for events. Created through collaboration of marketers, designers, and developers at Vercel.';
+export const META_DESCRIPTION = 'Website do grupo DiamondBigger Supply Chain - A revolução da logística e supply chain começa aqui.';
 export const SITE_DESCRIPTION = 'Produto certo, no local e hora certa, com o melhor preço!';
 export const DATE = '01 January 2022';
 export const SHORT_DATE = 'Jan 1 - 9:00am PST';

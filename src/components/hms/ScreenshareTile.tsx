@@ -86,5 +86,5 @@ const ScreenshareTile = () => {
 export default ScreenshareTile;
 
 const HmsWatermark = () => {
-  return <img src="/hms-coachmark.svg" className="md:block hidden absolute left-2 bottom-2 z-10" />;
+  return <img src="/assets/images/hms-coachmark.svg" className="md:block hidden absolute left-2 bottom-2 z-10" />;
 };
